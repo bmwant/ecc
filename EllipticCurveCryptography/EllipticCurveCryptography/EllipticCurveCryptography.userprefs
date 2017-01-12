@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{52F68464-89E5-4F8B-8BDB-12042B29EB23}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ECC.Designer.cs">
+    <Files>
+      <File FileName="Program.cs" Line="18" Column="40" />
+      <File FileName="ECC.Designer.cs" Line="3" Column="19" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="EllipticCurveCryptography" expanded="True">
+            <Node name="EllipticCurveCryptography" expanded="True">
+              <Node name="Properties" expanded="True" />
+              <Node name="ECC.cs" expanded="True">
+                <Node name="ECC.Designer.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.EllipticCurveCryptography PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>

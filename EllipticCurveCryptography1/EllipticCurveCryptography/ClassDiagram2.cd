@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="EllipticCurveCryptography.ECC" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>/yOUFDA0ETEYwhqBNTDtSADS9v9/CqvfuXCfAQcB5bc=</HashCode>
+      <FileName>ECC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EllipticCurveCryptography.EllipticCC" Collapsed="true">
+    <Position X="5.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAQAAAAAAgAAACAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>EllipticCC.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EllipticCurveCryptography.Functions" Collapsed="true">
+    <Position X="10" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEACAIJAAQAAAECACAIAAMwAIAiAQAQAQQABgAAQIAg=</HashCode>
+      <FileName>Functions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EllipticCurveCryptography.Node" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEQAAAAAEAABAAAAAAAAgEAAA=</HashCode>
+      <FileName>Node.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EllipticCurveCryptography.PereborVariantov" Collapsed="true">
+    <Position X="4.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAgAAAAAAAIIAAAgBAAAgAAAAAMBCAAAAAAIIQA=</HashCode>
+      <FileName>PereborVariantov.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EllipticCurveCryptography.PointMultiplication" Collapsed="true">
+    <Position X="3" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAkEAAAAAAQQgAABBM4AgAgAgICRgsECQCAAQAQBbA=</HashCode>
+      <FileName>PointMultiplication.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EllipticCurveCryptography.Primality_Tests" Collapsed="true">
+    <Position X="3" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Primality_Tests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EllipticCurveCryptography.Program" Collapsed="true">
+    <Position X="3" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EllipticCurveCryptography.Quadrupling" Collapsed="true">
+    <Position X="8.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAEAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Quadrupling.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EllipticCurveCryptography.Quintuple" Collapsed="true">
+    <Position X="10" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Quintuple.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EllipticCurveCryptography.Ternary" Collapsed="true">
+    <Position X="6.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEgAABAAAAAAAcACAAAAAAAgA=</HashCode>
+      <FileName>Ternary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EllipticCurveCryptography.Tree" Collapsed="true">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAUAAIAAAAAEAAAAAAAAAAEAAAAAQAAAAAAAAOEAAA=</HashCode>
+      <FileName>Tree.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="8" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Windows.Forms.Form" Collapsed="true">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
