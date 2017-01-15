@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{B730A8F8-B341-40F7-AB58-90B2D2A5EEE8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>WindowsApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>ECC</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".DS_Store" />
+    <None Include=".gitignore" />
+    <None Include="app.config" />
+    <None Include="EllipticCurveCryptography\bin\Debug\BestW256_2_12_2_01-06-2016-13-52-18.csv" />
+    <None Include="EllipticCurveCryptography\bin\Debug\BestW256_2_12_2_01-06-2016-16-42-06.csv" />
+    <None Include="EllipticCurveCryptography\bin\Debug\BestW256_2_12_2_28-05-2016-12-45-12.csv" />
+    <None Include="EllipticCurveCryptography\bin\Debug\BestW256_2_12_2_31-05-2016-15-11-07.csv" />
+    <None Include="EllipticCurveCryptography\bin\Debug\BestW256_2_12_2_31-05-2016-17-31-28.csv" />
+    <None Include="EllipticCurveCryptography\bin\Debug\EllipticCurveCryptography.vshost.exe.manifest" />
+    <None Include="EllipticCurveCryptography\bin\Debug\W256_2_12_2_01-06-2016-13-52-18_Afine.csv" />
+    <None Include="EllipticCurveCryptography\bin\Debug\W256_2_12_2_01-06-2016-16-42-06.csv" />
+    <None Include="EllipticCurveCryptography\bin\Debug\W256_2_12_2_07-06-2016-13-53-45_Jacobi.csv" />
+    <None Include="EllipticCurveCryptography\bin\Debug\W256_2_12_2_07-06-2016-16-49-30_Poject.csv" />
+    <None Include="EllipticCurveCryptography\bin\Debug\W256_2_12_2_07-06-2016-17-43-53_Affine.csv" />
+    <None Include="EllipticCurveCryptography\bin\Debug\W256_2_12_2_28-05-2016-12-45-12_Proective.csv" />
+    <None Include="EllipticCurveCryptography\bin\Debug\W256_2_12_2_31-05-2016-15-11-07_Jacobi.csv" />
+    <None Include="EllipticCurveCryptography\bin\Debug\W256_2_12_2_31-05-2016-17-31-28.csv" />
+    <None Include="EllipticCurveCryptography\ClassDiagram1.cd" />
+    <None Include="EllipticCurveCryptography\ClassDiagram2.cd" />
+    <None Include="EllipticCurveCryptography\obj\x86\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="EllipticCurveCryptography\obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="EllipticCurveCryptography\obj\x86\Debug\EllipticCurveCryptography.csproj.GenerateResource.Cache" />
+    <None Include="EllipticCurveCryptography\Properties\Settings.settings" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EllipticCurveCryptography\ECC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EllipticCurveCryptography\ECC.Designer.cs">
+      <DependentUpon>ECC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EllipticCurveCryptography\EllipticCC.cs" />
+    <Compile Include="EllipticCurveCryptography\Functions.cs" />
+    <Compile Include="EllipticCurveCryptography\Lehmer_.cs" />
+    <Compile Include="EllipticCurveCryptography\Node.cs" />
+    <Compile Include="EllipticCurveCryptography\PereborVariantov.cs" />
+    <Compile Include="EllipticCurveCryptography\PointMultiplication.cs" />
+    <Compile Include="EllipticCurveCryptography\Primality_Tests.cs" />
+    <Compile Include="EllipticCurveCryptography\Program.cs" />
+    <Compile Include="EllipticCurveCryptography\Properties\AssemblyInfo.cs" />
+    <Compile Include="EllipticCurveCryptography\Properties\Resources.Designer.cs" />
+    <Compile Include="EllipticCurveCryptography\Properties\Settings.Designer.cs" />
+    <Compile Include="EllipticCurveCryptography\Quadrupling.cs" />
+    <Compile Include="EllipticCurveCryptography\Quintuple.cs" />
+    <Compile Include="EllipticCurveCryptography\Ternary.cs" />
+    <Compile Include="EllipticCurveCryptography\Tree.cs" />
+    <Compile Include="EllipticCurveCryptography\Algs\ECDSA.cs" />
+    <Compile Include="EllipticCurveCryptography\Algs\EllipticCurveAlgorithms.cs" />
+    <Compile Include="EllipticCurveCryptography\Algs\GOST_R34_10_2001.cs" />
+    <Compile Include="EllipticCurveCryptography\Algs\KCDSA.cs" />
+    <Compile Include="EllipticCurveCryptography\Algs\Shor.cs" />
+    <Compile Include="EllipticCurveCryptography\Multiplier.cs" />
+    <Compile Include="EllipticCurveCryptography\Point.cs" />
+    <Compile Include="EllipticCurveCryptography\MethodsProgram.cs" />
+    <Compile Include="EllipticCurveCryptography\Utils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EllipticCurveCryptography\ECC.resx">
+      <DependentUpon>ECC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EllipticCurveCryptography\obj\x86\Debug\EllipticCurveCryptography.ECC.resources" />
+    <EmbeddedResource Include="EllipticCurveCryptography\Properties\Resources.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EllipticCurveCryptography\bin\Debug\20_Points_2048.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\20_Points_4096.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\20_Points_64.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\25_Points_1024.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\25_Points_128.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\25_Points_256.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\25_Points_512.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\25_Points_64.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\40_Points_256.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_0_AffineCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_1024_AffineCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_1024_JacobiChudnovskyiCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_1024_JacobiCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_1024_ModifiedJacobiCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_1024_ProjectiveCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_128_AffineCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_128_JacobiChudnovskyiCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_128_JacobiCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_128_ModifiedJacobiCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_128_ProjectiveCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_2048_AffineCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_2048_JacobiChudnovskyiCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_2048_JacobiCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_2048_ModifiedJacobiCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_2048_ProjectiveCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_256_AffineCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_256_JacobiChudnovskyiCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_256_JacobiCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_256_ModifiedJacobiCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_256_ProjectiveCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_512_AffineCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_512_JacobiChudnovskyiCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_512_JacobiCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_512_ModifiedJacobiCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_512_ProjectiveCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_64_AffineCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_64_JacobiChudnovskyiCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_64_JacobiCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_64_ModifiedJacobiCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\All_Algorithms_Time_64_ProjectiveCoordinate.txt" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\EllipticCurveCryptography.exe" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\EllipticCurveCryptography.pdb" />
+    <Content Include="EllipticCurveCryptography\bin\Debug\EllipticCurveCryptography.vshost.exe" />
+    <Content Include="EllipticCurveCryptography\EllipticCurveCryptography.csproj" />
+    <Content Include="EllipticCurveCryptography\EllipticCurveCryptography.csproj.user" />
+    <Content Include="EllipticCurveCryptography\obj\x86\Debug\EllipticCurveCryptography.csproj.FileListAbsolute.txt" />
+    <Content Include="EllipticCurveCryptography\obj\x86\Debug\EllipticCurveCryptography.exe" />
+    <Content Include="EllipticCurveCryptography\obj\x86\Debug\EllipticCurveCryptography.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include=".git\" />
+    <Folder Include=".vs\" />
+    <Folder Include="EllipticCurveCryptography\obj\x86\Debug\TempPE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
+</Project>

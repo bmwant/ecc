@@ -1,8 +1,0 @@
-C:\Users\Andriy\Downloads\EllipticCurveCryptography\Methods\obj\Debug\Methods.csprojResolveAssemblyReference.cache
-C:\Users\Andriy\Downloads\EllipticCurveCryptography\Methods\bin\Debug\Methods.exe.config
-C:\Users\Andriy\Downloads\EllipticCurveCryptography\Methods\bin\Debug\Methods.exe
-C:\Users\Andriy\Downloads\EllipticCurveCryptography\Methods\bin\Debug\Methods.pdb
-C:\Users\Andriy\Downloads\EllipticCurveCryptography\Methods\bin\Debug\EllipticCurveCryptography.exe
-C:\Users\Andriy\Downloads\EllipticCurveCryptography\Methods\bin\Debug\EllipticCurveCryptography.pdb
-C:\Users\Andriy\Downloads\EllipticCurveCryptography\Methods\obj\Debug\Methods.exe
-C:\Users\Andriy\Downloads\EllipticCurveCryptography\Methods\obj\Debug\Methods.pdb
