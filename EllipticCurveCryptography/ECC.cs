@@ -625,7 +625,22 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
             return array;
         }
 
-
+        private int Get_Type()
+        {
+            int type = 0;
+            if (radioButton30.Checked)
+                type = 0;
+            else if (radioButton31.Checked)
+                type = 1;
+            else if (radioButton32.Checked)
+                type = 2;
+            else if (radioButton50.Checked)
+                type = 3;
+            else if (radioButton49.Checked)
+                type = 4;
+            else MessageBox.Show("Виберіть систему координат!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return type;
+        }
 
         private void Multiply_Click(object sender, EventArgs e)
         {
@@ -652,92 +667,82 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
             z1 = BigInteger.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
 
 
-            int type = 0;
-            if (radioButton30.Checked)
-                type = 0;
-            else if (radioButton31.Checked)
-                type = 1;
-            else if (radioButton32.Checked)
-                type = 2;
-            else if (radioButton50.Checked)
-                type = 3;
-            else if (radioButton49.Checked)
-                type = 4;
-            else MessageBox.Show("Виберіть систему координат!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            int type = Get_Type();
 
             if (x1 == 0 || y1 == 0 || z1 == 0)
                 MessageBox.Show("Виберіть точку!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-                if (radioButton1.Checked)
+                String Coord_Type = comboBox1.Text;
+                if (Coord_Type == "1")
                     Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, type);
-                else if (radioButton2.Checked)
+                else if (Coord_Type == "2")
                     Point_Multiplication_Affine_Coord_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, type);
-                else if (radioButton3.Checked)
+                else if (Coord_Type == "3")
                     Point_Multiplication_Affine_Coord_3(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
-                else if (radioButton4.Checked)
+                else if (Coord_Type == "4")
                     Point_Multiplication_Affine_Coord_4(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type);
-                else if (radioButton5.Checked)
+                else if (Coord_Type == "5")
                     Point_Multiplication_Affine_Coord_5(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
-                else if (radioButton6.Checked)
+                else if (Coord_Type == "6")
                     Point_Multiplication_Affine_Coord_6(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type);
-                else if (radioButton7.Checked)
+                else if (Coord_Type == "7.1")
                     Point_Multiplication_Affine_Coord_7_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, type);
-                else if (radioButton8.Checked)
+                else if (Coord_Type == "7.2")
                     Point_Multiplication_Affine_Coord_7_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, type);
-                else if (radioButton9.Checked)
+                else if (Coord_Type == "8")
                     Point_Multiplication_Affine_Coord_8(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, type);
-                else if (radioButton10.Checked)
+                else if (Coord_Type == "9")
                     Point_Multiplication_Affine_Coord_9(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
-                else if (radioButton11.Checked)
+                else if (Coord_Type == "10")
                     Point_Multiplication_Affine_Coord_10(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type);
-                else if (radioButton12.Checked)
+                else if (Coord_Type == "11.1")
                     Point_Multiplication_Affine_Coord_11_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
-                else if (radioButton13.Checked)
+                else if (Coord_Type == "15")
                     Point_Multiplication_Affine_Coord_15(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
-                else if (radioButton20.Checked)
+                else if (Coord_Type == "11.2")
                     Point_Multiplication_Affine_Coord_11_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
-                else if (radioButton21.Checked)
+                else if (Coord_Type == "13")
                     Point_Multiplication_Affine_Coord_13(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
-                else if (radioButton22.Checked)
+                else if (Coord_Type == "14")
                     Point_Multiplication_Affine_Coord_14(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
-                else if (radioButton23.Checked)
+                else if (Coord_Type == "16")
                     Point_Multiplication_Affine_Coord_16(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
-                else if (radioButton24.Checked)
+                else if (Coord_Type == "17")
                     Point_Multiplication_Affine_Coord_17(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
-                else if (radioButton25.Checked)
+                else if (Coord_Type == "18")
                     Point_Multiplication_Affine_Coord_18(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
-                else if (radioButton26.Checked)
+                else if (Coord_Type == "19")
                     Point_Multiplication_Affine_Coord_19(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max);
-                else if (radioButton27.Checked)
+                else if (Coord_Type == "20")
                     Point_Multiplication_Affine_Coord_20(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max);
-                else if (radioButton15.Checked)
+                else if (Coord_Type == "19.2")
                     Point_Multiplication_Affine_Coord_19_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max);
-                else if (radioButton16.Checked)
+                else if (Coord_Type == "20.1")
                     Point_Multiplication_Affine_Coord_20_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max);
-                else if (radioButton28.Checked)
+                else if (Coord_Type == "21")
                     Point_Multiplication_Affine_Coord_21(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
-                else if (radioButton29.Checked)
+                else if (Coord_Type == "22")
                     Point_Multiplication_Affine_Coord_22(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
-                else if (radioButton14.Checked)
+                else if (Coord_Type == "12")
                     Point_Multiplication_Affine_Coord_12(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type);
-                else if (radioButton35.Checked)
+                else if (Coord_Type == "27")
                     Point_Multiplication_Affine_Coord_27(x1, y1, z1, a, k, p, out x2, out y2, out z2, B, S, M, type, out time);
-                else if (radioButton36.Checked)
+                else if (Coord_Type == "28")
                     Point_Multiplication_Affine_Coord_28(x1, y1, z1, a, k, p, out x2, out y2, out z2, B, S, M, type, out time);
-                else if (radioButton33.Checked)
+                else if (Coord_Type == "29")
                     Point_Multiplication_Affine_Coord_29(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
-                else if (radioButton34.Checked)
+                else if (Coord_Type == "30")
                     Point_Multiplication_Affine_Coord_30(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
-                else if (radioButton37.Checked)
+                else if (Coord_Type == "31")
                     Point_Multiplication_Affine_Coord_31(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
-                else if (radioButton38.Checked)
+                else if (Coord_Type == "32")
                     Point_Multiplication_Affine_Coord_32(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
-                else if (radioButton39.Checked)
+                else if (Coord_Type == "21m")
                     Point_Multiplication_Affine_Coord_21m(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
-                else if (radioButton40.Checked)
+                else if (Coord_Type == "22m")
                     Point_Multiplication_Affine_Coord_22m(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
-                else if (radioButton48.Checked)
+                else if (Coord_Type == "33")
                 {
                     int i = 0;
                     BigInteger[] arr = new BigInteger[6];
@@ -940,7 +945,8 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                 {
                     time = 0;
                     stopWatch.Start();
-                    if (radioButton1.Checked)
+                    String Coord_Type = comboBox1.Text;
+                    if (Coord_Type == "1")
                         Point_Multiplication_Affine_Coord_1(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, type);
                     /* else if (radioButton2.Checked)
                          Point_Multiplication_Affine_Coord_2(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, type);
@@ -1419,21 +1425,8 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
             a_max = BigInteger.Parse(textBox27.Text);
             b_max = BigInteger.Parse(textBox28.Text);
 
-            int type = 0;
-            if (radioButton30.Checked)
-                type = 0;
-            else if (radioButton31.Checked)
-                type = 1;
-            else if (radioButton32.Checked)
-                type = 2;
-            else if (radioButton50.Checked)
-                type = 3;
-            else if (radioButton49.Checked)
-                type = 4;
-            else
-            {
-                MessageBox.Show("Виберіть систему координат!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            int type = Get_Type();
+
             if (x1 == 0 || y1 == 0)
                 MessageBox.Show("Выбирете точку!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
@@ -4393,6 +4386,16 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
         }
 
         private void textBox52_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
