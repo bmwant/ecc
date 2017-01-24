@@ -14,7 +14,7 @@ namespace EllipticCurveCryptography
             
         }
 
-        public BigInteger GeneratePrivateKey(int BitSize)
+        public new BigInteger GeneratePrivateKey(int BitSize)
         {
             BigInteger d = new BigInteger();
             do
@@ -24,7 +24,7 @@ namespace EllipticCurveCryptography
             return d;
         }
 
-        public Point GenerateKey(BigInteger d)
+        public new Point GenerateKey(BigInteger d)
         {
             BigInteger x, y, z;
             //add counter and timer

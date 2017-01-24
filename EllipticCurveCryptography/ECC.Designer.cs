@@ -120,7 +120,6 @@
             this.label37 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.radioButton50 = new System.Windows.Forms.RadioButton();
             this.radioButton49 = new System.Windows.Forms.RadioButton();
             this.radioButton32 = new System.Windows.Forms.RadioButton();
@@ -176,6 +175,8 @@
             this.Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Z = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label71 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox47 = new System.Windows.Forms.TextBox();
             this.label63 = new System.Windows.Forms.Label();
             this.textBox28 = new System.Windows.Forms.TextBox();
@@ -268,7 +269,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.label71 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox14.SuspendLayout();
@@ -315,6 +316,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button7);
             this.tabPage1.Controls.Add(this.groupBox14);
             this.tabPage1.Controls.Add(this.dataGridView3);
             this.tabPage1.Controls.Add(this.dataGridView2);
@@ -1233,50 +1235,6 @@
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Системи координат";
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7.1",
-            "7.2",
-            "8",
-            "9",
-            "10",
-            "11.1",
-            "11.2",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "19.1",
-            "19.2",
-            "20.1",
-            "20.2",
-            "21",
-            "22",
-            "21m",
-            "22m",
-            "27",
-            "28",
-            "29",
-            "30",
-            "31",
-            "32",
-            "33"});
-            this.comboBox1.Location = new System.Drawing.Point(3, 42);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(154, 21);
-            this.comboBox1.TabIndex = 61;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
             // radioButton50
             // 
             this.radioButton50.AutoSize = true;
@@ -1819,6 +1777,59 @@
             this.groupBox2.TabIndex = 29;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Алгоритми множення";
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(3, 22);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(105, 13);
+            this.label71.TabIndex = 71;
+            this.label71.Text = "Виберіть алгоритм:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7.1",
+            "7.2",
+            "8",
+            "9",
+            "10",
+            "11.1",
+            "11.2",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "19.1",
+            "19.2",
+            "20.1",
+            "20.2",
+            "21",
+            "22",
+            "21m",
+            "22m",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "32",
+            "33"});
+            this.comboBox1.Location = new System.Drawing.Point(3, 42);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(154, 21);
+            this.comboBox1.TabIndex = 61;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // textBox47
             // 
@@ -2715,14 +2726,15 @@
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(118, 17);
             this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
             // 
-            // label71
+            // button7
             // 
-            this.label71.AutoSize = true;
-            this.label71.Location = new System.Drawing.Point(3, 22);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(105, 13);
-            this.label71.TabIndex = 71;
-            this.label71.Text = "Виберіть алгоритм:";
+            this.button7.Location = new System.Drawing.Point(12, 479);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 56;
+            this.button7.Text = "button7";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // ECC
             // 
@@ -3032,5 +3044,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.Button button7;
     }
 }

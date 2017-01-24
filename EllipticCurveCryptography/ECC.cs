@@ -11,6 +11,8 @@ using System.IO;
 using System.Diagnostics;
 using System.Collections;
 using System.Threading.Tasks;
+using Excel = Microsoft.Office.Interop.Excel;
+
 
 namespace EllipticCurveCryptography
 {
@@ -185,24 +187,39 @@ namespace EllipticCurveCryptography
         }
 
         private void Point_Multiplication_Affine_Coord_8(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, int type)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
             PointMultiplication.Point_Multiplication_Affine_Coord_8(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
                 out x2, out y2, out z2, type);
+            stopWatch.Stop();
+            TimeSpan ts = stopWatch.Elapsed;
+            time = ts.TotalMilliseconds;
         }
 
         private void Point_Multiplication_Affine_Coord_7_2(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, int type)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
             PointMultiplication.Point_Multiplication_Affine_Coord_7_2(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
                 out x2, out y2, out z2, type);
+            stopWatch.Stop();
+            TimeSpan ts = stopWatch.Elapsed;
+            time = ts.TotalMilliseconds;
         }
 
         private void Point_Multiplication_Affine_Coord_7_1(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, int type)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
             PointMultiplication.Point_Multiplication_Affine_Coord_7_1(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
                 out x2, out y2, out z2, type);
+            stopWatch.Stop();
+            TimeSpan ts = stopWatch.Elapsed;
+            time = ts.TotalMilliseconds;
         }
 
         private void Point_Multiplication_Affine_Coord_6(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p, out BigInteger x2,
@@ -222,8 +239,13 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_4(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, out double tableTime, int type)
         {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
             PointMultiplication.Point_Multiplication_Affine_Coord_4(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
                 out x2, out y2, out z2, out time, out tableTime, type);
+            stopWatch.Stop();
+            TimeSpan ts = stopWatch.Elapsed;
+            time = ts.TotalMilliseconds;
         }
 
         private void Point_Multiplication_Affine_Coord_3(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
@@ -234,17 +256,27 @@ namespace EllipticCurveCryptography
         }
 
         private void Point_Multiplication_Affine_Coord_2(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, int type)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
             PointMultiplication.Point_Multiplication_Affine_Coord_2(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
                 out x2, out y2, out z2, type);
+            stopWatch.Stop();
+            TimeSpan ts = stopWatch.Elapsed;
+            time = ts.TotalMilliseconds;
         }
 
         private void Point_Multiplication_Affine_Coord_1(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, int type)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
             PointMultiplication.Point_Multiplication_Affine_Coord_1(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
                 out x2, out y2, out z2, type);
+            stopWatch.Stop();
+            TimeSpan ts = stopWatch.Elapsed;
+            time = ts.TotalMilliseconds;
         }
 
         //With trees
@@ -643,8 +675,40 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
             return type;
         }
 
+        private void ExportToExcel()
+        {
+            var excelApp = new Excel.Application();
+            // Make the object visible.
+            excelApp.Visible = true;
+
+            // Create a new, empty workbook and add it to the collection returned 
+            // by property Workbooks. The new workbook becomes the active workbook.
+            // Add has an optional parameter for specifying a praticular template. 
+            // Because no argument is sent in this example, Add creates a new workbook. 
+            Excel.Workbook workbook = excelApp.Workbooks.Add();
+
+            // This example uses a single workSheet. The explicit type casting is
+            // removed in a later procedure.
+            Excel._Worksheet workSheet = (Excel.Worksheet)excelApp.ActiveSheet;
+            workSheet.Cells[1, "A"] = "Назва алгоритму шифрування";
+            workSheet.Cells[1, "B"] = "Назва алгоритму скалярного множення";
+            workSheet.Cells[1, "C"] = "Назва алгоритму пошуку мультиплікативно оберненого елемента";
+            workSheet.Cells[1, "D"] = "Час роботи та частка у відсотках від загального часу";
+
+            workSheet.Cells[2, "D"] = "Додавання точок еліптичної кривої";
+            workSheet.Cells[2, "E"] = "Подвоєння точок еліптичної кривої";
+            workSheet.Cells[2, "F"] = "Інші операції (відсутні в переліку)";
+            workSheet.Cells[2, "G"] = "Загалом (з переліку)";
+            workSheet.Cells[2, "H"] = "Загалом (всі)";
+            //workSheet.Cells[2, "I"] = "some other";
+            workSheet.Columns.AutoFit();
+            workbook.SaveAs("filename.xlsx");
+            //workSheet.Columns[2].AutoFit();
+        }
+
         private void Multiply_Click(object sender, EventArgs e)
         {
+            ExportToExcel();
             BigInteger a, b, p, x1, y1, z1, x3, y3, z3, x2 = 0, y2 = 0, z2 = 0, k, l, a_max, b_max;
             int w;
             BigInteger[] S;
@@ -676,10 +740,10 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
             {
                 String Coord_Type = comboBox1.Text;
                 if (Coord_Type == "1")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, type))
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
                         .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "2")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, type))
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
                         .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "3")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_3(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type))
@@ -694,13 +758,13 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_6(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type))
                         .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "7.1")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_7_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, type))
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_7_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type))
                         .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "7.2")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_7_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, type))
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_7_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type))
                         .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "8")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_8(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, type))
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_8(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type))
                         .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "9")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_9(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type))
@@ -984,7 +1048,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                     stopWatch.Start();
                     String Coord_Type = comboBox1.Text;
                     if (Coord_Type == "1")
-                        Point_Multiplication_Affine_Coord_1(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, type);
+                        Point_Multiplication_Affine_Coord_1(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type);
                     /* else if (radioButton2.Checked)
                          Point_Multiplication_Affine_Coord_2(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, type);
                      else if (radioButton3.Checked)
@@ -1184,14 +1248,14 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                         TimeSpan ts = new TimeSpan();
                         
                         stopWatch.Start();
-                        Point_Multiplication_Affine_Coord_1(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, type);
+                        Point_Multiplication_Affine_Coord_1(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type);
                         stopWatch.Stop();
                         ts = stopWatch.Elapsed;
                         time_average[j, 0] += ts.TotalMilliseconds;
                         stopWatch.Reset();
 
                         stopWatch.Start();
-                        Point_Multiplication_Affine_Coord_2(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, type);
+                        Point_Multiplication_Affine_Coord_2(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type);
                         stopWatch.Stop();
                         ts = stopWatch.Elapsed;
                         time_average[j, 1] += ts.TotalMilliseconds;
@@ -1218,21 +1282,21 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                         stopWatch.Reset();
                         
                         stopWatch.Start();
-                        Point_Multiplication_Affine_Coord_7_1(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, type);
+                        Point_Multiplication_Affine_Coord_7_1(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
                         stopWatch.Stop();
                         ts = stopWatch.Elapsed;
                         time_average[j, 6] += ts.TotalMilliseconds;
                         stopWatch.Reset();
 
                         stopWatch.Start();
-                        Point_Multiplication_Affine_Coord_7_2(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, type);
+                        Point_Multiplication_Affine_Coord_7_2(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
                         stopWatch.Stop();
                         ts = stopWatch.Elapsed;
                         time_average[j, 7] += ts.TotalMilliseconds;
                         stopWatch.Reset();
 
                         stopWatch.Start();
-                        Point_Multiplication_Affine_Coord_8(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, type);
+                        Point_Multiplication_Affine_Coord_8(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
                         stopWatch.Stop();
                         ts = stopWatch.Elapsed;
                         time_average[j, 8] += ts.TotalMilliseconds;
@@ -1471,13 +1535,13 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                 int i = 0;
                 dataGridView4.RowCount = 1;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, type);
+                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, type);
+                Point_Multiplication_Affine_Coord_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -1507,19 +1571,19 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_7_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, type);
+                Point_Multiplication_Affine_Coord_7_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_7_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, type);
+                Point_Multiplication_Affine_Coord_7_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_8(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, type);
+                Point_Multiplication_Affine_Coord_8(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2085,7 +2149,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                 int i = 0;
                 dataGridView4.RowCount = 1;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, type);
+                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2097,7 +2161,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                 dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, type);
+                Point_Multiplication_Affine_Coord_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2157,7 +2221,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                 dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_7_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, type);
+                Point_Multiplication_Affine_Coord_7_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2169,7 +2233,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                 dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_7_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, type);
+                Point_Multiplication_Affine_Coord_7_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2181,7 +2245,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                 dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_8(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, type);
+                Point_Multiplication_Affine_Coord_8(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2525,7 +2589,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                 int i = 0;
                 dataGridView4.RowCount = 1;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, type);
+                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2537,7 +2601,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                 dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, type);
+                Point_Multiplication_Affine_Coord_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2597,7 +2661,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                 dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_7_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, type);
+                Point_Multiplication_Affine_Coord_7_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2609,7 +2673,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                 dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_7_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, type);
+                Point_Multiplication_Affine_Coord_7_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2621,7 +2685,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                 dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_8(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, type);
+                Point_Multiplication_Affine_Coord_8(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4029,7 +4093,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                 int i = 0;
                 dataGridView4.RowCount = 1;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, type);
+                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4041,7 +4105,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                 dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, type);
+                Point_Multiplication_Affine_Coord_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4101,7 +4165,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                 dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_7_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, type);
+                Point_Multiplication_Affine_Coord_7_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4113,7 +4177,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                 dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_7_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, type);
+                Point_Multiplication_Affine_Coord_7_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4125,7 +4189,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                 dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_8(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, type);
+                Point_Multiplication_Affine_Coord_8(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4435,6 +4499,12 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        // Test button
+        private void button7_Click(object sender, EventArgs e)
+        {
+            ExportToExcel();
         }
     }
 }
