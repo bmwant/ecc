@@ -10,6 +10,7 @@ using System.Numerics;
 using System.IO;
 using System.Diagnostics;
 using System.Collections;
+using System.Threading.Tasks;
 
 namespace EllipticCurveCryptography
 {
@@ -675,73 +676,107 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
             {
                 String Coord_Type = comboBox1.Text;
                 if (Coord_Type == "1")
-                    Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "2")
-                    Point_Multiplication_Affine_Coord_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "3")
-                    Point_Multiplication_Affine_Coord_3(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_3(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "4")
-                    Point_Multiplication_Affine_Coord_4(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_4(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "5")
-                    Point_Multiplication_Affine_Coord_5(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_5(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "6")
-                    Point_Multiplication_Affine_Coord_6(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_6(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "7.1")
-                    Point_Multiplication_Affine_Coord_7_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_7_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "7.2")
-                    Point_Multiplication_Affine_Coord_7_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_7_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "8")
-                    Point_Multiplication_Affine_Coord_8(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_8(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "9")
-                    Point_Multiplication_Affine_Coord_9(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_9(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "10")
-                    Point_Multiplication_Affine_Coord_10(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_10(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "11.1")
-                    Point_Multiplication_Affine_Coord_11_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_11_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "15")
-                    Point_Multiplication_Affine_Coord_15(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_15(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "11.2")
-                    Point_Multiplication_Affine_Coord_11_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_11_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "13")
-                    Point_Multiplication_Affine_Coord_13(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_13(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "14")
-                    Point_Multiplication_Affine_Coord_14(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_14(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "16")
-                    Point_Multiplication_Affine_Coord_16(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_16(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "17")
-                    Point_Multiplication_Affine_Coord_17(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_17(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "18")
-                    Point_Multiplication_Affine_Coord_18(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_18(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "19")
-                    Point_Multiplication_Affine_Coord_19(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_19(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "20")
-                    Point_Multiplication_Affine_Coord_20(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_20(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "19.2")
-                    Point_Multiplication_Affine_Coord_19_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_19_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "20.1")
-                    Point_Multiplication_Affine_Coord_20_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_20_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "21")
-                    Point_Multiplication_Affine_Coord_21(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_21(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "22")
-                    Point_Multiplication_Affine_Coord_22(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_22(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "12")
-                    Point_Multiplication_Affine_Coord_12(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_12(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "27")
-                    Point_Multiplication_Affine_Coord_27(x1, y1, z1, a, k, p, out x2, out y2, out z2, B, S, M, type, out time);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_27(x1, y1, z1, a, k, p, out x2, out y2, out z2, B, S, M, type, out time))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "28")
-                    Point_Multiplication_Affine_Coord_28(x1, y1, z1, a, k, p, out x2, out y2, out z2, B, S, M, type, out time);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_28(x1, y1, z1, a, k, p, out x2, out y2, out z2, B, S, M, type, out time))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "29")
-                    Point_Multiplication_Affine_Coord_29(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_29(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "30")
-                    Point_Multiplication_Affine_Coord_30(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_30(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "31")
-                    Point_Multiplication_Affine_Coord_31(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_31(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "32")
-                    Point_Multiplication_Affine_Coord_32(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_32(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "21m")
-                    Point_Multiplication_Affine_Coord_21m(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_21m(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "22m")
-                    Point_Multiplication_Affine_Coord_22m(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type);
+                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_22m(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 else if (Coord_Type == "33")
                 {
                     int i = 0;
@@ -755,21 +790,23 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                     }
                     x1 = arr[0]; y1 = arr[1]; z1 = arr[2];
                     x3 = arr[3]; y3 = arr[4]; z3 = arr[5];
-                    PointMultiplication33(x1, y1, z1, x3, y3, z3, a, k, l, w, p, out x2, out y2, out z2, out time, type);
+                    Task.Factory.StartNew(() => PointMultiplication33(x1, y1, z1, x3, y3, z3, a, k, l, w, p, out x2, out y2, out z2, out time, type))
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
                 }
                 else
                 {
                     MessageBox.Show("Выбирете алгоритм умножения!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-                dataGridView4.RowCount = 1;
-                if (x2 != 0 || y2 != 0 || z2 != 0)
-                {
-                    dataGridView4.Rows[0].Cells[1].Value = x2.ToString();
-                    dataGridView4.Rows[0].Cells[2].Value = y2.ToString();
-                    dataGridView4.Rows[0].Cells[3].Value = z2.ToString();
-                }
-
+            }
+        }
+        private void updateDataGridValues(BigInteger x2, BigInteger y2, BigInteger z2)
+        {
+            dataGridView4.RowCount = 1;
+            if (x2 != 0 || y2 != 0 || z2 != 0)
+            {
+                dataGridView4.Rows[0].Cells[1].Value = x2.ToString();
+                dataGridView4.Rows[0].Cells[2].Value = y2.ToString();
+                dataGridView4.Rows[0].Cells[3].Value = z2.ToString();
             }
         }
         //ne pravilno rabotaet
