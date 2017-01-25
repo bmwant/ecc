@@ -89,6 +89,7 @@
     <Compile Include="EllipticCurveCryptography\Functions.cs" />
     <Compile Include="EllipticCurveCryptography\Lehmer_.cs" />
     <Compile Include="EllipticCurveCryptography\Node.cs" />
+    <Compile Include="EllipticCurveCryptography\OperationsCounter.cs" />
     <Compile Include="EllipticCurveCryptography\PereborVariantov.cs" />
     <Compile Include="EllipticCurveCryptography\PointMultiplication.cs" />
     <Compile Include="EllipticCurveCryptography\Primality_Tests.cs" />

@@ -13,7 +13,7 @@ using System.Collections;
 using System.Threading.Tasks;
 using System.Globalization;
 using Excel = Microsoft.Office.Interop.Excel;
-
+using ECC.EllipticCurveCryptography;
 
 namespace EllipticCurveCryptography
 {
@@ -64,6 +64,44 @@ namespace EllipticCurveCryptography
         };
         public bool Flag = true;
         IProgress<int> progress;
+
+        List<string> multAlgorithms = new List<string>() {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7.1",
+            "7.2",
+            "8",
+            "9",
+            "10",
+            "11.1",
+            "11.2",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "19.1",
+            "19.2",
+            "20.1",
+            "20.2",
+            "21",
+            "22",
+            "21m",
+            "22m",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "32",
+            "33"
+        };
+
         public ECC()
         {
             InitializeComponent();
@@ -105,157 +143,157 @@ namespace EllipticCurveCryptography
         }
 
         private void Point_Multiplication_Affine_Coord_12(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, out double tableTime, int type, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, out double tableTime, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #12"));
             PointMultiplication.Point_Multiplication_Affine_Coord_12(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
-                out x2, out y2, out z2, out time, out tableTime, type, progress);
+                out x2, out y2, out z2, out time, out tableTime, type, ops);
         }
 
         private void Point_Multiplication_Affine_Coord_15(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #15"));
             PointMultiplication.Point_Multiplication_Affine_Coord_15(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
-                out x2, out y2, out z2, out time, type, progress);
+                out x2, out y2, out z2, out time, type, ops);
         }
 
         private void Point_Multiplication_Affine_Coord_16(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #16"));
             PointMultiplication.Point_Multiplication_Affine_Coord_16(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
-                out x2, out y2, out z2, out time, type, progress);
+                out x2, out y2, out z2, out time, type, ops);
         }
 
         private void Point_Multiplication_Affine_Coord_17(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #17"));
             PointMultiplication.Point_Multiplication_Affine_Coord_17(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
-                out x2, out y2, out z2, out time, type, progress);
+                out x2, out y2, out z2, out time, type, ops);
         }
 
         private void Point_Multiplication_Affine_Coord_18(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #18"));
             PointMultiplication.Point_Multiplication_Affine_Coord_18(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
-                out x2, out y2, out z2, out time, type, progress);
+                out x2, out y2, out z2, out time, type, ops);
         }
 
         private void Point_Multiplication_Affine_Coord_19(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, BigInteger a_max, BigInteger b_max, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, BigInteger a_max, BigInteger b_max, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #19"));
             PointMultiplication.Point_Multiplication_Affine_Coord_19_1(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
-                out x2, out y2, out z2, out time, type, a_max, b_max, progress);
+                out x2, out y2, out z2, out time, type, a_max, b_max, ops);
         }
 
         private void Point_Multiplication_Affine_Coord_20(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, BigInteger a_max, BigInteger b_max, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, BigInteger a_max, BigInteger b_max, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #20"));
             PointMultiplication.Point_Multiplication_Affine_Coord_20_2(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
-                out x2, out y2, out z2, out time, type, a_max, b_max, progress);
+                out x2, out y2, out z2, out time, type, a_max, b_max, ops);
         }
 
         private void Point_Multiplication_Affine_Coord_19_2(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, BigInteger a_max, BigInteger b_max, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, BigInteger a_max, BigInteger b_max, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #19.2"));
             PointMultiplication.Point_Multiplication_Affine_Coord_19_2(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
-                out x2, out y2, out z2, out time, type, a_max, b_max, progress);
+                out x2, out y2, out z2, out time, type, a_max, b_max, ops);
         }
 
         private void Point_Multiplication_Affine_Coord_20_1(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, BigInteger a_max, BigInteger b_max, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, BigInteger a_max, BigInteger b_max, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #20.1"));
             PointMultiplication.Point_Multiplication_Affine_Coord_20_1(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
-                out x2, out y2, out z2, out time, type, a_max, b_max, progress);
+                out x2, out y2, out z2, out time, type, a_max, b_max, ops);
         }
 
         private void Point_Multiplication_Affine_Coord_21(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #21"));
             PointMultiplication.Point_Multiplication_Affine_Coord_21(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
-                out x2, out y2, out z2, out time, type, progress);
+                out x2, out y2, out z2, out time, type, ops);
         }
 
         private void Point_Multiplication_Affine_Coord_21m(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #21m"));
             PointMultiplication.Point_Multiplication_Affine_Coord_21m(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
-                out x2, out y2, out z2, out time, type, progress);
+                out x2, out y2, out z2, out time, type, ops);
         }
         private void Point_Multiplication_Affine_Coord_22(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #22"));
             PointMultiplication.Point_Multiplication_Affine_Coord_22(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
-                out x2, out y2, out z2, out time, type, progress);
+                out x2, out y2, out z2, out time, type, ops);
         }
         private void Point_Multiplication_Affine_Coord_22m(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
-          out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> progress)
+          out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #22m"));
             PointMultiplication.Point_Multiplication_Affine_Coord_22m(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
-                out x2, out y2, out z2, out time, type, progress);
+                out x2, out y2, out z2, out time, type, ops);
         }
         private void Point_Multiplication_Affine_Coord_13(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #13"));
             PointMultiplication.Point_Multiplication_Affine_Coord_13(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
-                out x2, out y2, out z2, out time, type, progress);
+                out x2, out y2, out z2, out time, type, ops);
         }
 
         private void Point_Multiplication_Affine_Coord_14(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #14"));
             PointMultiplication.Point_Multiplication_Affine_Coord_14(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
-                out x2, out y2, out z2, out time, type, progress);
+                out x2, out y2, out z2, out time, type, ops);
         }
 
         private void Point_Multiplication_Affine_Coord_11_2(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #11.2"));
             PointMultiplication.Point_Multiplication_Affine_Coord_11_2(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
-                out x2, out y2, out z2, out time, type, progress);
+                out x2, out y2, out z2, out time, type, ops);
         }
 
         private void Point_Multiplication_Affine_Coord_11_1(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #11.1"));
             PointMultiplication.Point_Multiplication_Affine_Coord_11_1(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
-                out x2, out y2, out z2, out time, type, progress);
+                out x2, out y2, out z2, out time, type, ops);
         }
 
 
         private void Point_Multiplication_Affine_Coord_10(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, out double tableTime, int type, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, out double tableTime, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #10"));
             PointMultiplication.Point_Multiplication_Affine_Coord_10(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
-                out x2, out y2, out z2, out time, out tableTime, type, progress);
+                out x2, out y2, out z2, out time, out tableTime, type, ops);
         }
 
         private void Point_Multiplication_Affine_Coord_9(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #9"));
             PointMultiplication.Point_Multiplication_Affine_Coord_9(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
-                out x2, out y2, out z2, out time, type, progress);
+                out x2, out y2, out z2, out time, type, ops);
         }
 
         private void Point_Multiplication_Affine_Coord_8(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #8"));
             Stopwatch stopWatch = new Stopwatch();
@@ -268,89 +306,89 @@ namespace EllipticCurveCryptography
         }
 
         private void Point_Multiplication_Affine_Coord_7_2(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #7.2"));
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             PointMultiplication.Point_Multiplication_Affine_Coord_7_2(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
-                out x2, out y2, out z2, type, progress);
+                out x2, out y2, out z2, type, ops);
             stopWatch.Stop();
             TimeSpan ts = stopWatch.Elapsed;
             time = ts.TotalMilliseconds;
         }
 
         private void Point_Multiplication_Affine_Coord_7_1(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #7.1"));
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             PointMultiplication.Point_Multiplication_Affine_Coord_7_1(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
-                out x2, out y2, out z2, type, progress);
+                out x2, out y2, out z2, type, ops);
             stopWatch.Stop();
             TimeSpan ts = stopWatch.Elapsed;
             time = ts.TotalMilliseconds;
         }
 
         private void Point_Multiplication_Affine_Coord_6(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p, out BigInteger x2,
-            out BigInteger y2, out BigInteger z2, out double time, out double tableTime, int type, IProgress<int> progress)
+            out BigInteger y2, out BigInteger z2, out double time, out double tableTime, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #6"));
             PointMultiplication.Point_Multiplication_Affine_Coord_6(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
-                out x2, out y2, out z2, out time, out tableTime, type, progress);
+                out x2, out y2, out z2, out time, out tableTime, type, ops);
         }
 
         private void Point_Multiplication_Affine_Coord_5(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #5"));
             PointMultiplication.Point_Multiplication_Affine_Coord_5(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
-                out x2, out y2, out z2, out time, type, progress);
+                out x2, out y2, out z2, out time, type, ops);
         }
 
         private void Point_Multiplication_Affine_Coord_4(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, out double tableTime, int type, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, out double tableTime, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #4"));
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             PointMultiplication.Point_Multiplication_Affine_Coord_4(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
-                out x2, out y2, out z2, out time, out tableTime, type, progress);
+                out x2, out y2, out z2, out time, out tableTime, type, ops);
             stopWatch.Stop();
             TimeSpan ts = stopWatch.Elapsed;
             time = ts.TotalMilliseconds;
         }
 
         private void Point_Multiplication_Affine_Coord_3(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #3"));
             PointMultiplication.Point_Multiplication_Affine_Coord_3(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
-                out x2, out y2, out z2, out time, type, progress);
+                out x2, out y2, out z2, out time, type, ops);
         }
 
         private void Point_Multiplication_Affine_Coord_2(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #2"));
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             PointMultiplication.Point_Multiplication_Affine_Coord_2(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
-                out x2, out y2, out z2, type, progress);
+                out x2, out y2, out z2, type, ops);
             stopWatch.Stop();
             TimeSpan ts = stopWatch.Elapsed;
             time = ts.TotalMilliseconds;
         }
 
         private void Point_Multiplication_Affine_Coord_1(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #1"));
             PointMultiplication.Point_Multiplication_Affine_Coord_1(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
-                out x2, out y2, out z2, type, progress);
+                out x2, out y2, out z2, type, ops);
             stopWatch.Stop();
             TimeSpan ts = stopWatch.Elapsed;
             time = ts.TotalMilliseconds;
@@ -358,57 +396,57 @@ namespace EllipticCurveCryptography
 
         //With trees
         private void Point_Multiplication_Affine_Coord_27(BigInteger bigIntegerX, BigInteger bigIntegerY, BigInteger bigIntegerZ, BigInteger a, BigInteger k, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, BigInteger B, BigInteger[] S, BigInteger[] M, int type, out double time, IProgress<int> progress)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, BigInteger B, BigInteger[] S, BigInteger[] M, int type, out double time, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #27"));
             PointMultiplication.Point_Multiplication_Affine_Coord_27(bigIntegerX, bigIntegerY, bigIntegerZ, a, k, p, out x2, out y2, out z2,
-                 B, S, M, type, out time, progress);
+                 B, S, M, type, out time, ops);
         }
 
         private void Point_Multiplication_Affine_Coord_28(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p,
-   out BigInteger x2, out BigInteger y2, out BigInteger z2, BigInteger B, BigInteger[] S, BigInteger[] M, int type, out double time, IProgress<int> progress)
+   out BigInteger x2, out BigInteger y2, out BigInteger z2, BigInteger B, BigInteger[] S, BigInteger[] M, int type, out double time, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #28"));
             PointMultiplication.Point_Multiplication_Affine_Coord_28(x1, y1, z1, a, k, p, out x2, out y2, out z2,
-               B, S, M, type, out time, progress);
+               B, S, M, type, out time, ops);
         }
 
         private void Point_Multiplication_Affine_Coord_29(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p, out BigInteger x2,
-out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> progress)
+out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #29"));
             PointMultiplication.Point_Multiplication_Affine_Coord_29(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
-                out x2, out y2, out z2, out time, type, progress);
+                out x2, out y2, out z2, out time, type, ops);
         }
 
         private void Point_Multiplication_Affine_Coord_30(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p, out BigInteger x2,
-out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> progress)
+out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #30"));
             PointMultiplication.Point_Multiplication_Affine_Coord_30(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
-                out x2, out y2, out z2, out time, type, progress);
+                out x2, out y2, out z2, out time, type, ops);
         }
 
         private void Point_Multiplication_Affine_Coord_31(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p, out BigInteger x2,
-out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> progress)
+out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #31"));
             PointMultiplication.Point_Multiplication_Affine_Coord_31(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
-                out x2, out y2, out z2, out time, type, progress);
+                out x2, out y2, out z2, out time, type, ops);
         }
 
         private void Point_Multiplication_Affine_Coord_32(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p, out BigInteger x2,
-out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> progress)
+out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #32"));
             PointMultiplication.Point_Multiplication_Affine_Coord_32(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
-                out x2, out y2, out z2, out time, type, progress);
+                out x2, out y2, out z2, out time, type, ops);
         }
         private void PointMultiplication33(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger x2, BigInteger y2, BigInteger z2, BigInteger a, BigInteger k, BigInteger l, int w,
-            BigInteger p, out BigInteger x3, out BigInteger y3, out BigInteger z3, out double time, int type, IProgress<int> progress)
+            BigInteger p, out BigInteger x3, out BigInteger y3, out BigInteger z3, out double time, int type, OperationsCounter ops)
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #33"));
-            PointMultiplication.Point_Multiplication33(x1, y1, z1, x2, y2, z2, a, k, l, w, p, out x3, out y3, out z3, out time, type, progress);
+            PointMultiplication.Point_Multiplication33(x1, y1, z1, x2, y2, z2, a, k, l, w, p, out x3, out y3, out z3, out time, type, ops);
         }
         private void AffineToProjective(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger p, out BigInteger x2, out BigInteger y2, out BigInteger z2)
         {
@@ -792,11 +830,6 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
         private void Multiply_Click(object sender, EventArgs e)
         {
-            //var progress = new Progress<int>(percent =>
-            //{
-            //    toolStripProgressBar1.Value = percent;
-            //});
-
             BigInteger a, b, p, x1, y1, z1, x3, y3, z3, x2 = 0, y2 = 0, z2 = 0, k, l, a_max, b_max;
             int w;
             BigInteger[] S;
@@ -819,153 +852,438 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
             y1 = BigInteger.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString());
             z1 = BigInteger.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
 
-
+            OperationsCounter ops = new OperationsCounter(totalOperations: 100, progress: progress);
             int type = Get_Type();
 
             if (x1 == 0 || y1 == 0 || z1 == 0)
                 MessageBox.Show("Виберіть точку!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-                String Coord_Type = comboBox1.Text;
-                if (Coord_Type == "1")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "2")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "3")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_3(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "4")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_4(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "5")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_5(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "6")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_6(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "7.1")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_7_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "7.2")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_7_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "8")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_8(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "9")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_9(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "10")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_10(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "11.1")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_11_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "15")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_15(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "11.2")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_11_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "13")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_13(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "14")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_14(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "16")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_16(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "17")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_17(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "18")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_18(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "19")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_19(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "20")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_20(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "19.2")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_19_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "20.1")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_20_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "21")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_21(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "22")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_22(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "12")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_12(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "27")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_27(x1, y1, z1, a, k, p, out x2, out y2, out z2, B, S, M, type, out time, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "28")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_28(x1, y1, z1, a, k, p, out x2, out y2, out z2, B, S, M, type, out time, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "29")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_29(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "30")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_30(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "31")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_31(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "32")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_32(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "21m")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_21m(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "22m")
-                    Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_22m(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                else if (Coord_Type == "33")
+                // Determine if there are any items checked.
+                if (checkedListBox1.CheckedItems.Count == 1)
                 {
-                    int i = 0;
-                    BigInteger[] arr = new BigInteger[6];
-                    foreach (DataGridViewRow row in this.dataGridView1.SelectedRows)
+                    for (int x = 0; x <= checkedListBox1.CheckedItems.Count - 1; x++)
                     {
-                        arr[i] = BigInteger.Parse(row.Cells[0].Value.ToString());
-                        arr[i + 1] = BigInteger.Parse(row.Cells[1].Value.ToString());
-                        arr[i + 2] = BigInteger.Parse(row.Cells[2].Value.ToString());
-                        i += 3;
+                        String Coord_Type = checkedListBox1.CheckedItems[x].ToString();
+                        if (Coord_Type == "1")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops));
+                        else if (Coord_Type == "2")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "3")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_3(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "4")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_4(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "5")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_5(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "6")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_6(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "7.1")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_7_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "7.2")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_7_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "8")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_8(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "9")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_9(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "10")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_10(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "11.1")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_11_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "15")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_15(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "11.2")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_11_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "13")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_13(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "14")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_14(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "16")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_16(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "17")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_17(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "18")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_18(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "19")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_19(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "20")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_20(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "19.2")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_19_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "20.1")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_20_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "21")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_21(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "22")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_22(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "12")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_12(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "27")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_27(x1, y1, z1, a, k, p, out x2, out y2, out z2, B, S, M, type, out time, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "28")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_28(x1, y1, z1, a, k, p, out x2, out y2, out z2, B, S, M, type, out time, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "29")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_29(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "30")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_30(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "31")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_31(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "32")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_32(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "21m")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_21m(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "22m")
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_22m(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        else if (Coord_Type == "33")
+                        {
+                            int i = 0;
+                            BigInteger[] arr = new BigInteger[6];
+                            foreach (DataGridViewRow row in this.dataGridView1.SelectedRows)
+                            {
+                                arr[i] = BigInteger.Parse(row.Cells[0].Value.ToString());
+                                arr[i + 1] = BigInteger.Parse(row.Cells[1].Value.ToString());
+                                arr[i + 2] = BigInteger.Parse(row.Cells[2].Value.ToString());
+                                i += 3;
+                            }
+                            x1 = arr[0]; y1 = arr[1]; z1 = arr[2];
+                            x3 = arr[3]; y3 = arr[4]; z3 = arr[5];
+                            Task.Factory.StartNew(() => PointMultiplication33(x1, y1, z1, x3, y3, z3, a, k, l, w, p, out x2, out y2, out z2, out time, type, ops))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        }
                     }
-                    x1 = arr[0]; y1 = arr[1]; z1 = arr[2];
-                    x3 = arr[3]; y3 = arr[4]; z3 = arr[5];
-                    Task.Factory.StartNew(() => PointMultiplication33(x1, y1, z1, x3, y3, z3, a, k, l, w, p, out x2, out y2, out z2, out time, type, progress))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
-                }
+                } 
                 else
                 {
-                    MessageBox.Show("Выбирете алгоритм умножения!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Виберіть один алгоритм", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
-        private void updateDataGridValues(BigInteger x2, BigInteger y2, BigInteger z2, double time)
+
+        // Run multiple algorithms in different threads at the same time
+        private void button8_Click(object sender, EventArgs e)
         {
-            dataGridView4.RowCount = 1;
+            BigInteger a, b, p, x1, y1, z1, x3, y3, z3, x2 = 0, y2 = 0, z2 = 0, k, l, a_max, b_max;
+            int w;
+            BigInteger[] S;
+            BigInteger[] M;
+            BigInteger B;
+            B = BigInteger.Parse(textBox26.Text);
+            S = writeToArray(textBox29);
+            M = writeToArray(textBox30);
+            a = BigInteger.Parse(richTextBox4.Text);
+            b = -3;
+            p = BigInteger.Parse(richTextBox5.Text);
+            k = BigInteger.Parse(textBox4.Text);
+            l = BigInteger.Parse(textBox47.Text);
+            w = int.Parse(textBox5.Text);
+            a_max = BigInteger.Parse(textBox27.Text);
+            b_max = BigInteger.Parse(textBox28.Text);
+            double time = 0;
+            double tableTime = 0;
+            x1 = BigInteger.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+            y1 = BigInteger.Parse(dataGridView1.CurrentRow.Cells[1].Value.ToString());
+            z1 = BigInteger.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
+
+            OperationsCounter ops = new OperationsCounter(totalOperations: 100, progress: progress);
+            int type = Get_Type();
+
+            if (x1 == 0 || y1 == 0 || z1 == 0)
+                MessageBox.Show("Виберіть точку!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                // todo: make this as dynamic mapping
+                OperationsCounter ops1 = new OperationsCounter(name: "alg #1");
+                OperationsCounter ops2 = new OperationsCounter(name: "alg #2");
+                OperationsCounter ops3 = new OperationsCounter(name: "alg #3");
+                OperationsCounter ops4 = new OperationsCounter(name: "alg #4");
+                OperationsCounter ops5 = new OperationsCounter(name: "alg #5");
+                OperationsCounter ops6 = new OperationsCounter(name: "alg #6");
+                OperationsCounter ops7_1 = new OperationsCounter(name: "alg #7.1");
+                OperationsCounter ops7_2 = new OperationsCounter(name: "alg #7.2");
+                OperationsCounter ops8 = new OperationsCounter(name: "alg #8");
+                OperationsCounter ops9 = new OperationsCounter(name: "alg #9");
+                OperationsCounter ops10 = new OperationsCounter(name: "alg #10");
+                OperationsCounter ops11_1 = new OperationsCounter(name: "alg #11.1");
+                OperationsCounter ops11_2 = new OperationsCounter(name: "alg #11.2");
+                OperationsCounter ops12 = new OperationsCounter(name: "alg #12");
+                OperationsCounter ops13 = new OperationsCounter(name: "alg #13");
+                OperationsCounter ops14 = new OperationsCounter(name: "alg #14");
+                OperationsCounter ops15 = new OperationsCounter(name: "alg #15");
+                OperationsCounter ops16 = new OperationsCounter(name: "alg #16");
+                OperationsCounter ops17 = new OperationsCounter(name: "alg #17");
+                OperationsCounter ops18 = new OperationsCounter(name: "alg #18");
+                OperationsCounter ops19 = new OperationsCounter(name: "alg #19");
+                OperationsCounter ops19_2 = new OperationsCounter(name: "alg #19.2");
+                OperationsCounter ops20 = new OperationsCounter(name: "alg #20");
+                OperationsCounter ops20_1 = new OperationsCounter(name: "alg #20.1");
+                OperationsCounter ops21 = new OperationsCounter(name: "alg #21");
+                OperationsCounter ops21m = new OperationsCounter(name: "alg #21m");
+                OperationsCounter ops22 = new OperationsCounter(name: "alg #22");
+                OperationsCounter ops22m = new OperationsCounter(name: "alg #22m");
+                OperationsCounter ops23 = new OperationsCounter(name: "alg #23");
+                OperationsCounter ops24 = new OperationsCounter(name: "alg #24");
+                OperationsCounter ops25 = new OperationsCounter(name: "alg #25");
+                OperationsCounter ops26 = new OperationsCounter(name: "alg #26");
+                OperationsCounter ops27 = new OperationsCounter(name: "alg #27");
+                OperationsCounter ops28 = new OperationsCounter(name: "alg #28");
+                OperationsCounter ops29 = new OperationsCounter(name: "alg #29");
+                OperationsCounter ops30 = new OperationsCounter(name: "alg #30");
+                OperationsCounter ops31 = new OperationsCounter(name: "alg #31");
+                OperationsCounter ops32 = new OperationsCounter(name: "alg #32");
+                OperationsCounter ops33 = new OperationsCounter(name: "alg #33");
+
+                // Determine if there are any items checked.
+                if (checkedListBox1.CheckedItems.Count != 0)
+                {
+                    for (int x = 0; x < checkedListBox1.CheckedItems.Count; x++)
+                    {
+                        String Coord_Type = checkedListBox1.CheckedItems[x].ToString();
+                        if (Coord_Type == "1")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops1))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops1));
+                        }
+                        else if (Coord_Type == "2")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops2))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops2));
+                        }
+                        else if (Coord_Type == "3")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_3(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, ops3))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops3));
+                        }
+                        else if (Coord_Type == "4")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_4(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, ops4))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops4));
+                        }
+                        else if (Coord_Type == "5")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_5(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, ops5))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops5));
+                        }
+                        else if (Coord_Type == "6")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_6(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, ops6))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops6));
+                        }
+                        else if (Coord_Type == "7.1")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_7_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, ops7_1))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops7_1));
+                        }
+                        else if (Coord_Type == "7.2")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_7_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, ops7_2))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops7_2));
+                        }
+                        else if (Coord_Type == "8")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_8(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, ops8))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops8));
+                        }
+                        else if (Coord_Type == "9")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_9(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, ops9))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops9));
+                        }
+                        else if (Coord_Type == "10")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_10(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, ops10))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops10));
+                        }
+                        else if (Coord_Type == "11.1")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_11_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, ops11_1))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops11_1));
+                        }
+                        else if (Coord_Type == "15")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_15(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops15))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops15));
+                        }
+                        else if (Coord_Type == "11.2")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_11_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, ops11_2))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops11_2));
+                        }
+                        else if (Coord_Type == "13")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_13(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, ops13))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops13));
+                        }
+                        else if (Coord_Type == "14")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_14(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, ops14))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops14));
+                        }
+                        else if (Coord_Type == "16")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_16(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops16))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops16));
+                        }
+                        else if (Coord_Type == "17")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_17(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops17))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops17));
+                        }
+                        else if (Coord_Type == "18")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_18(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops18))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops18));
+                        }
+                        else if (Coord_Type == "19")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_19(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, ops19))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops19));
+                        }
+                        else if (Coord_Type == "20")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_20(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, ops20))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops20));
+                        }
+                        else if (Coord_Type == "19.2")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_19_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, ops19_2))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops19_2));
+                        }
+                        else if (Coord_Type == "20.1")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_20_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, ops20_1))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops20_1));
+                        }
+                        else if (Coord_Type == "21")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_21(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops21))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops21));
+                        }
+                        else if (Coord_Type == "22")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_22(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops22))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops22));
+                        }
+                        else if (Coord_Type == "12")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_12(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, ops12))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops12));
+                        }
+                        else if (Coord_Type == "27")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_27(x1, y1, z1, a, k, p, out x2, out y2, out z2, B, S, M, type, out time, ops27))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops27));
+                        }
+                        else if (Coord_Type == "28")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_28(x1, y1, z1, a, k, p, out x2, out y2, out z2, B, S, M, type, out time, ops28))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops28));
+                        }
+                        else if (Coord_Type == "29")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_29(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops29))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops29));
+                        }
+                        else if (Coord_Type == "30")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_30(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops30))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
+                        }
+                        else if (Coord_Type == "31")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_31(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops31))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops31));
+                        }
+                        else if (Coord_Type == "32")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_32(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops32))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops32));
+                        }
+                        else if (Coord_Type == "21m")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_21m(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops21m))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops21m));
+                        }
+                        else if (Coord_Type == "22m")
+                        {
+                            Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_22m(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, ops22m))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops22m));
+                        }
+                        else if (Coord_Type == "33")
+                        {
+                            int i = 0;
+                            BigInteger[] arr = new BigInteger[6];
+                            foreach (DataGridViewRow row in this.dataGridView1.SelectedRows)
+                            {
+                                arr[i] = BigInteger.Parse(row.Cells[0].Value.ToString());
+                                arr[i + 1] = BigInteger.Parse(row.Cells[1].Value.ToString());
+                                arr[i + 2] = BigInteger.Parse(row.Cells[2].Value.ToString());
+                                i += 3;
+                            }
+                            x1 = arr[0]; y1 = arr[1]; z1 = arr[2];
+                            x3 = arr[3]; y3 = arr[4]; z3 = arr[5];
+                            Task.Factory.StartNew(() => PointMultiplication33(x1, y1, z1, x3, y3, z3, a, k, l, w, p, out x2, out y2, out z2, out time, type, ops33))
+                                .ContinueWith(r => updateDataGridValues(x2, y2, z2, time, ops33));
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Виберіть хоча б один алгоритм", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void updateDataGridValues(BigInteger x2, BigInteger y2, BigInteger z2, double time, OperationsCounter ops = null)
+        {   
             if (x2 != 0 || y2 != 0 || z2 != 0)
             {
-                dataGridView4.Rows[0].Cells[1].Value = x2.ToString();
-                dataGridView4.Rows[0].Cells[2].Value = y2.ToString();
-                dataGridView4.Rows[0].Cells[3].Value = z2.ToString();
+                String name = "-";
+                if (ops != null)
+                    name = ops.Name;
+                dataGridView4.Invoke((MethodInvoker)(() => dataGridView4.Rows.Add(name, x2.ToString(), y2.ToString(), z2.ToString())));
             }
             toolStripStatusLabel2.Text = "Виконано за " + time/1000 + "c";
             statusStrip1.Invoke((MethodInvoker)(() => toolStripProgressBar1.Value = 0));
+            if (ops != null)
+                MessageBox.Show(ops.ToString(), "Info " + ops.Name, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
         //ne pravilno rabotaet
         private void writeTimeInFile_Click(object sender, EventArgs e)
         {
+            OperationsCounter dummyOps = new OperationsCounter();
             BigInteger p, x2, y2, z2, a, a_max, b_max;
             int quantity = int.Parse(textBox14.Text);
             int w = int.Parse(textBox5.Text);
@@ -1136,72 +1454,79 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 {
                     time = 0;
                     stopWatch.Start();
-                    String Coord_Type = comboBox1.Text;
-                    if (Coord_Type == "1")
-                        Point_Multiplication_Affine_Coord_1(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type, progress);
-                    /* else if (radioButton2.Checked)
-                         Point_Multiplication_Affine_Coord_2(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, type);
-                     else if (radioButton3.Checked)
-                         Point_Multiplication_Affine_Coord_3(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
-                     else if (radioButton4.Checked)
-                         Point_Multiplication_Affine_Coord_4(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
-                     else if (radioButton5.Checked)
-                         Point_Multiplication_Affine_Coord_5(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
-                     else if (radioButton6.Checked)
-                         Point_Multiplication_Affine_Coord_6(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
-                     else if (radioButton7.Checked)
-                         Point_Multiplication_Affine_Coord_7_1(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, type);
-                     else if (radioButton8.Checked)
-                         Point_Multiplication_Affine_Coord_7_2(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, type);
-                     else if (radioButton9.Checked )
-                         Point_Multiplication_Affine_Coord_8(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, type);
-                     else if (radioButton10.Checked )
-                         Point_Multiplication_Affine_Coord_9(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
-                     else if (radioButton11.Checked )
-                         Point_Multiplication_Affine_Coord_10(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
-                     else if (radioButton12.Checked)
-                         Point_Multiplication_Affine_Coord_11_1(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
-                     else if (radioButton20.Checked)
-                         Point_Multiplication_Affine_Coord_11_2(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
-                     else if (radioButton14.Checked)
-                         Point_Multiplication_Affine_Coord_12(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
-                     else if (radioButton21.Checked)
-                         Point_Multiplication_Affine_Coord_13(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
-                     else if (radioButton22.Checked)
-                         Point_Multiplication_Affine_Coord_14(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
-                     else if (radioButton13.Checked)
-                         Point_Multiplication_Affine_Coord_15(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type);
-                     else if (radioButton23.Checked)
-                         Point_Multiplication_Affine_Coord_16(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type);
-                     else if (radioButton24.Checked)
-                         Point_Multiplication_Affine_Coord_17(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type);
-                     else if (radioButton25.Checked)
-                         Point_Multiplication_Affine_Coord_18(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type);
-                     else if (radioButton26.Checked)
-                         Point_Multiplication_Affine_Coord_19(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type, a_max, b_max);
-                     else if (radioButton15.Checked)
-                         Point_Multiplication_Affine_Coord_19_2(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type, a_max, b_max);
-                     else if (radioButton16.Checked)
-                         Point_Multiplication_Affine_Coord_20_1(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type, a_max, b_max);
-                     else if (radioButton27.Checked)
-                         Point_Multiplication_Affine_Coord_20(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type, a_max, b_max);
-                     else if (radioButton28.Checked)
-                         Point_Multiplication_Affine_Coord_21(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type);
-                     else if (radioButton29.Checked)
-                         Point_Multiplication_Affine_Coord_22(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type);
-                     else if (radioButton35.Checked)
-                         Point_Multiplication_Affine_Coord_27(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, B, S, M, type, out time);
-                     else if (radioButton36.Checked)
-                         Point_Multiplication_Affine_Coord_28(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, B, S, M, type, out time);
-                     else if (radioButton33.Checked)
-                         Point_Multiplication_Affine_Coord_29(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type);
-                     else if (radioButton34.Checked)
-                         Point_Multiplication_Affine_Coord_30(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type);
-                     else if (radioButton37.Checked)
-                         Point_Multiplication_Affine_Coord_31(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type);}}*/
-                    stopWatch.Stop();
-                    TimeSpan ts = stopWatch.Elapsed;
-                    time1 += ts.TotalMilliseconds;
+                    // Determine if there are any items checked.
+                    if (checkedListBox1.CheckedItems.Count != 0)
+                    {
+                        for (int x = 0; x <= checkedListBox1.CheckedItems.Count - 1; x++)
+                        {
+                            String Coord_Type = checkedListBox1.CheckedItems[x].ToString();
+                            if (Coord_Type == "1")
+                                Point_Multiplication_Affine_Coord_1(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type, dummyOps);
+                            /* else if (radioButton2.Checked)
+                                 Point_Multiplication_Affine_Coord_2(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, type);
+                             else if (radioButton3.Checked)
+                                 Point_Multiplication_Affine_Coord_3(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
+                             else if (radioButton4.Checked)
+                                 Point_Multiplication_Affine_Coord_4(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
+                             else if (radioButton5.Checked)
+                                 Point_Multiplication_Affine_Coord_5(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
+                             else if (radioButton6.Checked)
+                                 Point_Multiplication_Affine_Coord_6(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
+                             else if (radioButton7.Checked)
+                                 Point_Multiplication_Affine_Coord_7_1(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, type);
+                             else if (radioButton8.Checked)
+                                 Point_Multiplication_Affine_Coord_7_2(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, type);
+                             else if (radioButton9.Checked )
+                                 Point_Multiplication_Affine_Coord_8(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, type);
+                             else if (radioButton10.Checked )
+                                 Point_Multiplication_Affine_Coord_9(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
+                             else if (radioButton11.Checked )
+                                 Point_Multiplication_Affine_Coord_10(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
+                             else if (radioButton12.Checked)
+                                 Point_Multiplication_Affine_Coord_11_1(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
+                             else if (radioButton20.Checked)
+                                 Point_Multiplication_Affine_Coord_11_2(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
+                             else if (radioButton14.Checked)
+                                 Point_Multiplication_Affine_Coord_12(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
+                             else if (radioButton21.Checked)
+                                 Point_Multiplication_Affine_Coord_13(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
+                             else if (radioButton22.Checked)
+                                 Point_Multiplication_Affine_Coord_14(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, out time, type);
+                             else if (radioButton13.Checked)
+                                 Point_Multiplication_Affine_Coord_15(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type);
+                             else if (radioButton23.Checked)
+                                 Point_Multiplication_Affine_Coord_16(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type);
+                             else if (radioButton24.Checked)
+                                 Point_Multiplication_Affine_Coord_17(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type);
+                             else if (radioButton25.Checked)
+                                 Point_Multiplication_Affine_Coord_18(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type);
+                             else if (radioButton26.Checked)
+                                 Point_Multiplication_Affine_Coord_19(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type, a_max, b_max);
+                             else if (radioButton15.Checked)
+                                 Point_Multiplication_Affine_Coord_19_2(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type, a_max, b_max);
+                             else if (radioButton16.Checked)
+                                 Point_Multiplication_Affine_Coord_20_1(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type, a_max, b_max);
+                             else if (radioButton27.Checked)
+                                 Point_Multiplication_Affine_Coord_20(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type, a_max, b_max);
+                             else if (radioButton28.Checked)
+                                 Point_Multiplication_Affine_Coord_21(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type);
+                             else if (radioButton29.Checked)
+                                 Point_Multiplication_Affine_Coord_22(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type);
+                             else if (radioButton35.Checked)
+                                 Point_Multiplication_Affine_Coord_27(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, B, S, M, type, out time);
+                             else if (radioButton36.Checked)
+                                 Point_Multiplication_Affine_Coord_28(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, B, S, M, type, out time);
+                             else if (radioButton33.Checked)
+                                 Point_Multiplication_Affine_Coord_29(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type);
+                             else if (radioButton34.Checked)
+                                 Point_Multiplication_Affine_Coord_30(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type);
+                             else if (radioButton37.Checked)
+                                 Point_Multiplication_Affine_Coord_31(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type);}}*/
+                            stopWatch.Stop();
+                            TimeSpan ts = stopWatch.Elapsed;
+                            time1 += ts.TotalMilliseconds;
+                        }
+                    }
                 }
                 if (time == 0) time_average[count] = time1 / quantity;
                 else time_average[count] = time / quantity;
@@ -1319,7 +1644,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
             FileStream fs = new FileStream(filename, FileMode.Create, FileAccess.Write);
             StreamWriter sw = new StreamWriter(fs);
             sw.WriteLine(sysCoord);
-
+            OperationsCounter dummyOps = new OperationsCounter();  // No need to count operations here
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel) { sw.Close(); }
             else
             {
@@ -1337,7 +1662,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                         TimeSpan ts = new TimeSpan();
                         
                         stopWatch.Start();
-                        Point_Multiplication_Affine_Coord_1(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type, progress);
+                        Point_Multiplication_Affine_Coord_1(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, out time, type, dummyOps);
                         stopWatch.Stop();
                         ts = stopWatch.Elapsed;
                         time_average[j, 0] += ts.TotalMilliseconds;
@@ -1345,7 +1670,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
                         stopWatch.Start();
                         Point_Multiplication_Affine_Coord_2(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, 
-                            out time, type, progress);
+                            out time, type, dummyOps);
                         stopWatch.Stop();
                         ts = stopWatch.Elapsed;
                         time_average[j, 1] += ts.TotalMilliseconds;
@@ -1353,31 +1678,31 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
                         time = 0;
                         Point_Multiplication_Affine_Coord_3(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, 
-                            out time, type, progress);
+                            out time, type, dummyOps);
                         time_average[j, 2] += time;
                         stopWatch.Reset();
                         
                         time = 0;
                         Point_Multiplication_Affine_Coord_4(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, 
-                            out time, out tableTime, type, progress);
+                            out time, out tableTime, type, dummyOps);
                         time_average[j, 3] += time;
                         stopWatch.Reset();
 
                         time = 0;
                         Point_Multiplication_Affine_Coord_5(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, 
-                            out time, type, progress);
+                            out time, type, dummyOps);
                         time_average[j, 4] += time;
                         stopWatch.Reset();
 
                         time = 0;
                         Point_Multiplication_Affine_Coord_6(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, 
-                            out time, out tableTime, type, progress);
+                            out time, out tableTime, type, dummyOps);
                         time_average[j, 5] += time;
                         stopWatch.Reset();
                         
                         stopWatch.Start();
                         Point_Multiplication_Affine_Coord_7_1(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, 
-                            out time, type, progress);
+                            out time, type, dummyOps);
                         stopWatch.Stop();
                         ts = stopWatch.Elapsed;
                         time_average[j, 6] += ts.TotalMilliseconds;
@@ -1385,7 +1710,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
                         stopWatch.Start();
                         Point_Multiplication_Affine_Coord_7_2(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, 
-                            out time, type, progress);
+                            out time, type, dummyOps);
                         stopWatch.Stop();
                         ts = stopWatch.Elapsed;
                         time_average[j, 7] += ts.TotalMilliseconds;
@@ -1393,7 +1718,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
                         stopWatch.Start();
                         Point_Multiplication_Affine_Coord_8(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, 
-                            out time, type, progress);
+                            out time, type, dummyOps);
                         stopWatch.Stop();
                         ts = stopWatch.Elapsed;
                         time_average[j, 8] += ts.TotalMilliseconds;
@@ -1401,31 +1726,31 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
                         time = 0;
                         Point_Multiplication_Affine_Coord_9(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, 
-                            out time, type, progress);
+                            out time, type, dummyOps);
                         time_average[j, 9] += time;
                         stopWatch.Reset();
 
                         time = 0;
                         Point_Multiplication_Affine_Coord_10(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, 
-                            out time, out tableTime, type, progress);
+                            out time, out tableTime, type, dummyOps);
                         time_average[j, 10] += time;
                         stopWatch.Reset();
 
                         time = 0;
                         Point_Multiplication_Affine_Coord_11_1(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, 
-                            out time, type, progress);
+                            out time, type, dummyOps);
                         time_average[j, 11] += time;
                         stopWatch.Reset();
 
                         time = 0;
                         Point_Multiplication_Affine_Coord_11_2(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, 
-                            out time, type, progress);
+                            out time, type, dummyOps);
                         time_average[j, 12] += time;
                         stopWatch.Reset();
 
                         time = 0;
                         Point_Multiplication_Affine_Coord_12(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], w, p, out x2, out y2, out z2, 
-                            out time, out tableTime, type, progress);
+                            out time, out tableTime, type, dummyOps);
                         time_average[j, 13] += time;
                         stopWatch.Reset();
                         /*
@@ -1455,7 +1780,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                         */
                         stopWatch.Start();
                         Point_Multiplication_Affine_Coord_17(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2,
-                            out time, type, progress);
+                            out time, type, dummyOps);
                         stopWatch.Stop();
                         ts = stopWatch.Elapsed;
                         time_average[j, 14] += ts.TotalMilliseconds;
@@ -1463,7 +1788,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
                         stopWatch.Start();
                         Point_Multiplication_Affine_Coord_18(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2,
-                            out time, type, progress);
+                            out time, type, dummyOps);
                         stopWatch.Stop();
                         ts = stopWatch.Elapsed;
                         time_average[j, 15] += ts.TotalMilliseconds;
@@ -1471,7 +1796,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
                         stopWatch.Start();
                         Point_Multiplication_Affine_Coord_19(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, 
-                            out time, type, a_max, b_max, progress);
+                            out time, type, a_max, b_max, dummyOps);
                         stopWatch.Stop();
                         ts = stopWatch.Elapsed;
                         time_average[j, 16] += ts.TotalMilliseconds;
@@ -1479,7 +1804,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
                         stopWatch.Start();
                         Point_Multiplication_Affine_Coord_19_2(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, 
-                            out time, type, a_max, b_max, progress);
+                            out time, type, a_max, b_max, dummyOps);
                         stopWatch.Stop();
                         ts = stopWatch.Elapsed;
                         time_average[j, 17] += ts.TotalMilliseconds;
@@ -1487,7 +1812,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
                         stopWatch.Start();
                         Point_Multiplication_Affine_Coord_20_1(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, 
-                            out time, type, a_max, b_max, progress);
+                            out time, type, a_max, b_max, dummyOps);
                         stopWatch.Stop();
                         ts = stopWatch.Elapsed;
                         time_average[j, 18] += ts.TotalMilliseconds;
@@ -1495,7 +1820,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
                         stopWatch.Start();
                         Point_Multiplication_Affine_Coord_20(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, 
-                            out time, type, a_max, b_max, progress);
+                            out time, type, a_max, b_max, dummyOps);
                         stopWatch.Stop();
                         ts = stopWatch.Elapsed;
                         time_average[j, 19] += ts.TotalMilliseconds;
@@ -1503,7 +1828,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                         
                         stopWatch.Start();
                         Point_Multiplication_Affine_Coord_21(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, 
-                            out time, type, progress);
+                            out time, type, dummyOps);
                         stopWatch.Stop();
                         ts = stopWatch.Elapsed;
                         time_average[j, 20] += ts.TotalMilliseconds;
@@ -1511,7 +1836,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
                         stopWatch.Start();
                         Point_Multiplication_Affine_Coord_22(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, 
-                            out time, type, progress);
+                            out time, type, dummyOps);
                         stopWatch.Stop();
                         ts = stopWatch.Elapsed;
                         time_average[j, 21] += ts.TotalMilliseconds;
@@ -1519,7 +1844,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
                         stopWatch.Start();
                         Point_Multiplication_Affine_Coord_27(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, B, S, M, 
-                            type, out time, progress);
+                            type, out time, dummyOps);
                         stopWatch.Stop();
                         ts = stopWatch.Elapsed;
                         time_average[j, 22] += ts.TotalMilliseconds;
@@ -1527,7 +1852,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
                         stopWatch.Start();
                         Point_Multiplication_Affine_Coord_28(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, B, S, M, 
-                            type, out time, progress);
+                            type, out time, dummyOps);
                         stopWatch.Stop();
                         ts = stopWatch.Elapsed;
                         time_average[j, 23] += ts.TotalMilliseconds;
@@ -1535,25 +1860,25 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
                         time = 0;
                         Point_Multiplication_Affine_Coord_29(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, 
-                            out time, type, progress);
+                            out time, type, dummyOps);
                         time_average[j, 24] += time;
                         stopWatch.Reset();
 
                         time = 0;
                         Point_Multiplication_Affine_Coord_30(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, 
-                            out time, type, progress);
+                            out time, type, dummyOps);
                         time_average[j, 25] += time;
                         stopWatch.Reset();
 
                         time = 0;
                         Point_Multiplication_Affine_Coord_31(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, 
-                            out time, type, progress);
+                            out time, type, dummyOps);
                         time_average[j, 26] += time;
                         stopWatch.Reset();
 
                         time = 0;
                         Point_Multiplication_Affine_Coord_32(points[i, 0], points[i, 1], points[i, 2], a, mass_k[l], p, out x2, out y2, out z2, 
-                            out time, type, progress);
+                            out time, type, dummyOps);
                         time_average[j, 27] += time;
                         stopWatch.Reset();
                         /*
@@ -1618,6 +1943,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
         private void multiplyAllAlgorithms_Click(object sender, EventArgs e)
         {
+            OperationsCounter dummyOps = new OperationsCounter(); // Не потрібно рахувати кількість операцій в режимі "Калькулятора"
             dataGridView4.Rows.Clear();
             BigInteger a, b, p, x1, y1, z1, x2 = 0, y2 = 0, z2 = 0, k, a_max, b_max;
             int w;
@@ -1651,222 +1977,222 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 int i = 0;
                 dataGridView4.RowCount = 1;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_3(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_3(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_4(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, progress);
+                Point_Multiplication_Affine_Coord_4(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_5(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_5(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_6(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, progress);
+                Point_Multiplication_Affine_Coord_6(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_7_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_7_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_7_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_7_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_8(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_8(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_9(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_9(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_10(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, progress);
+                Point_Multiplication_Affine_Coord_10(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_11_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_11_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_11_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_11_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_12(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, progress);
+                Point_Multiplication_Affine_Coord_12(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_13(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_13(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_14(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_14(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_15(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress);
-                dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
-                dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
-                dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
-
-                i++;
-                dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_16(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_15(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
 
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_17(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_16(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
 
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_18(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_17(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
 
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_19(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, progress);
+                Point_Multiplication_Affine_Coord_18(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
 
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_19_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, progress);
+                Point_Multiplication_Affine_Coord_19(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
 
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_20_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, progress);
+                Point_Multiplication_Affine_Coord_19_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
 
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_20(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, progress);
+                Point_Multiplication_Affine_Coord_20_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
 
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_21(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_20(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
 
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_22(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_21(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
 
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_27(x1, y1, z1, a, k, p, out x2, out y2, out z2, B, S, M, type, out time, progress);
+                Point_Multiplication_Affine_Coord_22(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
 
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_28(x1, y1, z1, a, k, p, out x2, out y2, out z2, B, S, M, type, out time, progress);
+                Point_Multiplication_Affine_Coord_27(x1, y1, z1, a, k, p, out x2, out y2, out z2, B, S, M, type, out time, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
 
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_29(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_28(x1, y1, z1, a, k, p, out x2, out y2, out z2, B, S, M, type, out time, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
 
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_30(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_29(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
 
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_31(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_30(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
 
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_32(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_31(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
 
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_21m(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_32(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, dummyOps);
+                dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
+                dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
+                dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
+
+                i++;
+                dataGridView4.Rows.Add();
+                Point_Multiplication_Affine_Coord_21m(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
                 
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_22m(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_22m(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2222,7 +2548,10 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
         private void ECC_Load(object sender, EventArgs e)
         {
             ToolTip toolTip1 = new ToolTip();
-
+            for (int i = 0; i < multAlgorithms.Count; i++)
+            {
+                checkedListBox1.Items.Add(multAlgorithms.ElementAt(i));
+            }
             // Set up the delays for the ToolTip.
             toolTip1.AutoPopDelay = 10000;
             toolTip1.InitialDelay = 1000;
@@ -2235,6 +2564,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
         private void button2_Click(object sender, EventArgs e)
         {
+            OperationsCounter dummyOps = new OperationsCounter();
             dataGridView4.Rows.Clear();
             BigInteger a, b, p, x1, y1, z1, x2 = 0, y2 = 0, z2 = 0, k, a_max, b_max;
             int w;
@@ -2270,13 +2600,13 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
             int type = 1;
 
             if (x1 == 0 || y1 == 0)
-                MessageBox.Show("Выбирете точку!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Виберіть точку!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
                 int i = 0;
                 dataGridView4.RowCount = 1;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2288,7 +2618,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2300,7 +2630,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_3(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_3(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2312,7 +2642,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_4(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, progress);
+                Point_Multiplication_Affine_Coord_4(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2324,7 +2654,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_5(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_5(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2336,7 +2666,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_6(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, progress);
+                Point_Multiplication_Affine_Coord_6(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2348,7 +2678,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_7_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_7_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2360,7 +2690,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_7_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_7_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2372,7 +2702,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_8(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_8(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2384,7 +2714,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_9(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_9(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2396,20 +2726,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_10(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, progress);
-                dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
-                dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
-                dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
-                i++;
-                dataGridView4.Rows.Add();
-                ProjectiveToAffine(x2, y2, z2, p, out x3, out y3, out z3);
-                dataGridView4.Rows[i].Cells[1].Value = x3.ToString();
-                dataGridView4.Rows[i].Cells[2].Value = y3.ToString();
-                dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
-                i++;
-
-                dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_11_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_10(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2422,81 +2739,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
 
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_11_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress);
-                dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
-                dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
-                dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
-                i++;
-                dataGridView4.Rows.Add();
-                ProjectiveToAffine(x2, y2, z2, p, out x3, out y3, out z3);
-                dataGridView4.Rows[i].Cells[1].Value = x3.ToString();
-                dataGridView4.Rows[i].Cells[2].Value = y3.ToString();
-                dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
-                i++;
-                dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_12(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, progress);
-                dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
-                dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
-                dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
-                i++;
-                dataGridView4.Rows.Add();
-                ProjectiveToAffine(x2, y2, z2, p, out x3, out y3, out z3);
-                dataGridView4.Rows[i].Cells[1].Value = x3.ToString();
-                dataGridView4.Rows[i].Cells[2].Value = y3.ToString();
-                dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
-                i++;
-                dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_13(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress);
-                dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
-                dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
-                dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
-                i++;
-                dataGridView4.Rows.Add();
-                ProjectiveToAffine(x2, y2, z2, p, out x3, out y3, out z3);
-                dataGridView4.Rows[i].Cells[1].Value = x3.ToString();
-                dataGridView4.Rows[i].Cells[2].Value = y3.ToString();
-                dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
-                i++;
-                dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_14(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, progress);
-                dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
-                dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
-                dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
-                i++;
-                dataGridView4.Rows.Add();
-                ProjectiveToAffine(x2, y2, z2, p, out x3, out y3, out z3);
-                dataGridView4.Rows[i].Cells[1].Value = x3.ToString();
-                dataGridView4.Rows[i].Cells[2].Value = y3.ToString();
-                dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
-                i++;
-                dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_15(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress);
-                dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
-                dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
-                dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
-                i++;
-                dataGridView4.Rows.Add();
-                ProjectiveToAffine(x2, y2, z2, p, out x3, out y3, out z3);
-                dataGridView4.Rows[i].Cells[1].Value = x3.ToString();
-                dataGridView4.Rows[i].Cells[2].Value = y3.ToString();
-                dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
-
-                i++;
-                dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_16(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress);
-                dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
-                dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
-                dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
-                i++;
-                dataGridView4.Rows.Add();
-                ProjectiveToAffine(x2, y2, z2, p, out x3, out y3, out z3);
-                dataGridView4.Rows[i].Cells[1].Value = x3.ToString();
-                dataGridView4.Rows[i].Cells[2].Value = y3.ToString();
-                dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
-
-                i++;
-                dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_17(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_11_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2509,7 +2752,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
 
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_18(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_11_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2521,7 +2764,43 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_19(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, progress);
+                Point_Multiplication_Affine_Coord_12(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type, dummyOps);
+                dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
+                dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
+                dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
+                i++;
+                dataGridView4.Rows.Add();
+                ProjectiveToAffine(x2, y2, z2, p, out x3, out y3, out z3);
+                dataGridView4.Rows[i].Cells[1].Value = x3.ToString();
+                dataGridView4.Rows[i].Cells[2].Value = y3.ToString();
+                dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
+                i++;
+                dataGridView4.Rows.Add();
+                Point_Multiplication_Affine_Coord_13(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, dummyOps);
+                dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
+                dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
+                dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
+                i++;
+                dataGridView4.Rows.Add();
+                ProjectiveToAffine(x2, y2, z2, p, out x3, out y3, out z3);
+                dataGridView4.Rows[i].Cells[1].Value = x3.ToString();
+                dataGridView4.Rows[i].Cells[2].Value = y3.ToString();
+                dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
+                i++;
+                dataGridView4.Rows.Add();
+                Point_Multiplication_Affine_Coord_14(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type, dummyOps);
+                dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
+                dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
+                dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
+                i++;
+                dataGridView4.Rows.Add();
+                ProjectiveToAffine(x2, y2, z2, p, out x3, out y3, out z3);
+                dataGridView4.Rows[i].Cells[1].Value = x3.ToString();
+                dataGridView4.Rows[i].Cells[2].Value = y3.ToString();
+                dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
+                i++;
+                dataGridView4.Rows.Add();
+                Point_Multiplication_Affine_Coord_15(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2534,19 +2813,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_19_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, progress);
-                dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
-                dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
-                dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
-                i++;
-                dataGridView4.Rows.Add();
-                ProjectiveToAffine(x2, y2, z2, p, out x3, out y3, out z3);
-                dataGridView4.Rows[i].Cells[1].Value = x3.ToString();
-                dataGridView4.Rows[i].Cells[2].Value = y3.ToString();
-                dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
-                i++;
-                dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_20_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, progress);
+                Point_Multiplication_Affine_Coord_16(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2559,7 +2826,70 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_20(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, progress);
+                Point_Multiplication_Affine_Coord_17(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, dummyOps);
+                dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
+                dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
+                dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
+                i++;
+                dataGridView4.Rows.Add();
+                ProjectiveToAffine(x2, y2, z2, p, out x3, out y3, out z3);
+                dataGridView4.Rows[i].Cells[1].Value = x3.ToString();
+                dataGridView4.Rows[i].Cells[2].Value = y3.ToString();
+                dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
+                i++;
+
+                dataGridView4.Rows.Add();
+                Point_Multiplication_Affine_Coord_18(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, dummyOps);
+                dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
+                dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
+                dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
+                i++;
+                dataGridView4.Rows.Add();
+                ProjectiveToAffine(x2, y2, z2, p, out x3, out y3, out z3);
+                dataGridView4.Rows[i].Cells[1].Value = x3.ToString();
+                dataGridView4.Rows[i].Cells[2].Value = y3.ToString();
+                dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
+                i++;
+                dataGridView4.Rows.Add();
+                Point_Multiplication_Affine_Coord_19(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, dummyOps);
+                dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
+                dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
+                dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
+                i++;
+                dataGridView4.Rows.Add();
+                ProjectiveToAffine(x2, y2, z2, p, out x3, out y3, out z3);
+                dataGridView4.Rows[i].Cells[1].Value = x3.ToString();
+                dataGridView4.Rows[i].Cells[2].Value = y3.ToString();
+                dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
+
+                i++;
+                dataGridView4.Rows.Add();
+                Point_Multiplication_Affine_Coord_19_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, dummyOps);
+                dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
+                dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
+                dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
+                i++;
+                dataGridView4.Rows.Add();
+                ProjectiveToAffine(x2, y2, z2, p, out x3, out y3, out z3);
+                dataGridView4.Rows[i].Cells[1].Value = x3.ToString();
+                dataGridView4.Rows[i].Cells[2].Value = y3.ToString();
+                dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
+                i++;
+                dataGridView4.Rows.Add();
+                Point_Multiplication_Affine_Coord_20_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, dummyOps);
+                dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
+                dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
+                dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
+                i++;
+                dataGridView4.Rows.Add();
+                ProjectiveToAffine(x2, y2, z2, p, out x3, out y3, out z3);
+                dataGridView4.Rows[i].Cells[1].Value = x3.ToString();
+                dataGridView4.Rows[i].Cells[2].Value = y3.ToString();
+                dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
+
+                i++;
+                dataGridView4.Rows.Add();
+                Point_Multiplication_Affine_Coord_20(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2574,7 +2904,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_21(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_21(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2586,7 +2916,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 dataGridView4.Rows[i].Cells[3].Value = z3.ToString();
                 i++;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_22(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_22(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2599,7 +2929,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_27(x1, y1, z1, a, k, p, out x2, out y2, out z2, B, S, M, 
-                    type, out time, progress);
+                    type, out time, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2612,7 +2942,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_28(x1, y1, z1, a, k, p, out x2, out y2, out z2, B, S, M,
-                    type, out time, progress);
+                    type, out time, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2625,7 +2955,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_29(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2638,7 +2968,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_30(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2651,7 +2981,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_31(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2664,7 +2994,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_32(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2686,6 +3016,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
         private void button3_Click(object sender, EventArgs e)
         {
+            OperationsCounter dummyOps = new OperationsCounter();
             dataGridView4.Rows.Clear();
             BigInteger a, b, p, x1, y1, z1, x2 = 0, y2 = 0, z2 = 0, k, a_max, b_max;
             int w;
@@ -2722,7 +3053,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 int i = 0;
                 dataGridView4.RowCount = 1;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2735,7 +3066,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2748,7 +3079,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_3(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2761,7 +3092,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_4(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, out tableTime, type, progress);
+                    out time, out tableTime, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2774,7 +3105,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_5(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2787,7 +3118,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_6(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, out tableTime, type, progress);
+                    out time, out tableTime, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2800,7 +3131,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_7_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2813,7 +3144,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_7_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2826,7 +3157,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_8(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2839,7 +3170,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_9(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2852,7 +3183,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_10(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, out tableTime, type, progress);
+                    out time, out tableTime, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2866,7 +3197,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_11_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2880,7 +3211,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_11_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2893,7 +3224,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_12(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, out tableTime, type, progress);
+                    out time, out tableTime, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2906,7 +3237,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_13(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2919,7 +3250,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_14(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2932,7 +3263,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_15(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2946,7 +3277,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_16(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2960,7 +3291,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_17(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2974,7 +3305,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_18(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -2987,7 +3318,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_19(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, a_max, b_max, progress);
+                    out time, type, a_max, b_max, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -3000,7 +3331,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_19_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, a_max, b_max, progress);
+                    out time, type, a_max, b_max, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -3013,7 +3344,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_20_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, a_max, b_max, progress);
+                    out time, type, a_max, b_max, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -3026,7 +3357,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_20(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, a_max, b_max, progress);
+                    out time, type, a_max, b_max, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -3039,7 +3370,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_21(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -3052,7 +3383,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_22(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -3065,7 +3396,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_27(x1, y1, z1, a, k, p, out x2, out y2, out z2, B, S, M, 
-                    type, out time, progress);
+                    type, out time, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -3078,7 +3409,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_28(x1, y1, z1, a, k, p, out x2, out y2, out z2, B, S, M,
-                    type, out time, progress);
+                    type, out time, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -3091,7 +3422,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_29(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -3104,7 +3435,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_30(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -3117,7 +3448,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_31(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -3130,7 +3461,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_32(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -3154,6 +3485,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
         private void TestB_Click(object sender, EventArgs e)
         {
+            OperationsCounter dummyOps = new OperationsCounter();
             int type = 0;
             if (radioButton30.Checked)
                 type = 0;
@@ -3281,7 +3613,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                         time = 0;
                         tableTime = 0;
                         Point_Multiplication_Affine_Coord_4(points[i, 0], points[i, 1], 1, a, k1, (int)w, p, out x2, out y2, out z2, 
-                            out time, out tableTime, type, progress);
+                            out time, out tableTime, type, dummyOps);
                         if (checkBox11.Checked) time_average[0, j] += tableTime;
                         else time_average[0, j] += time;
                         stopWatch.Reset();
@@ -3294,7 +3626,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                         time = 0;
                         tableTime = 0;
                         Point_Multiplication_Affine_Coord_6(points[i, 0], points[i, 1], 1, a, k1, (int)w, p, out x2, out y2, out z2, 
-                            out time, out tableTime, type, progress);
+                            out time, out tableTime, type, dummyOps);
                         if (checkBox11.Checked) time_average[0, j] += tableTime;
                         else time_average[1, j] += time;
                         stopWatch.Reset();
@@ -3307,7 +3639,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                         time = 0;
                         tableTime = 0;
                         Point_Multiplication_Affine_Coord_10(points[i, 0], points[i, 1], 1, a, k1, (int)w, p, out x2, out y2, out z2, 
-                            out time, out tableTime, type, progress);
+                            out time, out tableTime, type, dummyOps);
                         if (checkBox11.Checked) time_average[0, j] += tableTime;
                         else time_average[2, j] += time;
                         stopWatch.Reset();
@@ -3325,7 +3657,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                         time = 0;
                         tableTime = 0;
                         Point_Multiplication_Affine_Coord_12(points[i, 0], points[i, 1], 1, a, k1, (int)w, p, out x2, out y2, out z2, 
-                            out time, out tableTime, type, progress);
+                            out time, out tableTime, type, dummyOps);
                         if (checkBox11.Checked) time_average[0, j] += tableTime;
                         else time_average[3, j] += time;
                         stopWatch.Reset();
@@ -3395,6 +3727,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
         private void button4_Click(object sender, EventArgs e)
         {
+            OperationsCounter dummyOps = new OperationsCounter();
             int type = 0;
             if (radioButton30.Checked)
                 type = 0;
@@ -3492,19 +3825,19 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                         {
                             time = 0;
                             PointMultiplication.Point_Multiplication_Affine_Coord_19_1(points[i, 0], points[i, 1], 1, a, k1, p, out x2, out y2, out z2, 
-                                out time, type, a_max, b_max, progress);
+                                out time, type, a_max, b_max, dummyOps);
                             time_average[0, a1, b1] += time;
                             time = 0;
                             PointMultiplication.Point_Multiplication_Affine_Coord_19_2(points[i, 0], points[i, 1], 1, a, k1, p, out x2, out y2, out z2, 
-                                out time, type, a_max, b_max, progress);
+                                out time, type, a_max, b_max, dummyOps);
                             time_average[1, a1, b1] += time;
                             time = 0;
                             PointMultiplication.Point_Multiplication_Affine_Coord_20_1(points[i, 0], points[i, 1], 1, a, k1, p, out x2, out y2, out z2, 
-                                out time, type, a_max, b_max, progress);
+                                out time, type, a_max, b_max, dummyOps);
                             time_average[2, a1, b1] += time;
                             time = 0;
                             PointMultiplication.Point_Multiplication_Affine_Coord_20_2(points[i, 0], points[i, 1], 1, a, k1, p, out x2, out y2, out z2, 
-                                out time, type, a_max, b_max, progress);
+                                out time, type, a_max, b_max, dummyOps);
                             time_average[3, a1, b1] += time;
                         }
                         b1++;
@@ -3572,6 +3905,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
         private void button5_Click(object sender, EventArgs e)
         {
+            OperationsCounter dummyOps = new OperationsCounter();
             //CP
             int type = 0;
             if (radioButton30.Checked)
@@ -3708,11 +4042,11 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                     {
                         time = 0;
                         PointMultiplication.Point_Multiplication_Affine_Coord_27(points[i, 0], points[i, 1], 1, a, k1, p, out x2, out y2, out z2, B, S, M, 
-                            type, out time, progress);
+                            type, out time, dummyOps);
                         time_average[0, bN, sN, mN] += time;
                         time = 0;
                         PointMultiplication.Point_Multiplication_Affine_Coord_28(points[i, 0], points[i, 1], 1, a, k1, p, out x2, out y2, out z2, B, S, M, 
-                            type, out time, progress);
+                            type, out time, dummyOps);
                         time_average[1, bN, sN, mN] += time;
                         time = 0;
                     }
@@ -3754,11 +4088,11 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                         {
                             time = 0;
                             PointMultiplication.Point_Multiplication_Affine_Coord_27(points[i, 0], points[i, 1], 1, a, k1, p, out x2, out y2, out z2, ii, S, M, 
-                                type, out time, progress);
+                                type, out time, dummyOps);
                             time_average[0, bN, sN, mN] += time;
                             time = 0;
                             PointMultiplication.Point_Multiplication_Affine_Coord_28(points[i, 0], points[i, 1], 1, a, k1, p, out x2, out y2, out z2, ii, S, M, 
-                                type, out time, progress);
+                                type, out time, dummyOps);
                             time_average[1, bN, sN, mN] += time;
                             time = 0;
                             Flag = false;
@@ -3800,11 +4134,11 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                             {
                                 time = 0;
                                 PointMultiplication.Point_Multiplication_Affine_Coord_27(points[i, 0], points[i, 1], 1, a, k1, p, out x2, out y2, out z2, B, S, M, 
-                                    type, out time, progress);
+                                    type, out time, dummyOps);
                                 time_average[0, bN, sN, mN] += time;
                                 time = 0;
                                 PointMultiplication.Point_Multiplication_Affine_Coord_28(points[i, 0], points[i, 1], 1, a, k1, p, out x2, out y2, out z2, B, S, M, 
-                                    type, out time, progress);
+                                    type, out time, dummyOps);
                                 time_average[1, bN, sN, mN] += time;
                                 time = 0;
                                 Flag = false;
@@ -3847,11 +4181,11 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                             {
                                 time = 0;
                                 PointMultiplication.Point_Multiplication_Affine_Coord_27(points[i, 0], points[i, 1], 1, a, k1, p, out x2, out y2, out z2, B, S, M, 
-                                    type, out time, progress);
+                                    type, out time, dummyOps);
                                 time_average[0, bN, sN, mN] += time;
                                 time = 0;
                                 PointMultiplication.Point_Multiplication_Affine_Coord_28(points[i, 0], points[i, 1], 1, a, k1, p, out x2, out y2, out z2, B, S, M, 
-                                    type, out time, progress);
+                                    type, out time, dummyOps);
                                 time_average[1, bN, sN, mN] += time;
                                 time = 0;
                                 Flag = false;
@@ -3888,11 +4222,11 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                                     {
                                         time = 0;
                                         PointMultiplication.Point_Multiplication_Affine_Coord_27(points[i, 0], points[i, 1], 1, a, k1, p, out x2, out y2, out z2, ii, S, M, 
-                                            type, out time, progress);
+                                            type, out time, dummyOps);
                                         time_average[0, bN, sN, mN] += time;
                                         time = 0;
                                         PointMultiplication.Point_Multiplication_Affine_Coord_28(points[i, 0], points[i, 1], 1, a, k1, p, out x2, out y2, out z2, ii, S, M, 
-                                            type, out time, progress);
+                                            type, out time, dummyOps);
                                         time_average[1, bN, sN, mN] += time;
                                         time = 0;
                                         Flag = false;
@@ -3931,11 +4265,11 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                                         {
                                             time = 0;
                                             PointMultiplication.Point_Multiplication_Affine_Coord_27(points[i, 0], points[i, 1], 1, a, k1, p, out x2, out y2, out z2, ii, S, M, 
-                                                type, out time, progress);
+                                                type, out time, dummyOps);
                                             time_average[0, bN, sN, mN] += time;
                                             time = 0;
                                             PointMultiplication.Point_Multiplication_Affine_Coord_28(points[i, 0], points[i, 1], 1, a, k1, p, out x2, out y2, out z2, ii, S, M, 
-                                                type, out time, progress);
+                                                type, out time, dummyOps);
                                             time_average[1, bN, sN, mN] += time;
                                             time = 0;
                                             Flag = false;
@@ -3977,10 +4311,10 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                                             {
                                                 time = 0;
                                                 PointMultiplication.Point_Multiplication_Affine_Coord_27(points[i, 0], points[i, 1], 1, a, k1, p, out x2, out y2, out z2, B, S, M, 
-                                                    type, out time, progress);
+                                                    type, out time, dummyOps);
                                                 time_average[0, bN, sN, mN] += time;
                                                 time = 0;
-                                                PointMultiplication.Point_Multiplication_Affine_Coord_28(points[i, 0], points[i, 1], 1, a, k1, p, out x2, out y2, out z2, B, S, M, type, out time, progress);
+                                                PointMultiplication.Point_Multiplication_Affine_Coord_28(points[i, 0], points[i, 1], 1, a, k1, p, out x2, out y2, out z2, B, S, M, type, out time, dummyOps);
                                                 time_average[1, bN, sN, mN] += time;
                                                 time = 0;
                                                 Flag = false;
@@ -4020,10 +4354,10 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                                                     {
                                                         time = 0;
                                                         PointMultiplication.Point_Multiplication_Affine_Coord_27(points[i, 0], points[i, 1], 1, a, k1, p, out x2, out y2, out z2, ii, S, M, 
-                                                            type, out time, progress);
+                                                            type, out time, dummyOps);
                                                         time_average[0, bN, sN, mN] += time;
                                                         time = 0;
-                                                        PointMultiplication.Point_Multiplication_Affine_Coord_28(points[i, 0], points[i, 1], 1, a, k1, p, out x2, out y2, out z2, ii, S, M, type, out time, progress);
+                                                        PointMultiplication.Point_Multiplication_Affine_Coord_28(points[i, 0], points[i, 1], 1, a, k1, p, out x2, out y2, out z2, ii, S, M, type, out time, dummyOps);
                                                         time_average[1, bN, sN, mN] += time;
                                                         time = 0;
                                                         Flag = false;
@@ -4139,6 +4473,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
         }
         private void testingButton_Click(object sender, EventArgs e)
         {
+            OperationsCounter dummyOps = new OperationsCounter();
             BigInteger a = BigInteger.Parse(textBox2.Text);
             BigInteger b = BigInteger.Parse(textBox3.Text);
             BigInteger p = BigInteger.Parse(textBox48.Text);
@@ -4158,28 +4493,28 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                     foreach (var l in pointsList)
                     {
                         coord = l;
-                        Point_Multiplication_Affine_Coord_32(coord[0], coord[1], coord[2], a, k, p, out x1, out y1, out z1, out time, 0, progress);
+                        Point_Multiplication_Affine_Coord_32(coord[0], coord[1], coord[2], a, k, p, out x1, out y1, out z1, out time, 0, dummyOps);
                         if (radioButton47.Checked)
                         {
-                            Point_Multiplication_Affine_Coord_32(coord[0], coord[1], coord[2], a, k, p, out x2, out y2, out z2, out time, 1, progress);
+                            Point_Multiplication_Affine_Coord_32(coord[0], coord[1], coord[2], a, k, p, out x2, out y2, out z2, out time, 1, dummyOps);
                             x3 = x2; y3 = y2; z3 = z2;
                             ProjectiveToAffine(x2, y2, z2, p, out x2, out y2, out z2);
                         }
                         if (radioButton46.Checked)
                         {
-                            Point_Multiplication_Affine_Coord_32(coord[0], coord[1], coord[2], a, k, p, out x2, out y2, out z2, out time, 2, progress);
+                            Point_Multiplication_Affine_Coord_32(coord[0], coord[1], coord[2], a, k, p, out x2, out y2, out z2, out time, 2, dummyOps);
                             x3 = x2; y3 = y2; z3 = z2;
                             JacobyToAffine(x2,y2,z2,p, out x2, out y2, out z2);
                         }
                         if (radioButton51.Checked)
                         {
-                            Point_Multiplication_Affine_Coord_32(coord[0], coord[1], coord[2], a, k, p, out x2, out y2, out z2, out time, 4, progress);
+                            Point_Multiplication_Affine_Coord_32(coord[0], coord[1], coord[2], a, k, p, out x2, out y2, out z2, out time, 4, dummyOps);
                             x3 = x2; y3 = y2; z3 = z2;
                             JacobyToAffine(x2, y2, z2, p, out x2, out y2, out z2);
                         }
                         if (radioButton52.Checked)
                         {
-                            Point_Multiplication_Affine_Coord_32(coord[0], coord[1], coord[2], a, k, p, out x2, out y2, out z2, out time, 3, progress);
+                            Point_Multiplication_Affine_Coord_32(coord[0], coord[1], coord[2], a, k, p, out x2, out y2, out z2, out time, 3, dummyOps);
                             x3 = x2; y3 = y2; z3 = z2;
                             JacobyToAffine(x2, y2, z2, p, out x2, out y2, out z2);
                         }
@@ -4212,6 +4547,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
         private void button6_Click(object sender, EventArgs e)
         {
+            OperationsCounter dummyOps = new OperationsCounter();
             dataGridView4.Rows.Clear();
             BigInteger a, b, p, x1, y1, z1, x2 = 0, y2 = 0, z2 = 0, k, a_max, b_max;
             int w;
@@ -4259,7 +4595,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 int i = 0;
                 dataGridView4.RowCount = 1;
                 dataGridView4.Rows.Add();
-                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, progress);
+                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4272,7 +4608,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4285,7 +4621,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_3(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4298,7 +4634,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_4(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, out tableTime, type, progress);
+                    out time, out tableTime, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4311,7 +4647,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;               
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_5(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4324,7 +4660,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_6(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, out tableTime, type, progress);
+                    out time, out tableTime, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4337,7 +4673,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_7_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4350,7 +4686,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_7_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4363,7 +4699,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_8(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4376,7 +4712,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_9(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4389,7 +4725,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_10(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, out tableTime, type, progress);
+                    out time, out tableTime, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4402,7 +4738,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_11_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4415,7 +4751,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_11_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4428,7 +4764,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_12(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, 
-                    out time, out tableTime, type, progress);
+                    out time, out tableTime, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4492,7 +4828,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_17(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4506,7 +4842,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
 
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_18(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4519,7 +4855,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_19(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, a_max, b_max, progress);
+                    out time, type, a_max, b_max, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4532,7 +4868,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_19_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, a_max, b_max, progress);
+                    out time, type, a_max, b_max, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4545,7 +4881,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_20_1(x1, y1, z1, a, k, p, out x2, out y2, out z2,
-                    out time, type, a_max, b_max, progress);
+                    out time, type, a_max, b_max, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4558,7 +4894,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_20(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, a_max, b_max, progress);
+                    out time, type, a_max, b_max, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4571,7 +4907,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_21(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4584,7 +4920,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_22(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4597,7 +4933,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_27(x1, y1, z1, a, k, p, out x2, out y2, out z2, B, S, M, 
-                    type, out time, progress);
+                    type, out time, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4610,7 +4946,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_28(x1, y1, z1, a, k, p, out x2, out y2, out z2, B, S, M, 
-                    type, out time, progress);
+                    type, out time, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4623,7 +4959,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_29(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4636,7 +4972,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_30(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4649,7 +4985,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_31(x1, y1, z1, a, k, p, out x2, out y2, out z2, 
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4662,7 +4998,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
                 i++;
                 dataGridView4.Rows.Add();
                 Point_Multiplication_Affine_Coord_32(x1, y1, z1, a, k, p, out x2, out y2, out z2,
-                    out time, type, progress);
+                    out time, type, dummyOps);
                 dataGridView4.Rows[i].Cells[1].Value = x2.ToString();
                 dataGridView4.Rows[i].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[i].Cells[3].Value = z2.ToString();
@@ -4719,6 +5055,12 @@ out BigInteger y2, out BigInteger z2, out double time, int type, IProgress<int> 
             textBox2.Text = a.ToString();
             textBox3.Text = b.ToString();
             textBox25.Text = N.ToString();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            dataGridView4.Rows.Clear();
+            dataGridView4.Refresh();
         }
     }
 }

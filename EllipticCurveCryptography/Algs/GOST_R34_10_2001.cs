@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Numerics;
 using System.Security.Cryptography;
+using ECC.EllipticCurveCryptography;
 
 namespace EllipticCurveCryptography
 {
     public delegate void MultiplyPoint(
         BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p,
-        out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, IProgress<int> progress = null);
+        out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, OperationsCounter ops = null);
     public class GOST_R34_10_2001 : EllipticCurveAlgorithms
     {
         private BigInteger Sigma;
