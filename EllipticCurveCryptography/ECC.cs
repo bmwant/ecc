@@ -11,6 +11,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Collections;
 using System.Threading.Tasks;
+using System.Globalization;
 using Excel = Microsoft.Office.Interop.Excel;
 
 
@@ -2090,6 +2091,17 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             textBox16.Text = textBox2.Text;
+        }
+
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            textBox17.Text = textBox3.Text;
+        }
+
+        private void textBox25_TextChanged(object sender, EventArgs e)
+        {
+            textBox18.Text = textBox25.Text;
         }
 
         private void ECC_Load(object sender, EventArgs e)
@@ -4505,6 +4517,70 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
         private void button7_Click(object sender, EventArgs e)
         {
             ExportToExcel();
+        }
+
+        private void textBox16_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        Dictionary<String, Dictionary<String, BigInteger>> curveValues = new Dictionary<String, Dictionary<String, BigInteger>>
+        {
+            {
+                "Curve P-192", new Dictionary<String, BigInteger> {
+                    {"p", BigInteger.Parse("6277101735386680763835789423207666416083908700390324961279")},
+                    {"a", BigInteger.Parse("3099d2bbbfcb2538542dcd5fb078b6ef5f3d6fe2c745de65", NumberStyles.AllowHexSpecifier)},
+                    {"b", BigInteger.Parse("64210519e59c80e70fa7e9ab72243049feb8deecc146b9b1", NumberStyles.AllowHexSpecifier)},
+                    {"N", BigInteger.Parse("6277101735386680763835789423176059013767194773182842284081")},
+                }
+            },
+            {
+                "Curve P-224", new Dictionary<String, BigInteger> {
+                    {"p", BigInteger.Parse("26959946667150639794667015087019630673557916260026308143510066298881")},
+                    {"a", BigInteger.Parse("5b056c7e11dd68f40469ee7f3c7a7d74f7d121116506d031218291fb", NumberStyles.AllowHexSpecifier)},
+                    {"b", BigInteger.Parse("b4050a850c04b3abf54132565044b0b7d7bfd8ba270b39432355ffb4", NumberStyles.AllowHexSpecifier)},
+                    {"N", BigInteger.Parse("26959946667150639794667015087019625940457807714424391721682722368061")},
+                }
+            },
+            {
+                "Curve P-256", new Dictionary<String, BigInteger> {
+                    {"p", BigInteger.Parse("115792089210356248762697446949407573530086143415290314195533631308867097853951")},
+                    {"a", BigInteger.Parse("7efba1662985be9403cb055c75d4f7e0ce8d84a9c5114abcaf3177680104fa0d", NumberStyles.AllowHexSpecifier)},
+                    {"b", BigInteger.Parse("5ac635d8aa3a93e7b3ebbd55769886bc651d06b0cc53b0f63bce3c3e27d2604b", NumberStyles.AllowHexSpecifier)},
+                    {"N", BigInteger.Parse("115792089210356248762697446949407573529996955224135760342422259061068512044369")},
+                }
+            },
+            {
+                "Curve P-384", new Dictionary<String, BigInteger> {
+                    {"p", BigInteger.Parse("39402006196394479212279040100143613805079739270465446667948293404245721771496870329047266088258938001861606973112319")},
+                    {"a", BigInteger.Parse("79d1e655f868f02fff48dcdee14151ddb80643c1406d0ca10dfe6fc52009540a495e8042ea5f744f6e184667cc722483", NumberStyles.AllowHexSpecifier)},
+                    {"b", BigInteger.Parse("b3312fa7e23ee7e4988e056be3f82d19181d9c6efe8141120314088f5013875ac656398d8a2ed19d2a85c8edd3ec2aef", NumberStyles.AllowHexSpecifier)},
+                    {"N", BigInteger.Parse("39402006196394479212279040100143613805079739270465446667946905279627659399113263569398956308152294913554433653942643")},
+                }
+            },
+            {
+                "Curve P-521", new Dictionary<String, BigInteger> {
+                    {"p", BigInteger.Parse("6864797660130609714981900799081393217269435300143305409394463459185543183397656052122559640661454554977296311391480858037121987999716643812574028291115057151")},
+                    {"a", BigInteger.Parse("0b48bfa5f420a34949539d2bdfc264eeeeb077688e44fbf0ad8f6d0edb37bd6b533281000518e19f1b9ffbe0fe9ed8a3c2200b8f875e523868c70c1e5bf55bad637", NumberStyles.AllowHexSpecifier)},
+                    {"b", BigInteger.Parse("6051953eb9618e1c9a1f929a21a0b68540eea2da725b99b315f3b8b489918ef109e156193951ec7e937b1652c0bd3bb1bf073573df883d2c34f1ef451fd46b503f00", NumberStyles.AllowHexSpecifier)},
+                    {"N", BigInteger.Parse("6864797660130609714981900799081393217269435300143305409394463459185543183397655394245057746333217197532963996371363321113864768612440380340372808892707005449")},
+                }
+            }
+        };
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String selectedCurve = ((ComboBox)sender).Text;
+            Console.WriteLine("Selected curve" + selectedCurve);
+            Console.WriteLine("This is params" + curveValues[selectedCurve]);
+            BigInteger p = curveValues[selectedCurve]["p"];
+            BigInteger a = curveValues[selectedCurve]["a"];
+            BigInteger b = curveValues[selectedCurve]["b"];
+            BigInteger N = curveValues[selectedCurve]["N"];
+
+            textBox1.Text = p.ToString();
+            textBox2.Text = a.ToString();
+            textBox3.Text = b.ToString();
+            textBox25.Text = N.ToString();
         }
     }
 }
