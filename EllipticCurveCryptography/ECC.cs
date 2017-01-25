@@ -19,6 +19,49 @@ namespace EllipticCurveCryptography
 {
     public partial class ECC : Form
     {
+        Dictionary<String, Dictionary<String, BigInteger>> curveValues = new Dictionary<String, Dictionary<String, BigInteger>>
+        {
+            {
+                "Curve P-192", new Dictionary<String, BigInteger> {
+                    {"p", BigInteger.Parse("6277101735386680763835789423207666416083908700390324961279")},
+                    {"a", BigInteger.Parse("3099d2bbbfcb2538542dcd5fb078b6ef5f3d6fe2c745de65", NumberStyles.AllowHexSpecifier)},
+                    {"b", BigInteger.Parse("64210519e59c80e70fa7e9ab72243049feb8deecc146b9b1", NumberStyles.AllowHexSpecifier)},
+                    {"N", BigInteger.Parse("6277101735386680763835789423176059013767194773182842284081")},
+                }
+            },
+            {
+                "Curve P-224", new Dictionary<String, BigInteger> {
+                    {"p", BigInteger.Parse("26959946667150639794667015087019630673557916260026308143510066298881")},
+                    {"a", BigInteger.Parse("5b056c7e11dd68f40469ee7f3c7a7d74f7d121116506d031218291fb", NumberStyles.AllowHexSpecifier)},
+                    {"b", BigInteger.Parse("b4050a850c04b3abf54132565044b0b7d7bfd8ba270b39432355ffb4", NumberStyles.AllowHexSpecifier)},
+                    {"N", BigInteger.Parse("26959946667150639794667015087019625940457807714424391721682722368061")},
+                }
+            },
+            {
+                "Curve P-256", new Dictionary<String, BigInteger> {
+                    {"p", BigInteger.Parse("115792089210356248762697446949407573530086143415290314195533631308867097853951")},
+                    {"a", BigInteger.Parse("7efba1662985be9403cb055c75d4f7e0ce8d84a9c5114abcaf3177680104fa0d", NumberStyles.AllowHexSpecifier)},
+                    {"b", BigInteger.Parse("5ac635d8aa3a93e7b3ebbd55769886bc651d06b0cc53b0f63bce3c3e27d2604b", NumberStyles.AllowHexSpecifier)},
+                    {"N", BigInteger.Parse("115792089210356248762697446949407573529996955224135760342422259061068512044369")},
+                }
+            },
+            {
+                "Curve P-384", new Dictionary<String, BigInteger> {
+                    {"p", BigInteger.Parse("39402006196394479212279040100143613805079739270465446667948293404245721771496870329047266088258938001861606973112319")},
+                    {"a", BigInteger.Parse("79d1e655f868f02fff48dcdee14151ddb80643c1406d0ca10dfe6fc52009540a495e8042ea5f744f6e184667cc722483", NumberStyles.AllowHexSpecifier)},
+                    {"b", BigInteger.Parse("b3312fa7e23ee7e4988e056be3f82d19181d9c6efe8141120314088f5013875ac656398d8a2ed19d2a85c8edd3ec2aef", NumberStyles.AllowHexSpecifier)},
+                    {"N", BigInteger.Parse("39402006196394479212279040100143613805079739270465446667946905279627659399113263569398956308152294913554433653942643")},
+                }
+            },
+            {
+                "Curve P-521", new Dictionary<String, BigInteger> {
+                    {"p", BigInteger.Parse("6864797660130609714981900799081393217269435300143305409394463459185543183397656052122559640661454554977296311391480858037121987999716643812574028291115057151")},
+                    {"a", BigInteger.Parse("0b48bfa5f420a34949539d2bdfc264eeeeb077688e44fbf0ad8f6d0edb37bd6b533281000518e19f1b9ffbe0fe9ed8a3c2200b8f875e523868c70c1e5bf55bad637", NumberStyles.AllowHexSpecifier)},
+                    {"b", BigInteger.Parse("6051953eb9618e1c9a1f929a21a0b68540eea2da725b99b315f3b8b489918ef109e156193951ec7e937b1652c0bd3bb1bf073573df883d2c34f1ef451fd46b503f00", NumberStyles.AllowHexSpecifier)},
+                    {"N", BigInteger.Parse("6864797660130609714981900799081393217269435300143305409394463459185543183397655394245057746333217197532963996371363321113864768612440380340372808892707005449")},
+                }
+            }
+        };
         public bool Flag = true;
         public ECC()
         {
@@ -59,6 +102,7 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_12(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, out double tableTime, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #12"));
             PointMultiplication.Point_Multiplication_Affine_Coord_12(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
                 out x2, out y2, out z2, out time, out tableTime, type);
         }
@@ -66,6 +110,7 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_15(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #15"));
             PointMultiplication.Point_Multiplication_Affine_Coord_15(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
                 out x2, out y2, out z2, out time, type);
         }
@@ -73,6 +118,7 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_16(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #16"));
             PointMultiplication.Point_Multiplication_Affine_Coord_16(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
                 out x2, out y2, out z2, out time, type);
         }
@@ -80,6 +126,7 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_17(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #17"));
             PointMultiplication.Point_Multiplication_Affine_Coord_17(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
                 out x2, out y2, out z2, out time, type);
         }
@@ -87,6 +134,7 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_18(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #18"));
             PointMultiplication.Point_Multiplication_Affine_Coord_18(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
                 out x2, out y2, out z2, out time, type);
         }
@@ -94,6 +142,7 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_19(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, BigInteger a_max, BigInteger b_max)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #19"));
             PointMultiplication.Point_Multiplication_Affine_Coord_19_1(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
                 out x2, out y2, out z2, out time, type, a_max, b_max);
         }
@@ -101,6 +150,7 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_20(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, BigInteger a_max, BigInteger b_max)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #20"));
             PointMultiplication.Point_Multiplication_Affine_Coord_20_2(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
                 out x2, out y2, out z2, out time, type, a_max, b_max);
         }
@@ -108,6 +158,7 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_19_2(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, BigInteger a_max, BigInteger b_max)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #19.2"));
             PointMultiplication.Point_Multiplication_Affine_Coord_19_2(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
                 out x2, out y2, out z2, out time, type, a_max, b_max);
         }
@@ -115,6 +166,7 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_20_1(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, BigInteger a_max, BigInteger b_max)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #20.1"));
             PointMultiplication.Point_Multiplication_Affine_Coord_20_1(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
                 out x2, out y2, out z2, out time, type, a_max, b_max);
         }
@@ -122,6 +174,7 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_21(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #21"));
             PointMultiplication.Point_Multiplication_Affine_Coord_21(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
                 out x2, out y2, out z2, out time, type);
         }
@@ -129,24 +182,28 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_21m(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #21m"));
             PointMultiplication.Point_Multiplication_Affine_Coord_21m(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
                 out x2, out y2, out z2, out time, type);
         }
         private void Point_Multiplication_Affine_Coord_22(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #22"));
             PointMultiplication.Point_Multiplication_Affine_Coord_22(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
                 out x2, out y2, out z2, out time, type);
         }
         private void Point_Multiplication_Affine_Coord_22m(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
           out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #22m"));
             PointMultiplication.Point_Multiplication_Affine_Coord_22m(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
                 out x2, out y2, out z2, out time, type);
         }
         private void Point_Multiplication_Affine_Coord_13(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #13"));
             PointMultiplication.Point_Multiplication_Affine_Coord_13(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
                 out x2, out y2, out z2, out time, type);
         }
@@ -154,6 +211,7 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_14(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #14"));
             PointMultiplication.Point_Multiplication_Affine_Coord_14(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
                 out x2, out y2, out z2, out time, type);
         }
@@ -161,6 +219,7 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_11_2(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #11.2"));
             PointMultiplication.Point_Multiplication_Affine_Coord_11_2(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
                 out x2, out y2, out z2, out time, type);
         }
@@ -168,6 +227,7 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_11_1(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #11.1"));
             PointMultiplication.Point_Multiplication_Affine_Coord_11_1(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
                 out x2, out y2, out z2, out time, type);
         }
@@ -176,6 +236,7 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_10(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, out double tableTime, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #10"));
             PointMultiplication.Point_Multiplication_Affine_Coord_10(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
                 out x2, out y2, out z2, out time, out tableTime, type);
         }
@@ -183,6 +244,7 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_9(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #9"));
             PointMultiplication.Point_Multiplication_Affine_Coord_9(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
                 out x2, out y2, out z2, out time, type);
         }
@@ -190,6 +252,7 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_8(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #8"));
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             PointMultiplication.Point_Multiplication_Affine_Coord_8(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
@@ -202,6 +265,7 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_7_2(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #7.2"));
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             PointMultiplication.Point_Multiplication_Affine_Coord_7_2(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
@@ -214,6 +278,7 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_7_1(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #7.1"));
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             PointMultiplication.Point_Multiplication_Affine_Coord_7_1(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
@@ -226,6 +291,7 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_6(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p, out BigInteger x2,
             out BigInteger y2, out BigInteger z2, out double time, out double tableTime, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #6"));
             PointMultiplication.Point_Multiplication_Affine_Coord_6(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
                 out x2, out y2, out z2, out time, out tableTime, type);
         }
@@ -233,6 +299,7 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_5(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #5"));
             PointMultiplication.Point_Multiplication_Affine_Coord_5(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
                 out x2, out y2, out z2, out time, type);
         }
@@ -240,6 +307,7 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_4(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, out double tableTime, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #4"));
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             PointMultiplication.Point_Multiplication_Affine_Coord_4(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
@@ -252,6 +320,7 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_3(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, int w, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #3"));
             PointMultiplication.Point_Multiplication_Affine_Coord_3(bigInteger, bigInteger_2, bigInteger_3, a, k, w, p,
                 out x2, out y2, out z2, out time, type);
         }
@@ -259,6 +328,7 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_2(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #2"));
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             PointMultiplication.Point_Multiplication_Affine_Coord_2(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
@@ -273,6 +343,7 @@ namespace EllipticCurveCryptography
         {
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #1"));
             PointMultiplication.Point_Multiplication_Affine_Coord_1(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
                 out x2, out y2, out z2, type);
             stopWatch.Stop();
@@ -281,16 +352,18 @@ namespace EllipticCurveCryptography
         }
 
         //With trees
-        private static void Point_Multiplication_Affine_Coord_27(BigInteger bigIntegerX, BigInteger bigIntegerY, BigInteger bigIntegerZ, BigInteger a, BigInteger k, BigInteger p,
+        private void Point_Multiplication_Affine_Coord_27(BigInteger bigIntegerX, BigInteger bigIntegerY, BigInteger bigIntegerZ, BigInteger a, BigInteger k, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, BigInteger B, BigInteger[] S, BigInteger[] M, int type, out double time)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #27"));
             PointMultiplication.Point_Multiplication_Affine_Coord_27(bigIntegerX, bigIntegerY, bigIntegerZ, a, k, p, out x2, out y2, out z2,
                  B, S, M, type, out time);
         }
 
-        private static void Point_Multiplication_Affine_Coord_28(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p,
+        private void Point_Multiplication_Affine_Coord_28(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p,
    out BigInteger x2, out BigInteger y2, out BigInteger z2, BigInteger B, BigInteger[] S, BigInteger[] M, int type, out double time)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #28"));
             PointMultiplication.Point_Multiplication_Affine_Coord_28(x1, y1, z1, a, k, p, out x2, out y2, out z2,
                B, S, M, type, out time);
         }
@@ -298,6 +371,7 @@ namespace EllipticCurveCryptography
         private void Point_Multiplication_Affine_Coord_29(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p, out BigInteger x2,
 out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #29"));
             PointMultiplication.Point_Multiplication_Affine_Coord_29(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
                 out x2, out y2, out z2, out time, type);
         }
@@ -305,6 +379,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
         private void Point_Multiplication_Affine_Coord_30(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p, out BigInteger x2,
 out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #30"));
             PointMultiplication.Point_Multiplication_Affine_Coord_30(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
                 out x2, out y2, out z2, out time, type);
         }
@@ -312,6 +387,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
         private void Point_Multiplication_Affine_Coord_31(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p, out BigInteger x2,
 out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #31"));
             PointMultiplication.Point_Multiplication_Affine_Coord_31(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
                 out x2, out y2, out z2, out time, type);
         }
@@ -319,12 +395,14 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
         private void Point_Multiplication_Affine_Coord_32(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p, out BigInteger x2,
 out BigInteger y2, out BigInteger z2, out double time, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #32"));
             PointMultiplication.Point_Multiplication_Affine_Coord_32(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
                 out x2, out y2, out z2, out time, type);
         }
         private void PointMultiplication33(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger x2, BigInteger y2, BigInteger z2, BigInteger a, BigInteger k, BigInteger l, int w,
             BigInteger p, out BigInteger x3, out BigInteger y3, out BigInteger z3, out double time, int type)
         {
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #33"));
             PointMultiplication.Point_Multiplication33(x1, y1, z1, x2, y2, z2, a, k, l, w, p, out x3, out y3, out z3, out time, type);
         }
         private void AffineToProjective(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger p, out BigInteger x2, out BigInteger y2, out BigInteger z2)
@@ -709,7 +787,6 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
 
         private void Multiply_Click(object sender, EventArgs e)
         {
-            ExportToExcel();
             BigInteger a, b, p, x1, y1, z1, x3, y3, z3, x2 = 0, y2 = 0, z2 = 0, k, l, a_max, b_max;
             int w;
             BigInteger[] S;
@@ -742,106 +819,106 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                 String Coord_Type = comboBox1.Text;
                 if (Coord_Type == "1")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "2")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "3")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_3(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "4")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_4(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "5")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_5(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "6")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_6(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "7.1")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_7_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "7.2")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_7_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "8")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_8(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "9")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_9(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "10")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_10(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "11.1")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_11_1(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "15")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_15(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "11.2")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_11_2(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "13")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_13(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "14")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_14(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "16")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_16(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "17")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_17(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "18")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_18(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "19")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_19(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "20")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_20(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "19.2")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_19_2(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "20.1")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_20_1(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type, a_max, b_max))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "21")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_21(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "22")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_22(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "12")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_12(x1, y1, z1, a, k, w, p, out x2, out y2, out z2, out time, out tableTime, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "27")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_27(x1, y1, z1, a, k, p, out x2, out y2, out z2, B, S, M, type, out time))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "28")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_28(x1, y1, z1, a, k, p, out x2, out y2, out z2, B, S, M, type, out time))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "29")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_29(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "30")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_30(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "31")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_31(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "32")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_32(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "21m")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_21m(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "22m")
                     Task.Factory.StartNew(() => Point_Multiplication_Affine_Coord_22m(x1, y1, z1, a, k, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 else if (Coord_Type == "33")
                 {
                     int i = 0;
@@ -856,7 +933,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                     x1 = arr[0]; y1 = arr[1]; z1 = arr[2];
                     x3 = arr[3]; y3 = arr[4]; z3 = arr[5];
                     Task.Factory.StartNew(() => PointMultiplication33(x1, y1, z1, x3, y3, z3, a, k, l, w, p, out x2, out y2, out z2, out time, type))
-                        .ContinueWith(r => updateDataGridValues(x2, y2, z2));
+                        .ContinueWith(r => updateDataGridValues(x2, y2, z2, time));
                 }
                 else
                 {
@@ -864,7 +941,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                 }
             }
         }
-        private void updateDataGridValues(BigInteger x2, BigInteger y2, BigInteger z2)
+        private void updateDataGridValues(BigInteger x2, BigInteger y2, BigInteger z2, double time)
         {
             dataGridView4.RowCount = 1;
             if (x2 != 0 || y2 != 0 || z2 != 0)
@@ -873,6 +950,9 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
                 dataGridView4.Rows[0].Cells[2].Value = y2.ToString();
                 dataGridView4.Rows[0].Cells[3].Value = z2.ToString();
             }
+            toolStripStatusLabel2.Text = "Виконано за " + time/1000 + "c";
+            toolStripProgressBar1.Value = 0;
+            
         }
         //ne pravilno rabotaet
         private void writeTimeInFile_Click(object sender, EventArgs e)
@@ -4524,49 +4604,6 @@ out BigInteger y2, out BigInteger z2, out double time, int type)
 
         }
 
-        Dictionary<String, Dictionary<String, BigInteger>> curveValues = new Dictionary<String, Dictionary<String, BigInteger>>
-        {
-            {
-                "Curve P-192", new Dictionary<String, BigInteger> {
-                    {"p", BigInteger.Parse("6277101735386680763835789423207666416083908700390324961279")},
-                    {"a", BigInteger.Parse("3099d2bbbfcb2538542dcd5fb078b6ef5f3d6fe2c745de65", NumberStyles.AllowHexSpecifier)},
-                    {"b", BigInteger.Parse("64210519e59c80e70fa7e9ab72243049feb8deecc146b9b1", NumberStyles.AllowHexSpecifier)},
-                    {"N", BigInteger.Parse("6277101735386680763835789423176059013767194773182842284081")},
-                }
-            },
-            {
-                "Curve P-224", new Dictionary<String, BigInteger> {
-                    {"p", BigInteger.Parse("26959946667150639794667015087019630673557916260026308143510066298881")},
-                    {"a", BigInteger.Parse("5b056c7e11dd68f40469ee7f3c7a7d74f7d121116506d031218291fb", NumberStyles.AllowHexSpecifier)},
-                    {"b", BigInteger.Parse("b4050a850c04b3abf54132565044b0b7d7bfd8ba270b39432355ffb4", NumberStyles.AllowHexSpecifier)},
-                    {"N", BigInteger.Parse("26959946667150639794667015087019625940457807714424391721682722368061")},
-                }
-            },
-            {
-                "Curve P-256", new Dictionary<String, BigInteger> {
-                    {"p", BigInteger.Parse("115792089210356248762697446949407573530086143415290314195533631308867097853951")},
-                    {"a", BigInteger.Parse("7efba1662985be9403cb055c75d4f7e0ce8d84a9c5114abcaf3177680104fa0d", NumberStyles.AllowHexSpecifier)},
-                    {"b", BigInteger.Parse("5ac635d8aa3a93e7b3ebbd55769886bc651d06b0cc53b0f63bce3c3e27d2604b", NumberStyles.AllowHexSpecifier)},
-                    {"N", BigInteger.Parse("115792089210356248762697446949407573529996955224135760342422259061068512044369")},
-                }
-            },
-            {
-                "Curve P-384", new Dictionary<String, BigInteger> {
-                    {"p", BigInteger.Parse("39402006196394479212279040100143613805079739270465446667948293404245721771496870329047266088258938001861606973112319")},
-                    {"a", BigInteger.Parse("79d1e655f868f02fff48dcdee14151ddb80643c1406d0ca10dfe6fc52009540a495e8042ea5f744f6e184667cc722483", NumberStyles.AllowHexSpecifier)},
-                    {"b", BigInteger.Parse("b3312fa7e23ee7e4988e056be3f82d19181d9c6efe8141120314088f5013875ac656398d8a2ed19d2a85c8edd3ec2aef", NumberStyles.AllowHexSpecifier)},
-                    {"N", BigInteger.Parse("39402006196394479212279040100143613805079739270465446667946905279627659399113263569398956308152294913554433653942643")},
-                }
-            },
-            {
-                "Curve P-521", new Dictionary<String, BigInteger> {
-                    {"p", BigInteger.Parse("6864797660130609714981900799081393217269435300143305409394463459185543183397656052122559640661454554977296311391480858037121987999716643812574028291115057151")},
-                    {"a", BigInteger.Parse("0b48bfa5f420a34949539d2bdfc264eeeeb077688e44fbf0ad8f6d0edb37bd6b533281000518e19f1b9ffbe0fe9ed8a3c2200b8f875e523868c70c1e5bf55bad637", NumberStyles.AllowHexSpecifier)},
-                    {"b", BigInteger.Parse("6051953eb9618e1c9a1f929a21a0b68540eea2da725b99b315f3b8b489918ef109e156193951ec7e937b1652c0bd3bb1bf073573df883d2c34f1ef451fd46b503f00", NumberStyles.AllowHexSpecifier)},
-                    {"N", BigInteger.Parse("6864797660130609714981900799081393217269435300143305409394463459185543183397655394245057746333217197532963996371363321113864768612440380340372808892707005449")},
-                }
-            }
-        };
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             String selectedCurve = ((ComboBox)sender).Text;
