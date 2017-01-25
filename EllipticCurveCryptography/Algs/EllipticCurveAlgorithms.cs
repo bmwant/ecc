@@ -32,7 +32,10 @@ namespace EllipticCurveCryptography
             this.yP = yP;
             this.n = n;
             this.h = h;
-            Multiplier = multiplier ?? PointMultiplication.Point_Multiplication_Affine_Coord_1;
+            if (multiplier != null)
+                Multiplier = multiplier;
+            else
+                Multiplier = PointMultiplication.Point_Multiplication_Affine_Coord_1;
             Adder = adder ?? PointMultiplication.Add_Affine_Coord;
             rand = new Random();
             HA = ha ?? new SHA1CryptoServiceProvider();
