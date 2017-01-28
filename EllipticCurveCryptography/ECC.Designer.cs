@@ -68,6 +68,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.writePointsInFile = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.button10 = new System.Windows.Forms.Button();
+            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
+            this.button9 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.textBox40 = new System.Windows.Forms.TextBox();
@@ -179,6 +183,8 @@
             this.Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Z = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.label71 = new System.Windows.Forms.Label();
             this.textBox47 = new System.Windows.Forms.TextBox();
             this.label63 = new System.Windows.Forms.Label();
@@ -271,11 +277,10 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.button11 = new System.Windows.Forms.Button();
+            this.checkedListBox3 = new System.Windows.Forms.CheckedListBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox14.SuspendLayout();
@@ -284,6 +289,7 @@
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox17.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -317,7 +323,7 @@
             this.tabControl1.Location = new System.Drawing.Point(4, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1045, 690);
+            this.tabControl1.Size = new System.Drawing.Size(1247, 691);
             this.tabControl1.TabIndex = 19;
             // 
             // tabPage1
@@ -331,7 +337,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1037, 664);
+            this.tabPage1.Size = new System.Drawing.Size(1239, 665);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "ЕК";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -713,6 +719,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.checkedListBox3);
+            this.tabPage2.Controls.Add(this.groupBox17);
             this.tabPage2.Controls.Add(this.button9);
             this.tabPage2.Controls.Add(this.button6);
             this.tabPage2.Controls.Add(this.groupBox13);
@@ -730,14 +738,55 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1037, 664);
+            this.tabPage2.Size = new System.Drawing.Size(1239, 665);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Множення";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // groupBox17
+            // 
+            this.groupBox17.Controls.Add(this.button11);
+            this.groupBox17.Controls.Add(this.button10);
+            this.groupBox17.Controls.Add(this.checkedListBox2);
+            this.groupBox17.Location = new System.Drawing.Point(4, 6);
+            this.groupBox17.Name = "groupBox17";
+            this.groupBox17.Size = new System.Drawing.Size(199, 653);
+            this.groupBox17.TabIndex = 62;
+            this.groupBox17.TabStop = false;
+            this.groupBox17.Text = "Алгоритми шифрування";
+            this.groupBox17.Enter += new System.EventHandler(this.groupBox17_Enter);
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(27, 194);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(138, 23);
+            this.button10.TabIndex = 73;
+            this.button10.Text = "Запустити обрані";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // checkedListBox2
+            // 
+            this.checkedListBox2.FormattingEnabled = true;
+            this.checkedListBox2.Location = new System.Drawing.Point(6, 19);
+            this.checkedListBox2.Name = "checkedListBox2";
+            this.checkedListBox2.Size = new System.Drawing.Size(187, 169);
+            this.checkedListBox2.TabIndex = 0;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(706, 578);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(63, 65);
+            this.button9.TabIndex = 61;
+            this.button9.Text = "X";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(313, 578);
+            this.button6.Location = new System.Drawing.Point(520, 578);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(183, 65);
             this.button6.TabIndex = 60;
@@ -775,7 +824,7 @@
             this.groupBox13.Controls.Add(this.label50);
             this.groupBox13.Controls.Add(this.label49);
             this.groupBox13.Controls.Add(this.label48);
-            this.groupBox13.Location = new System.Drawing.Point(814, 256);
+            this.groupBox13.Location = new System.Drawing.Point(1020, 256);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Size = new System.Drawing.Size(211, 403);
             this.groupBox13.TabIndex = 59;
@@ -1033,7 +1082,7 @@
             this.groupBox12.Controls.Add(this.label45);
             this.groupBox12.Controls.Add(this.label44);
             this.groupBox12.Controls.Add(this.label39);
-            this.groupBox12.Location = new System.Drawing.Point(814, 6);
+            this.groupBox12.Location = new System.Drawing.Point(1020, 6);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(211, 244);
             this.groupBox12.TabIndex = 58;
@@ -1158,7 +1207,7 @@
             this.groupBox11.Controls.Add(this.label38);
             this.groupBox11.Controls.Add(this.label37);
             this.groupBox11.Controls.Add(this.label36);
-            this.groupBox11.Location = new System.Drawing.Point(343, 6);
+            this.groupBox11.Location = new System.Drawing.Point(549, 6);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(465, 111);
             this.groupBox11.TabIndex = 57;
@@ -1283,7 +1332,7 @@
             this.groupBox10.Controls.Add(this.radioButton32);
             this.groupBox10.Controls.Add(this.radioButton31);
             this.groupBox10.Controls.Add(this.radioButton30);
-            this.groupBox10.Location = new System.Drawing.Point(171, 6);
+            this.groupBox10.Location = new System.Drawing.Point(377, 6);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(165, 128);
             this.groupBox10.TabIndex = 54;
@@ -1343,6 +1392,7 @@
             this.radioButton30.TabStop = true;
             this.radioButton30.Text = "Афінні";
             this.radioButton30.UseVisualStyleBackColor = true;
+            this.radioButton30.CheckedChanged += new System.EventHandler(this.radioButton30_CheckedChanged);
             // 
             // groupBox7
             // 
@@ -1376,7 +1426,7 @@
             this.groupBox7.Controls.Add(this.textBox11);
             this.groupBox7.Controls.Add(this.writeTimeOfAllAlgorithmsInFile);
             this.groupBox7.Controls.Add(this.writeTimeInFile);
-            this.groupBox7.Location = new System.Drawing.Point(581, 254);
+            this.groupBox7.Location = new System.Drawing.Point(787, 254);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(227, 405);
             this.groupBox7.TabIndex = 39;
@@ -1650,7 +1700,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(449, 354);
+            this.label15.Location = new System.Drawing.Point(655, 354);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(114, 13);
             this.label15.TabIndex = 38;
@@ -1666,7 +1716,7 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn8});
-            this.dataGridView4.Location = new System.Drawing.Point(172, 370);
+            this.dataGridView4.Location = new System.Drawing.Point(378, 370);
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.ReadOnly = true;
             this.dataGridView4.Size = new System.Drawing.Size(391, 197);
@@ -1708,7 +1758,7 @@
             this.groupBox6.Controls.Add(this.textBox10);
             this.groupBox6.Controls.Add(this.richTextBox5);
             this.groupBox6.Controls.Add(this.richTextBox4);
-            this.groupBox6.Location = new System.Drawing.Point(581, 118);
+            this.groupBox6.Location = new System.Drawing.Point(787, 118);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(227, 135);
             this.groupBox6.TabIndex = 36;
@@ -1785,7 +1835,7 @@
             this.X,
             this.Y,
             this.Z});
-            this.dataGridView1.Location = new System.Drawing.Point(172, 143);
+            this.dataGridView1.Location = new System.Drawing.Point(378, 143);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(391, 208);
@@ -1827,12 +1877,30 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.multiplyAllAlgorithms);
             this.groupBox2.Controls.Add(this.Multiply);
-            this.groupBox2.Location = new System.Drawing.Point(3, 6);
+            this.groupBox2.Location = new System.Drawing.Point(209, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(163, 637);
+            this.groupBox2.Size = new System.Drawing.Size(163, 653);
             this.groupBox2.TabIndex = 29;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Алгоритми множення";
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(8, 509);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(138, 23);
+            this.button8.TabIndex = 61;
+            this.button8.Text = "Запустити обрані";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(3, 39);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(155, 169);
+            this.checkedListBox1.TabIndex = 72;
             // 
             // label71
             // 
@@ -1896,7 +1964,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(8, 428);
+            this.button2.Location = new System.Drawing.Point(8, 433);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(138, 65);
             this.button2.TabIndex = 55;
@@ -1941,9 +2009,9 @@
             // 
             // multiplyAllAlgorithms
             // 
-            this.multiplyAllAlgorithms.Location = new System.Drawing.Point(27, 394);
+            this.multiplyAllAlgorithms.Location = new System.Drawing.Point(8, 399);
             this.multiplyAllAlgorithms.Name = "multiplyAllAlgorithms";
-            this.multiplyAllAlgorithms.Size = new System.Drawing.Size(91, 23);
+            this.multiplyAllAlgorithms.Size = new System.Drawing.Size(138, 23);
             this.multiplyAllAlgorithms.TabIndex = 44;
             this.multiplyAllAlgorithms.Text = "Помножити всі";
             this.multiplyAllAlgorithms.UseVisualStyleBackColor = true;
@@ -1951,9 +2019,9 @@
             // 
             // Multiply
             // 
-            this.Multiply.Location = new System.Drawing.Point(27, 365);
+            this.Multiply.Location = new System.Drawing.Point(8, 365);
             this.Multiply.Name = "Multiply";
-            this.Multiply.Size = new System.Drawing.Size(91, 23);
+            this.Multiply.Size = new System.Drawing.Size(138, 23);
             this.Multiply.TabIndex = 33;
             this.Multiply.Text = "Помножити";
             this.Multiply.UseVisualStyleBackColor = true;
@@ -1962,7 +2030,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(526, 127);
+            this.label4.Location = new System.Drawing.Point(732, 127);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 13);
             this.label4.TabIndex = 28;
@@ -1970,7 +2038,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(172, 578);
+            this.button3.Location = new System.Drawing.Point(378, 578);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(138, 65);
             this.button3.TabIndex = 56;
@@ -1994,7 +2062,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1037, 664);
+            this.tabPage3.Size = new System.Drawing.Size(1239, 665);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Операції над точками";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -2480,7 +2548,7 @@
             this.tabPage4.Controls.Add(this.groupBox16);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1037, 664);
+            this.tabPage4.Size = new System.Drawing.Size(1239, 665);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Тестування";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -2724,7 +2792,7 @@
             this.toolStripStatusLabel2});
             this.statusStrip1.Location = new System.Drawing.Point(0, 696);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1184, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1251, 22);
             this.statusStrip1.TabIndex = 20;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -2734,51 +2802,46 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(119, 17);
             this.toolStripStatusLabel1.Text = "Поточний алгоритм";
             // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            // 
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(43, 17);
             this.toolStripStatusLabel2.Text = "Статус";
             // 
-            // toolStripProgressBar1
+            // button11
             // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            this.button11.Location = new System.Drawing.Point(27, 238);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(138, 23);
+            this.button11.TabIndex = 74;
+            this.button11.Text = "Експорт в Excel";
+            this.button11.UseVisualStyleBackColor = true;
             // 
-            // checkedListBox1
+            // checkedListBox3
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(3, 39);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(155, 169);
-            this.checkedListBox1.TabIndex = 72;
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(33, 509);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
-            this.button8.TabIndex = 61;
-            this.button8.Text = "button8";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(500, 578);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(63, 65);
-            this.button9.TabIndex = 61;
-            this.button9.Text = "X";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.checkedListBox3.FormattingEnabled = true;
+            this.checkedListBox3.Items.AddRange(new object[] {
+            "Афінні",
+            "Проективні",
+            "Якобі",
+            "Модифіковані Якобі",
+            "Якобі-Чудновський"});
+            this.checkedListBox3.Location = new System.Drawing.Point(473, 131);
+            this.checkedListBox3.Name = "checkedListBox3";
+            this.checkedListBox3.Size = new System.Drawing.Size(155, 169);
+            this.checkedListBox3.TabIndex = 73;
             // 
             // ECC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1184, 718);
+            this.ClientSize = new System.Drawing.Size(1251, 718);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tabControl1);
             this.Name = "ECC";
@@ -2796,6 +2859,7 @@
             this.groupBox4.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.groupBox17.ResumeLayout(false);
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
             this.groupBox12.ResumeLayout(false);
@@ -3088,5 +3152,10 @@
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.GroupBox groupBox17;
+        private System.Windows.Forms.CheckedListBox checkedListBox2;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.CheckedListBox checkedListBox3;
+        private System.Windows.Forms.Button button11;
     }
 }

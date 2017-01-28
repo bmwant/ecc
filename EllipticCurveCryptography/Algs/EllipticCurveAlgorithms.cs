@@ -13,13 +13,13 @@ namespace EllipticCurveCryptography
         public BigInteger p;
         public BigInteger xP;
         public BigInteger yP;
-        public int n;
-        public int h;
+        public BigInteger n;
+        public BigInteger h;
         public HashAlgorithm HA;
         public Random rand;
 
         public EllipticCurveAlgorithms(BigInteger a, BigInteger b, BigInteger p,
-            BigInteger xP, BigInteger yP, int n, int h, MultiplyPoint multiplier = null, PointMultiplication.AddDelegate adder = null, HashAlgorithm ha = null)
+            BigInteger xP, BigInteger yP, BigInteger n, BigInteger h, MultiplyPoint multiplier = null, PointMultiplication.AddDelegate adder = null, HashAlgorithm ha = null)
         {
             if (b == 0)
             {

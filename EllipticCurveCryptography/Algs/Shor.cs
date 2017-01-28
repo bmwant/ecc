@@ -7,7 +7,7 @@ namespace EllipticCurveCryptography
 {
     public class Shor :EllipticCurveAlgorithms
     {
-        public Shor(BigInteger a, BigInteger b, BigInteger p, BigInteger xP, BigInteger yP, int n,
+        public Shor(BigInteger a, BigInteger b, BigInteger p, BigInteger xP, BigInteger yP, BigInteger n,
             MultiplyPoint multiplier = null, PointMultiplication.AddDelegate adder = null, HashAlgorithm ha = null)
             : base(a, b, p, xP, yP, n, 1, multiplier, adder,ha)
         {

@@ -6,7 +6,7 @@ namespace EllipticCurveCryptography
     public class KCDSA : EllipticCurveAlgorithms
     {
         public KCDSA(BigInteger a, BigInteger b, BigInteger p, BigInteger xP, 
-            BigInteger yP, int n, MultiplyPoint multiplier = null, PointMultiplication.AddDelegate adder = null, HashAlgorithm ha = null)
+            BigInteger yP, BigInteger n, MultiplyPoint multiplier = null, PointMultiplication.AddDelegate adder = null, HashAlgorithm ha = null)
             : base(a, b, p, xP, yP, n, 1, multiplier, adder, ha)
         {
         }
@@ -17,7 +17,7 @@ namespace EllipticCurveCryptography
             while (true)
             {
                 BigInteger x, y, z;
-                int k = rand.Next(1, n);
+                int k = rand.Next(1, (int)n);
                 Multiplier(xP, yP, 1, A, k, p, out x, out y, out z, 0);
                 r = new BigInteger(HA.ComputeHash((x|y).ToByteArray()));
                 var da = new BigInteger(data);
