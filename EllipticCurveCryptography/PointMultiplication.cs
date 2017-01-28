@@ -824,6 +824,8 @@ namespace EllipticCurveCryptography
         public static void Point_Multiplication_Affine_Coord_3(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, int w, BigInteger p, 
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
         {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
             int ind = (int)Math.Pow(2, w) - 1;
             BigInteger[,] PreComputation = new BigInteger[ind, 3];
             BigInteger x3 = 0, y3 = 0, z3 = 0, t3 = 0, r5 = 0, r6 = 0;
@@ -847,8 +849,7 @@ namespace EllipticCurveCryptography
             if (t * w < str.Length) t++;
             string temp;
 
-            Stopwatch stopWatch = new Stopwatch();
-            stopWatch.Start();
+            // Set timer here not to include precomputations
 
             for (int i = 1; i <= t; i++)
             {

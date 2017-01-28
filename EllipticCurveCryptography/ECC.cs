@@ -820,19 +820,13 @@ out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCount
 
         private int Get_Type()
         {
-            int type = 0;
-            if (radioButton30.Checked)
-                type = 0;
-            else if (radioButton31.Checked)
-                type = 1;
-            else if (radioButton32.Checked)
-                type = 2;
-            else if (radioButton50.Checked)
-                type = 3;
-            else if (radioButton49.Checked)
-                type = 4;
-            else MessageBox.Show("Виберіть систему координат!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return type;
+            if(checkedListBox3.CheckedItems.Count != 1)
+            {
+                MessageBox.Show("Виберіть одну систему координат!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new ArgumentException("Exactly one checkbox selected required for coord type");
+            }
+            
+            return checkedListBox3.CheckedIndices[0];
         }
 
         private void ExportToExcel()
@@ -906,8 +900,15 @@ out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCount
             double tableTime = 0;
 
             OperationsCounter ops = new OperationsCounter(totalOperations: 100, progress: progress);
-            int type = Get_Type();
-
+            int type = 0;
+            try
+            {
+                type = Get_Type();
+            }
+            catch (ArgumentException)
+            {
+                return;
+            }
             // Determine if there are any items checked.
             if (checkedListBox1.CheckedItems.Count == 1)
             {
@@ -1066,7 +1067,14 @@ out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCount
             z1 = BigInteger.Parse(dataGridView1.CurrentRow.Cells[2].Value.ToString());
 
             OperationsCounter ops = new OperationsCounter(totalOperations: 100, progress: progress);
-            int type = Get_Type();
+            int type = 0;
+            try { 
+                type = Get_Type();
+            }
+            catch (ArgumentException)
+            {
+                return;
+            }
 
             if (x1 == 0 || y1 == 0 || z1 == 0)
                 MessageBox.Show("Виберіть точку!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1461,35 +1469,34 @@ out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCount
             FileStream fs = new FileStream(filename, FileMode.Create, FileAccess.Write);
             StreamWriter sw = new StreamWriter(fs);
             int type = 0;
-            if (radioButton30.Checked)
+            try
             {
-                type = 0;
+                type = Get_Type();
+            }
+            catch (ArgumentException)
+            {
+                return;
+            }
+
+            if (type == 0)
+            {
                 sw.WriteLine("Афінні координати");
             }
-            else if (radioButton31.Checked)
+            else if (type == 1)
             {
-                type = 1;
                 sw.WriteLine("Проективні координати");
             }
-            else if (radioButton32.Checked)
+            else if (type == 2)
             {
-                type = 2;
                 sw.WriteLine("Координати Якобі");
             }
-            else if (radioButton50.Checked)
+            else if (type == 3)
             {
-                type = 3;
                 sw.WriteLine("Jacoby Chudnovskii");
             }
-            else if (radioButton49.Checked)
+            else if (type == 4)
             {
-                type = 4;
                 sw.WriteLine("Modified Jacoby");
-            }
-            else
-            {
-                MessageBox.Show("Виберіть систему координат!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                sw.WriteLine("Афінні координати");
             }
 
             /*  if (openFileDialog1.ShowDialog() == DialogResult.Cancel) { sw.Close(); }
@@ -1656,36 +1663,36 @@ out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCount
             points = EllipticCC.ReadFromFile(quantity, out a, out p);
             int p_bits = Functions.ToBin(p).Length;
             int type = 0;
-            string sysCoord = "";
-            if (radioButton30.Checked)
+            try
             {
-                type = 0;
+                type = Get_Type();
+            }
+            catch (ArgumentException)
+            {
+                return;
+            }
+            string sysCoord = "";
+            if (type == 0)
+            {
                 sysCoord = "AffineCoordinate";
             }
-            else if (radioButton31.Checked)
+            else if (type == 1)
             {
-                type = 1;
                 sysCoord = "ProjectiveCoordinate";
             }
-            else if (radioButton32.Checked)
+            else if (type == 2)
             {
-                type = 2;
                 sysCoord = "JacobiCoordinate";
             }
-            else if (radioButton50.Checked)
+            else if (type == 3)
             {
-                type = 3;
                 sysCoord = "JacobiChudnovskyiCoordinate";
             }
-            else if (radioButton49.Checked)
+            else if (type == 4)
             {
-                type = 4;
                 sysCoord = "ModifiedJacobiCoordinate";
             }
-            else
-            {
-                MessageBox.Show("Виберіть систему координат!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+
             openFileDialog1.Filter = "txt файли(*.txt)|*.txt";
             openFileDialog1.FileName = "All_Algorithms_Time_" + p_bits + "_" + sysCoord + ".txt"; //All_Algorithms_Time_
             string filename = openFileDialog1.FileName;
@@ -2016,7 +2023,16 @@ out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCount
             a_max = BigInteger.Parse(textBox27.Text);
             b_max = BigInteger.Parse(textBox28.Text);
 
-            int type = Get_Type();
+            int type = 0;
+            try
+            {
+                type = Get_Type();
+            }
+            catch (ArgumentException)
+            {
+                return;
+            }
+            
 
             if (x1 == 0 || y1 == 0)
                 MessageBox.Show("Виберіть точку!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -3541,12 +3557,15 @@ out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCount
         {
             OperationsCounter dummyOps = new OperationsCounter();
             int type = 0;
-            if (radioButton30.Checked)
-                type = 0;
-            else if (radioButton31.Checked)
-                type = 1;
-            else if (radioButton32.Checked)
-                type = 2;
+            try
+            {
+                type = Get_Type();
+            }
+            catch (ArgumentException)
+            {
+                return;
+            }
+
             BigInteger p, x2, y2, z2, a;
             int quantity = int.Parse(textBox14.Text), num;
             BigInteger step = 0;
@@ -3783,12 +3802,14 @@ out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCount
         {
             OperationsCounter dummyOps = new OperationsCounter();
             int type = 0;
-            if (radioButton30.Checked)
-                type = 0;
-            else if (radioButton31.Checked)
-                type = 1;
-            else if (radioButton32.Checked)
-                type = 2;
+            try
+            {
+                type = Get_Type();
+            }
+            catch (ArgumentException)
+            {
+                return;
+            }
             BigInteger p, x2, y2, z2, a;
             int quantity = int.Parse(textBox14.Text), num;
             BigInteger step = 0;
@@ -3962,12 +3983,14 @@ out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCount
             OperationsCounter dummyOps = new OperationsCounter();
             //CP
             int type = 0;
-            if (radioButton30.Checked)
-                type = 0;
-            else if (radioButton31.Checked)
-                type = 1;
-            else if (radioButton32.Checked)
-                type = 2;
+            try
+            {
+                type = Get_Type();
+            }
+            catch (ArgumentException)
+            {
+                return;
+            }
             BigInteger p, x2, y2, z2, a;
             int quantity = int.Parse(textBox14.Text), num;
             BigInteger step = 0;
@@ -4630,16 +4653,13 @@ out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCount
 
             BigInteger x3, y3, z3;
             int type = 0;
-            if (radioButton49.Checked)
+            try
             {
-                type = 4;
+                type = Get_Type();
             }
-            else
+            catch (ArgumentException)
             {
-                if (radioButton50.Checked)
-                    type = 3;
-                else
-                    MessageBox.Show("Choose coordinate system", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             if (x1 == 0 || y1 == 0)
@@ -5129,7 +5149,54 @@ out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCount
 
         private void button10_Click(object sender, EventArgs e)
         {
-            Run_Shor();
+            if(checkedListBox3.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("Оберіть хоча б одну систему координат", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (checkedListBox1.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("Оберіть хоча б один алгоритм множення", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (checkedListBox2.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("Оберіть хоча б один алгоритм шифрування", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            BigInteger a, b, p, x3, y3, z3, x2 = 0, y2 = 0, z2 = 0, k, l, a_max, b_max;
+            int w;
+            BigInteger[] S;
+            BigInteger[] M;
+            BigInteger B;
+            B = BigInteger.Parse(textBox26.Text);
+            S = writeToArray(textBox29);
+            M = writeToArray(textBox30);
+            a = BigInteger.Parse(richTextBox4.Text);
+            b = -3;
+            p = BigInteger.Parse(richTextBox5.Text);
+            k = BigInteger.Parse(textBox4.Text);
+            l = BigInteger.Parse(textBox47.Text);
+            w = int.Parse(textBox5.Text);
+            a_max = BigInteger.Parse(textBox27.Text);
+            b_max = BigInteger.Parse(textBox28.Text);
+            double time = 0;
+            double tableTime = 0;
+
+            OperationsCounter ops = new OperationsCounter(totalOperations: 100, progress: progress);
+            int type = Get_Type();
+
+            foreach (var cryptAlgItem in checkedListBox3.CheckedItems)
+            {
+                foreach(var multAlgItem in checkedListBox1.CheckedItems)
+                {
+                    foreach(var coorSysItem in checkedListBox2.CheckedItems)
+                    {
+                        Console.WriteLine("Running " + cryptAlgItem + " " + multAlgItem + " " + coorSysItem);
+                    }
+                }
+            }
+            //Run_Shor();
         }
     }
 }

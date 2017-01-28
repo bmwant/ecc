@@ -128,11 +128,6 @@
             this.label37 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.radioButton50 = new System.Windows.Forms.RadioButton();
-            this.radioButton49 = new System.Windows.Forms.RadioButton();
-            this.radioButton32 = new System.Windows.Forms.RadioButton();
-            this.radioButton31 = new System.Windows.Forms.RadioButton();
-            this.radioButton30 = new System.Windows.Forms.RadioButton();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.textBox42 = new System.Windows.Forms.TextBox();
             this.label56 = new System.Windows.Forms.Label();
@@ -185,7 +180,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button8 = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.label71 = new System.Windows.Forms.Label();
             this.textBox47 = new System.Windows.Forms.TextBox();
             this.label63 = new System.Windows.Forms.Label();
             this.textBox28 = new System.Windows.Forms.TextBox();
@@ -719,7 +713,6 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.checkedListBox3);
             this.tabPage2.Controls.Add(this.groupBox17);
             this.tabPage2.Controls.Add(this.button9);
             this.tabPage2.Controls.Add(this.button6);
@@ -769,7 +762,7 @@
             // checkedListBox2
             // 
             this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Location = new System.Drawing.Point(6, 19);
+            this.checkedListBox2.Location = new System.Drawing.Point(6, 18);
             this.checkedListBox2.Name = "checkedListBox2";
             this.checkedListBox2.Size = new System.Drawing.Size(187, 169);
             this.checkedListBox2.TabIndex = 0;
@@ -1327,72 +1320,13 @@
             // 
             // groupBox10
             // 
-            this.groupBox10.Controls.Add(this.radioButton50);
-            this.groupBox10.Controls.Add(this.radioButton49);
-            this.groupBox10.Controls.Add(this.radioButton32);
-            this.groupBox10.Controls.Add(this.radioButton31);
-            this.groupBox10.Controls.Add(this.radioButton30);
+            this.groupBox10.Controls.Add(this.checkedListBox3);
             this.groupBox10.Location = new System.Drawing.Point(377, 6);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(165, 128);
             this.groupBox10.TabIndex = 54;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Системи координат";
-            // 
-            // radioButton50
-            // 
-            this.radioButton50.AutoSize = true;
-            this.radioButton50.Location = new System.Drawing.Point(10, 102);
-            this.radioButton50.Name = "radioButton50";
-            this.radioButton50.Size = new System.Drawing.Size(117, 17);
-            this.radioButton50.TabIndex = 62;
-            this.radioButton50.TabStop = true;
-            this.radioButton50.Text = "Якобі-Чудновский";
-            this.radioButton50.UseVisualStyleBackColor = true;
-            // 
-            // radioButton49
-            // 
-            this.radioButton49.AutoSize = true;
-            this.radioButton49.Location = new System.Drawing.Point(10, 79);
-            this.radioButton49.Name = "radioButton49";
-            this.radioButton49.Size = new System.Drawing.Size(125, 17);
-            this.radioButton49.TabIndex = 3;
-            this.radioButton49.TabStop = true;
-            this.radioButton49.Text = "Модифіковані Якобі";
-            this.radioButton49.UseVisualStyleBackColor = true;
-            // 
-            // radioButton32
-            // 
-            this.radioButton32.AutoSize = true;
-            this.radioButton32.Location = new System.Drawing.Point(10, 60);
-            this.radioButton32.Name = "radioButton32";
-            this.radioButton32.Size = new System.Drawing.Size(53, 17);
-            this.radioButton32.TabIndex = 2;
-            this.radioButton32.Text = "Якобі";
-            this.radioButton32.UseVisualStyleBackColor = true;
-            // 
-            // radioButton31
-            // 
-            this.radioButton31.AutoSize = true;
-            this.radioButton31.Location = new System.Drawing.Point(10, 38);
-            this.radioButton31.Name = "radioButton31";
-            this.radioButton31.Size = new System.Drawing.Size(82, 17);
-            this.radioButton31.TabIndex = 1;
-            this.radioButton31.Text = "Проективні";
-            this.radioButton31.UseVisualStyleBackColor = true;
-            // 
-            // radioButton30
-            // 
-            this.radioButton30.AutoSize = true;
-            this.radioButton30.Checked = true;
-            this.radioButton30.Location = new System.Drawing.Point(10, 20);
-            this.radioButton30.Name = "radioButton30";
-            this.radioButton30.Size = new System.Drawing.Size(56, 17);
-            this.radioButton30.TabIndex = 0;
-            this.radioButton30.TabStop = true;
-            this.radioButton30.Text = "Афінні";
-            this.radioButton30.UseVisualStyleBackColor = true;
-            this.radioButton30.CheckedChanged += new System.EventHandler(this.radioButton30_CheckedChanged);
             // 
             // groupBox7
             // 
@@ -1863,7 +1797,6 @@
             // 
             this.groupBox2.Controls.Add(this.button8);
             this.groupBox2.Controls.Add(this.checkedListBox1);
-            this.groupBox2.Controls.Add(this.label71);
             this.groupBox2.Controls.Add(this.textBox47);
             this.groupBox2.Controls.Add(this.label63);
             this.groupBox2.Controls.Add(this.textBox28);
@@ -1890,26 +1823,17 @@
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(138, 23);
             this.button8.TabIndex = 61;
-            this.button8.Text = "Запустити обрані";
+            this.button8.Text = "Запустити множення";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // checkedListBox1
             // 
             this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(3, 39);
+            this.checkedListBox1.Location = new System.Drawing.Point(2, 18);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(155, 169);
             this.checkedListBox1.TabIndex = 72;
-            // 
-            // label71
-            // 
-            this.label71.AutoSize = true;
-            this.label71.Location = new System.Drawing.Point(3, 22);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(105, 13);
-            this.label71.TabIndex = 71;
-            this.label71.Text = "Виберіть алгоритм:";
             // 
             // textBox47
             // 
@@ -2831,9 +2755,9 @@
             "Якобі",
             "Модифіковані Якобі",
             "Якобі-Чудновський"});
-            this.checkedListBox3.Location = new System.Drawing.Point(473, 131);
+            this.checkedListBox3.Location = new System.Drawing.Point(10, 19);
             this.checkedListBox3.Name = "checkedListBox3";
-            this.checkedListBox3.Size = new System.Drawing.Size(155, 169);
+            this.checkedListBox3.Size = new System.Drawing.Size(149, 94);
             this.checkedListBox3.TabIndex = 73;
             // 
             // ECC
@@ -2867,7 +2791,6 @@
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
             this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
@@ -3025,9 +2948,6 @@
         private System.Windows.Forms.TextBox textBox17;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.RadioButton radioButton31;
-        private System.Windows.Forms.RadioButton radioButton30;
-        private System.Windows.Forms.RadioButton radioButton32;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Z;
         private System.Windows.Forms.Button button3;
@@ -3132,9 +3052,7 @@
         private System.Windows.Forms.Label label62;
         private System.Windows.Forms.TextBox textBox47;
         private System.Windows.Forms.Label label63;
-        private System.Windows.Forms.RadioButton radioButton49;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.RadioButton radioButton50;
         private System.Windows.Forms.TextBox textBox52;
         private System.Windows.Forms.Label label70;
         private System.Windows.Forms.RadioButton radioButton52;
@@ -3143,7 +3061,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.Label label71;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label73;
         private System.Windows.Forms.Label label72;
