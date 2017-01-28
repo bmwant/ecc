@@ -742,6 +742,9 @@ namespace EllipticCurveCryptography
         public static void Point_Multiplication_Affine_Coord_1(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+
             if (ops == null) ops = new OperationsCounter();  // Create default unused if not provided
 
             BigInteger x3 = 0;
@@ -782,11 +785,17 @@ namespace EllipticCurveCryptography
             if (y2 < 0) y2 += p;
             if (x2 == 0 && y2 == 1)
                 z2 = 0;
+
+            stopWatch.Stop();
+            TimeSpan ts = stopWatch.Elapsed;
+            time = ts.TotalMilliseconds;
         }
+
         public static void Point_Multiplication_Affine_Coord_2(BigInteger x1, BigInteger y1, BigInteger z1,BigInteger a, BigInteger k, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
-            time = 0;
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
             x2 = 0;
             y2 = 1;
             z2 = 0;
@@ -816,7 +825,12 @@ namespace EllipticCurveCryptography
             }
             if (x2 == 0 && y2 == 1)
                 z2 = 0;
+
+            stopWatch.Stop();
+            TimeSpan ts = stopWatch.Elapsed;
+            time = ts.TotalMilliseconds;
         }
+
         private static string ToBin(BigInteger k)
         {
             return Functions.ToBin(k);
@@ -1034,6 +1048,7 @@ namespace EllipticCurveCryptography
             TimeSpan ts = stopWatch.Elapsed;
             time = ts.TotalMilliseconds;
         }
+
         public static void Point_Multiplication_Affine_Coord_5(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p, 
             out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
@@ -1049,7 +1064,8 @@ namespace EllipticCurveCryptography
             
             for (int i = 0; i < count; i++)
             {
-                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, temp_step + i, p, out x2, out y2, out z2, type);
+                double iterationTime = 0;
+                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, temp_step + i, p, out x2, out y2, out z2, type, out iterationTime);
                 PreComputation[i, 0] = x2;
                 PreComputation[i, 1] = y2;
                 PreComputation[i, 2] = z2;
@@ -1708,13 +1724,13 @@ namespace EllipticCurveCryptography
         }
 
         public static void Point_Multiplication_Affine_Coord_10(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p, 
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double tableTime, int type, out double time, int w = 0, OperationsCounter ops = null)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
             int count = (int)((2 * (BigInteger.Pow(2, w) - BigInteger.Pow(-1, w)) / 3) / 2);
             BigInteger[,] PreComputation = new BigInteger[count, 3];
             BigInteger x3 = 0, y3 = 0, z3 = 0;
             Stopwatch stopWatch = new Stopwatch();
-            stopWatch.Start();
+            // Pre computations begin
             for (int i = 0; i < count * 2; i += 2)
             {
                 double iterationTime = 0;
@@ -1723,9 +1739,7 @@ namespace EllipticCurveCryptography
                 PreComputation[i / 2, 1] = y2;
                 PreComputation[i / 2, 2] = z2;
             }
-            stopWatch.Stop();
-            TimeSpan ts1 = stopWatch.Elapsed;
-            tableTime = ts1.TotalMilliseconds;
+
             BigInteger t3 = 0, r5 = 0, r6 = 0;
             BigInteger t1 = a * BigInteger.Pow(z1, 4); BigInteger t2 = 0;
             BigInteger r1 = z1 * z1;
@@ -1806,6 +1820,7 @@ namespace EllipticCurveCryptography
             TimeSpan ts = stopWatch.Elapsed;
             time = ts.TotalMilliseconds;
         }
+
         public static void Point_Multiplication_Affine_Coord_11_1(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p, 
             out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time,  int w = 0, OperationsCounter ops = null)
         {
@@ -1814,7 +1829,8 @@ namespace EllipticCurveCryptography
             BigInteger x3 = 0, y3 = 0, z3 = 0;
             for (int i = 0; i < count * 2; i += 2)
             {
-                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, i + 1, p, out x2, out y2, out z2, type);
+                double iterationTime = 0;
+                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, i + 1, p, out x2, out y2, out z2, type, out iterationTime);
                 PreComputation[i / 2, 0] = x2;
                 PreComputation[i / 2, 1] = y2;
                 PreComputation[i / 2, 2] = z2;
@@ -1986,14 +2002,14 @@ namespace EllipticCurveCryptography
             TimeSpan ts = stopWatch.Elapsed;
             time = ts.TotalMilliseconds;
         }
-        public static void Point_Multiplication_Affine_Coord_12(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, int w, BigInteger p, 
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, out double tableTime, int type, OperationsCounter ops)
+        public static void Point_Multiplication_Affine_Coord_12(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p, 
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
             int count = (int)(BigInteger.Pow(2, w - 2));
             BigInteger[,] PreComputation = new BigInteger[count, 3];
             BigInteger x3 = 0, y3 = 0, z3 = 0;
             Stopwatch stopWatch = new Stopwatch();
-            stopWatch.Start();
+            // Precomputations begin
             for (int i = 0; i < count * 2; i += 2)
             {
                 double iterationTime = 0;
@@ -2002,14 +2018,13 @@ namespace EllipticCurveCryptography
                 PreComputation[i / 2, 1] = y2;
                 PreComputation[i / 2, 2] = z2;
             }
-            stopWatch.Stop();
+
             BigInteger t3 = 0, r5 = 0, r6 = 0;
             BigInteger t1 = a * BigInteger.Pow(z1, 4); BigInteger t2 = 0;
             BigInteger r1 = z1 * z1;
             BigInteger r2 = z1 * z1 * z1;
             BigInteger r3 = 0, r4 = 0;
-            TimeSpan ts1 = stopWatch.Elapsed;
-            tableTime = ts1.TotalMilliseconds;
+
             x2 = 0;
             y2 = 1;
             z2 = 0;
@@ -2076,7 +2091,8 @@ namespace EllipticCurveCryptography
             BigInteger[,] PreComputation = new BigInteger[count, 3];
             for (int u = 0; u < count * 2; u += 2)
             {
-                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, u + 1, p, out x2, out y2, out z2, type);
+                double iterationTime = 0;
+                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, u + 1, p, out x2, out y2, out z2, type, out iterationTime);
                 PreComputation[u / 2, 0] = x2;
                 PreComputation[u / 2, 1] = y2;
                 PreComputation[u / 2, 2] = z2;
@@ -2124,7 +2140,8 @@ namespace EllipticCurveCryptography
             BigInteger[,] PreComputation = new BigInteger[count, 3];
             for (int u = 0; u < count * 2; u += 2)
             {
-                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, u + 1, p, out x2, out y2, out z2, type);
+                double iterationTime = 0;
+                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, u + 1, p, out x2, out y2, out z2, type, out iterationTime);
                 PreComputation[u / 2, 0] = x2;
                 PreComputation[u / 2, 1] = y2;
                 PreComputation[u / 2, 2] = z2;
@@ -3091,7 +3108,8 @@ namespace EllipticCurveCryptography
 
                 for (int i = 0; i < S.Length; i++)
                 {
-                    Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, S[i], p, out x2, out y2, out z2, type);
+                    double iterationTime = 0;
+                    Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, S[i], p, out x2, out y2, out z2, type, out iterationTime);
                     PreComputation[i, 0] = x2;
                     PreComputation[i, 1] = y2;
                     PreComputation[i, 2] = z2;
@@ -3114,7 +3132,8 @@ namespace EllipticCurveCryptography
                     {
                         for (int kk = 0; kk < S.Length; kk++) // перебирає рядки PreComputation
                         {
-                            Point_Multiplication_Affine_Coord_1(PreComputation[kk, 0], PreComputation[kk, 1], PreComputation[kk, 2], a, (int)i.pows[j, 0], p, out PreComputation[kk, 0], out PreComputation[kk, 1], out PreComputation[kk, 2],type);
+                            double iterationTime = 0;
+                            Point_Multiplication_Affine_Coord_1(PreComputation[kk, 0], PreComputation[kk, 1], PreComputation[kk, 2], a, (int)i.pows[j, 0], p, out PreComputation[kk, 0], out PreComputation[kk, 1], out PreComputation[kk, 2], type, out iterationTime);
                         }
                     }
                 }
@@ -3162,7 +3181,8 @@ namespace EllipticCurveCryptography
             BigInteger r3 = 0, r4 = 0;
             for (int i = 0; i < S.Length; i++)
             {
-                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, S[i], p, out x2, out y2, out z2, type);
+                double iterationTime = 0;
+                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, S[i], p, out x2, out y2, out z2, type, out iterationTime);
                 PreComputation[i, 0] = x2;
                 PreComputation[i, 1] = y2;
                 PreComputation[i, 2] = z2;
@@ -3179,7 +3199,10 @@ namespace EllipticCurveCryptography
                 for (int j = 0; j < M.Length; ++j)
                 {
                     for (int jj = 0; jj < i.pows[j, 1]; ++jj)
-                        Point_Multiplication_Affine_Coord_1(x2, y2, z2, a, (int)i.pows[j, 0], p, out x2, out y2, out z2, type);
+                    {
+                        double iterationTime = 0;
+                        Point_Multiplication_Affine_Coord_1(x2, y2, z2, a, (int)i.pows[j, 0], p, out x2, out y2, out z2, type, out iterationTime);
+                    }
                 }
                 if (i.offset != 0)
                 {
@@ -3215,7 +3238,8 @@ namespace EllipticCurveCryptography
             BigInteger[,] PreComputation = new BigInteger[w, 3];
             for (int i = 0; i < w; i++)
             {
-                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, BigInteger.Pow(2, i), p, out x2, out y2, out z2, type);
+                double iterationTime = 0;
+                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, BigInteger.Pow(2, i), p, out x2, out y2, out z2, type, out iterationTime);
                 PreComputation[i, 0] = x2;
                 PreComputation[i, 1] = y2;
                 PreComputation[i, 2] = z2;
@@ -3297,7 +3321,8 @@ namespace EllipticCurveCryptography
             BigInteger[,] PreComputation = new BigInteger[w, 3];
             for (int i = 0; i < w; i++)
             {
-                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, BigInteger.Pow(2, i+1)-1, p, out x2, out y2, out z2, type);
+                double iterationTime = 0;
+                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, BigInteger.Pow(2, i+1)-1, p, out x2, out y2, out z2, type, out iterationTime);
                 PreComputation[i, 0] = x2;
                 PreComputation[i, 1] = y2;
                 PreComputation[i, 2] = z2;
@@ -3387,7 +3412,8 @@ namespace EllipticCurveCryptography
             PreComputation[0, 2] = z1;     
             for (int i = 1; i < w; i++)
             {
-                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, BigInteger.Pow(2, i) + 1, p, out x2, out y2, out z2, type);
+                double iterationTime = 0;
+                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, BigInteger.Pow(2, i) + 1, p, out x2, out y2, out z2, type, out iterationTime);
                 PreComputation[i, 0] = x2;
                 PreComputation[i, 1] = y2;
                 PreComputation[i, 2] = z2;
@@ -3494,7 +3520,8 @@ namespace EllipticCurveCryptography
             BigInteger[,] PreComputationFor31 = new BigInteger[count_bit, 3];
             for (int i = 0; i < m; i++)
             {
-                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, BigInteger.Pow(2, i + 1) - 1, p, out x2, out y2, out z2, type);
+                double iterationTime = 0;
+                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, BigInteger.Pow(2, i + 1) - 1, p, out x2, out y2, out z2, type, out iterationTime);
                 PreComputationFor30[i, 0] = x2;
                 PreComputationFor30[i, 1] = y2;
                 PreComputationFor30[i, 2] = z2;
@@ -3504,7 +3531,8 @@ namespace EllipticCurveCryptography
             PreComputationFor31[0, 2] = z1;
             for (int i = 1; i < m; i++)
             {
-                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, BigInteger.Pow(2, i) + 1, p, out x2, out y2, out z2, type);
+                double iterationTime = 0;
+                Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, BigInteger.Pow(2, i) + 1, p, out x2, out y2, out z2, type, out iterationTime);
                 PreComputationFor31[i, 0] = x2;
                 PreComputationFor31[i, 1] = y2;
                 PreComputationFor31[i, 2] = z2;
@@ -3704,9 +3732,10 @@ namespace EllipticCurveCryptography
             {
                 for (int j = 0; j < count; j++)
                 {
-                    Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, i, p, out x3, out y3, out z3,type);
+                    double iterationTime = 0;
+                    Point_Multiplication_Affine_Coord_1(x1, y1, z1, a, i, p, out x3, out y3, out z3, type, out iterationTime);
                     BigInteger temp1, temp2 , temp3;
-                    Point_Multiplication_Affine_Coord_1(x2, y2, z2, a, j, p, out temp1, out temp2, out temp3, type);
+                    Point_Multiplication_Affine_Coord_1(x2, y2, z2, a, j, p, out temp1, out temp2, out temp3, type, out iterationTime);
                     AddList[type](x3,y3,z3,temp1, temp2, temp3, a, p, out x3, out y3, out z3);
                     PreComputation[0, i, j] = x3;
                     PreComputation[1, i, j] = y3;

@@ -54,8 +54,8 @@ namespace EllipticCurveCryptography
         public Point GenerateKey(BigInteger d)
         {
             BigInteger x, y, z;
-            //add counter and timer
-            Multiplier(xP, yP, 1, A, d, p, out x, out y, out z, 0);
+            double time = 0;
+            Multiplier(xP, yP, 1, A, d, p, out x, out y, out z, 0, out time);
             return new Point(x, y);
         }
 

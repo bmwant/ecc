@@ -34,8 +34,8 @@ namespace EllipticCurveCryptography
                 for (int i = 0; i < k.Count; i++)
                 {
                     BigInteger x, y, z;
-                    //add counter and timer
-                    Multiplier(xP, yP, 1, A, k[i], p, out x, out y, out z, 0);
+                    double iterationTime = 0;
+                    Multiplier(xP, yP, 1, A, k[i], p, out x, out y, out z, 0, out iterationTime);
                     RList.Add(new Point(x, y));
                 }
                 BigInteger xR, yR, zR;
@@ -78,11 +78,11 @@ namespace EllipticCurveCryptography
             }
             BigInteger x, y, z;
             BigInteger xR, yR, zR;
-            //add counter and timer
-            Multiplier(xP, yP, 1, A, s, p, out x, out y, out z, 0);
+            double time1 = 0;
+            Multiplier(xP, yP, 1, A, s, p, out x, out y, out z, 0, out time1);
             Point sP = new Point(x,y);
-            //add counter and timer
-            Multiplier(xQ, yQ, 1, A, r, p, out x, out y, out z, 0);
+            double time2 = 0;
+            Multiplier(xQ, yQ, 1, A, r, p, out x, out y, out z, 0, out time2);
             Point rQ = new Point(x, y);
             Adder(sP.X, sP.Y, 1,
                 rQ.X, rQ.Y, 1, A, p, out xR, out yR, out zR);
