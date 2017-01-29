@@ -37,6 +37,7 @@ namespace EllipticCurveCryptography
 
         public void GroupSign(byte[] data, List<BigInteger> k, List<BigInteger> d, out BigInteger r, out BigInteger sign)
         {
+            ops.opElementsAdd(47);
             while (true)
             {
                 if (k.Count != d.Count)

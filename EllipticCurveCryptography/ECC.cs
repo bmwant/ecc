@@ -5293,6 +5293,7 @@ namespace EllipticCurveCryptography
         private void taskFinished(string coorSysItem, string cryptAlgItem, string multAlgItem, OperationsCounter ops)
         {
             // Add info to dictionary
+            Console.WriteLine(ops.ToString());
             tables1[coorSysItem][cryptAlgItem].Add(multAlgItem, ops);
             MessageBox.Show("Task is finished", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
