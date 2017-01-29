@@ -742,10 +742,9 @@ namespace EllipticCurveCryptography
         public static void Point_Multiplication_Affine_Coord_1(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
+            if (ops == null) ops = new OperationsCounter();  // Create default unused if not provided
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
-
-            if (ops == null) ops = new OperationsCounter();  // Create default unused if not provided
 
             BigInteger x3 = 0;
             BigInteger y3 = 1;
@@ -759,6 +758,8 @@ namespace EllipticCurveCryptography
             BigInteger r2 = z1 * z1 * z1;
             BigInteger r3 = 0, r4 = 0;
             ops.opElementsAdd(20);
+            ops.opPointsAdd(15);
+            ops.opPointsDoubling(40);
             string str = Functions.ToBin(k);
             Thread.Sleep(1000);
             ops.opElementsMultiply(40);
