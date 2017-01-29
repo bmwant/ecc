@@ -118,7 +118,7 @@ namespace EllipticCurveCryptography
             });
         }
 
-        private void Run_ECDSA()
+        private void Run_ECDSA(MultiplyPoint multiplier, int coorType)
         {
             ECDSA crypt = new ECDSA(new BigInteger(5), new BigInteger(7), new BigInteger(10), new BigInteger(15), new BigInteger(20), new BigInteger(40));
             var data = Encoding.UTF8.GetBytes("TestTestTEst");
@@ -129,18 +129,18 @@ namespace EllipticCurveCryptography
             Console.Write("This is r and s " + r + " " + s);
         }
 
-        private void Run_GOST_R34_10_2001()
+        private void Run_GOST_R34_10_2001(MultiplyPoint multiplier, int coorType)
         {
         }
 
-        private void Run_KCDSA()
+        private void Run_KCDSA(MultiplyPoint multiplier, int coorType)
         {
 
         }
 
-        private void Run_Shor()
+        private void Run_Shor(MultiplyPoint multiplier, int coorType)
         {
-            var shor = new Shor(2, 6, 17, 2, 1, 11, multiplier: PointMultiplication.Point_Multiplication_Affine_Coord_1);
+            var shor = new Shor(2, 6, 17, 2, 1, 11, multiplier: multiplier);
             var Ds = new List<BigInteger>() { 8, 5 };
             var data = Encoding.UTF8.GetBytes("TestTestTEst");
             var Ks = new List<BigInteger>() { 3, 4 };
@@ -5116,7 +5116,7 @@ out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCount
 
         }
 
-        Dictionary<string, MultiplyPoint> multsadfsaAlgorithms = new Dictionary<string, MultiplyPoint>() {
+        Dictionary<string, MultiplyPoint> multiplyAlgorithms = new Dictionary<string, MultiplyPoint>() {
             {"1", PointMultiplication.Point_Multiplication_Affine_Coord_1},
             {"2", PointMultiplication.Point_Multiplication_Affine_Coord_2},
             {"3", PointMultiplication.Point_Multiplication_Affine_Coord_3},
@@ -5153,6 +5153,35 @@ out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCount
             //{"33", PointMultiplication.Point_Multiplication_Affine_Coord_33},
         };
 
+        // Система координат -> Алгоритм шифрування -> Алгоритм скалярного множення -> Об'єкт кількості операцій
+        Dictionary<string, Dictionary<string, Dictionary<string, OperationsCounter>>> tables1 = new Dictionary<string, Dictionary<string, Dictionary<string, OperationsCounter>>>();
+
+        private void exportTables1<T>(Dictionary<string, T> table)
+        {
+            var excelApp = new Excel.Application();
+            excelApp.Visible = true;
+            Excel.Workbook workbook = excelApp.Workbooks.Add();
+            for (int i = 0; i < table.Keys.Count; i++) {
+                string currentKey = table.Keys.ElementAt(i);
+                
+                Excel.Worksheet newWorkSheet = (Excel.Worksheet)workbook.Worksheets.Add();
+                newWorkSheet.Name = currentKey;
+                newWorkSheet.Cells[1, "A"] = "Назва алгоритму шифрування";
+                newWorkSheet.Cells[1, "B"] = "Назва алгоритму скалярного множення";
+                newWorkSheet.Cells[1, "C"] = "Кількість операцій";
+
+                newWorkSheet.Cells[2, "C"] = "Додавання точок еліптичної кривої";
+                newWorkSheet.Cells[2, "D"] = "Подвоєння точок еліптичної кривої";
+                newWorkSheet.Cells[2, "E"] = "Загалом";
+                newWorkSheet.Columns[0].AutoFit();
+                newWorkSheet.Columns[1].AutoFit();
+                
+            }
+            workbook.SaveAs("Еліптичні криві. Кількість операцій.xlsx");
+        }
+
+        List<Task> TaskList = new List<Task>();
+
         private void button10_Click(object sender, EventArgs e)
         {
             if(checkedListBox3.CheckedItems.Count == 0)
@@ -5170,39 +5199,69 @@ out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCount
                 MessageBox.Show("Оберіть хоча б один алгоритм шифрування", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            BigInteger a, b, p, x3, y3, z3, x2 = 0, y2 = 0, z2 = 0, k, l, a_max, b_max;
-            int w;
-            BigInteger[] S;
-            BigInteger[] M;
-            BigInteger B;
-            B = BigInteger.Parse(textBox26.Text);
-            S = writeToArray(textBox29);
-            M = writeToArray(textBox30);
-            a = BigInteger.Parse(richTextBox4.Text);
-            b = -3;
-            p = BigInteger.Parse(richTextBox5.Text);
-            k = BigInteger.Parse(textBox4.Text);
-            l = BigInteger.Parse(textBox47.Text);
-            w = int.Parse(textBox5.Text);
-            a_max = BigInteger.Parse(textBox27.Text);
-            b_max = BigInteger.Parse(textBox28.Text);
-            double time = 0;
+            //BigInteger a, b, p, x3, y3, z3, x2 = 0, y2 = 0, z2 = 0, k, l, a_max, b_max;
+            //int w;
+            //BigInteger[] S;
+            //BigInteger[] M;
+            //BigInteger B;
+            //B = BigInteger.Parse(textBox26.Text);
+            //S = writeToArray(textBox29);
+            //M = writeToArray(textBox30);
+            //a = BigInteger.Parse(richTextBox4.Text);
+            //b = -3;
+            //p = BigInteger.Parse(richTextBox5.Text);
+            //k = BigInteger.Parse(textBox4.Text);
+            //l = BigInteger.Parse(textBox47.Text);
+            //w = int.Parse(textBox5.Text);
+            //a_max = BigInteger.Parse(textBox27.Text);
+            //b_max = BigInteger.Parse(textBox28.Text);
+            //double time = 0;
 
-            OperationsCounter ops = new OperationsCounter(totalOperations: 100, progress: progress);
-            int type = Get_Type();
-
-            foreach (var cryptAlgItem in checkedListBox3.CheckedItems)
+            tables1.Clear(); // Renew information from previous launch
+            foreach (string coorSysItem in checkedListBox3.CheckedItems)
             {
-                foreach(var multAlgItem in checkedListBox1.CheckedItems)
+                tables1.Add(coorSysItem, new Dictionary<string, Dictionary<string, OperationsCounter>>());
+                foreach (string cryptAlgItem in checkedListBox2.CheckedItems)
                 {
-                    foreach(var coorSysItem in checkedListBox2.CheckedItems)
+                    tables1[coorSysItem].Add(cryptAlgItem, new  Dictionary<string, OperationsCounter>());
+                    foreach (string multAlgItem in checkedListBox1.CheckedItems)
                     {
-                        Console.WriteLine("Running " + cryptAlgItem + " " + multAlgItem + " " + coorSysItem);
+                        int coorType = checkedListBox2.Items.IndexOf(coorSysItem);
+                        MultiplyPoint multiplier = multiplyAlgorithms[multAlgItem];
+                        OperationsCounter ops = new OperationsCounter();
+                        Console.WriteLine("Running " + cryptAlgItem);
+                        Console.WriteLine("\tPoint multiplication algorithm: " + multAlgItem);
+                        Console.WriteLine("\tCoordinate system " + coorSysItem + "\n");
+                        switch (cryptAlgItem)
+                        {
+                            case "ECDSA":
+                                Run_ECDSA(multiplier: multiplier, coorType: coorType);
+                                break;
+                            case "GOST_R34_10_2001":
+                                Run_GOST_R34_10_2001(multiplier: multiplier, coorType: coorType);
+                                break;
+                            case "KCDSA":
+                                Run_KCDSA(multiplier: multiplier, coorType: coorType);
+                                break;
+                            case "Shor":
+                                Task newLaunch = Task.Factory.StartNew(() => Run_Shor(multiplier: multiplier, coorType: coorType))
+                                    .ContinueWith(r => taskFinished());
+                                TaskList.Add(newLaunch);
+                                break;
+                        }
+
+                        // Add info to dictionary
+                        tables1[coorSysItem][cryptAlgItem].Add(multAlgItem, ops);
                     }
                 }
             }
-            Run_Shor();
         }
+        private void taskFinished()
+        {
+            MessageBox.Show("Task is finished", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            exportTables1(tables1);
+        }
+
     }
 }
 
