@@ -5165,7 +5165,8 @@ namespace EllipticCurveCryptography
             excelApp.Visible = true;
             excelApp.DisplayAlerts = false;
             Excel.Workbook workbook = excelApp.Workbooks.Add();
-            for (int i = 0; i < table.Keys.Count; i++) {
+            for (int i = 0; i < table.Keys.Count; i++)
+            {
                 string currentKey = table.Keys.ElementAt(i);
 
                 Excel.Worksheet newWorkSheet = (Excel.Worksheet)workbook.Worksheets.Add();
@@ -5186,15 +5187,17 @@ namespace EllipticCurveCryptography
                     string currentCryptAlg = cryptsIterator.Keys.ElementAt(j);
                     Dictionary<string, OperationsCounter> multIterator = cryptsIterator[currentCryptAlg];
                     int multCount = multIterator.Keys.Count;
-                    newWorkSheet.Cells[3 + j*multCount, "A"] = currentCryptAlg;
+                    newWorkSheet.Cells[3 + j * multCount, "A"] = currentCryptAlg;
 
                     for (int k = 0; k < multCount; k++)
                     {
                         string currentMultAlg = multIterator.Keys.ElementAt(k);
                         int rowPosOffset = 3 + j * multCount + k;
+                        OperationsCounter currentOps = multIterator[currentMultAlg];
                         newWorkSheet.Cells[rowPosOffset, "B"] = currentMultAlg;
-                        newWorkSheet.Cells[rowPosOffset, "C"] = 0;
-                        newWorkSheet.Cells[rowPosOffset, "D"] = 17;
+                        newWorkSheet.Cells[rowPosOffset, "C"] = currentOps.AddPointsOperations;
+                        newWorkSheet.Cells[rowPosOffset, "D"] = currentOps.DoublingPointsOperations;
+                        newWorkSheet.Cells[rowPosOffset, "E"] = currentOps.Operations;
                     }
                 }
             }
@@ -5272,14 +5275,23 @@ namespace EllipticCurveCryptography
                         switch (cryptAlgItem)
                         {
                             case "ECDSA":
-                                Run_ECDSA(multiplier: multiplier, coorType: coorType);
+                                Task Launch_ECDSA = Task.Factory.StartNew(() => Run_ECDSA(multiplier: multiplier, coorType: coorType))
+                                    .ContinueWith(r => taskFinished(coorSysItem, cryptAlgItem, multAlgItem, ops));
+                                TaskList.Add(Launch_ECDSA);
                                 break;
+
                             case "GOST_R34_10_2001":
-                                Run_GOST_R34_10_2001(multiplier: multiplier, coorType: coorType);
+                                Task Launch_GOST = Task.Factory.StartNew(() => Run_GOST_R34_10_2001(multiplier: multiplier, coorType: coorType))
+                                    .ContinueWith(r => taskFinished(coorSysItem, cryptAlgItem, multAlgItem, ops));
+                                TaskList.Add(Launch_GOST);
                                 break;
+
                             case "KCDSA":
-                                Run_KCDSA(multiplier: multiplier, coorType: coorType);
+                                Task Launch_KCDSA = Task.Factory.StartNew(() => Run_KCDSA(multiplier: multiplier, coorType: coorType))
+                                    .ContinueWith(r => taskFinished(coorSysItem, cryptAlgItem, multAlgItem, ops));
+                                TaskList.Add(Launch_KCDSA);
                                 break;
+
                             case "Shor":
                                 Task newLaunch = Task.Factory.StartNew(() => Run_Shor(multiplier: multiplier, coorType: coorType, ops: ops))
                                     .ContinueWith(r => taskFinished(coorSysItem, cryptAlgItem, multAlgItem, ops));
@@ -5289,13 +5301,25 @@ namespace EllipticCurveCryptography
                     }
                 }
             }
+            toolStripStatusLabel2.Text = "Виконуються...";
         }
+
         private void taskFinished(string coorSysItem, string cryptAlgItem, string multAlgItem, OperationsCounter ops)
         {
             // Add info to dictionary
-            Console.WriteLine(ops.ToString());
             tables1[coorSysItem][cryptAlgItem].Add(multAlgItem, ops);
-            MessageBox.Show("Task is finished", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            tasksFinished++;
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Виконано " + tasksFinished + " з " + TaskList.Count));
+            statusStrip1.Invoke((MethodInvoker)(() => toolStripProgressBar1.Value = (int)((double)tasksFinished / TaskList.Count * 100)));
+            if (tasksFinished == TaskList.Count)
+            {
+                statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Виконано " + tasksFinished + " з " + TaskList.Count));
+                button11.Invoke((MethodInvoker)(() => button11.Enabled = true));
+                statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel2.Text = "Завершено"));
+                MessageBox.Show("Всі обчислення завершено. Тепер ви можете експортувати дані для перегляду результатів",
+                    "Інфо", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void button11_Click(object sender, EventArgs e)
