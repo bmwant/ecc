@@ -2326,7 +2326,7 @@ namespace EllipticCurveCryptography
             time = ts.TotalMilliseconds;
         }
         public static void Point_Multiplication_Affine_Coord_18(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, OperationsCounter ops)
         {
             x2 = 0;
             y2 = 1;

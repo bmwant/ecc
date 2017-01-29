@@ -24,7 +24,7 @@ namespace EllipticCurveCryptography
                 BigInteger x, y, z;
                 int k = rand.Next(1, (int)n);
                 double iterationTime = 0;
-                Multiplier(xP, yP, 1, A, k, p, out x, out y, out z, 0, out iterationTime, ref ops);
+                Multiplier(xP, yP, 1, A, k, p, out x, out y, out z, 0, out iterationTime, ops: ops);
                 r = new BigInteger(HA.ComputeHash((x|y).ToByteArray()));
                 var da = new BigInteger(data);
                 var hc = new BigInteger(hcert);
@@ -54,10 +54,10 @@ namespace EllipticCurveCryptography
             w = Utils.mod(w, n);
             BigInteger x, y, z;
             double time1 = 0;
-            Multiplier(xP, yP, 1, A, w, p, out x, out y, out z, 0, out time1, ref ops);
+            Multiplier(xP, yP, 1, A, w, p, out x, out y, out z, 0, out time1, ops: ops);
             Point wP = new Point(x, y);
             double time2 = 0;
-            Multiplier(publicKey.X, publicKey.Y, 1, A, s, p, out x, out y, out z, 0, out time2, ref ops);
+            Multiplier(publicKey.X, publicKey.Y, 1, A, s, p, out x, out y, out z, 0, out time2, ops: ops);
             Point sQ = new Point(x, y);
             Adder(sQ.X, sQ.Y, 1,
                 wP.X, wP.Y, 1, A, p, out x, out y, out z);

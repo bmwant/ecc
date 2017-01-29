@@ -1,14 +1,19 @@
 ﻿using System.Numerics;
 using System.Security.Cryptography;
+using ECC.EllipticCurveCryptography;
+
 
 namespace EllipticCurveCryptography
 {
     public class ECDSA : EllipticCurveAlgorithms
     {
+        OperationsCounter ops;
+
         public ECDSA(BigInteger a, BigInteger b, BigInteger p, BigInteger xP, 
-            BigInteger yP, BigInteger n, MultiplyPoint multiplier = null, PointMultiplication.AddDelegate adder = null, HashAlgorithm ha = null)
+            BigInteger yP, BigInteger n, MultiplyPoint multiplier = null, PointMultiplication.AddDelegate adder = null, HashAlgorithm ha = null, OperationsCounter ops = null)
             : base(a, b, p, xP, yP, n, 1, multiplier, adder, ha)
         {
+            this.ops = ops;
         }
 
         public void Sign(byte[] data, BigInteger d, out BigInteger r, out BigInteger s)
@@ -18,7 +23,7 @@ namespace EllipticCurveCryptography
                 BigInteger x, y, z;
                 int k = rand.Next(1, (int)n);
                 double iterationTime = 0;
-                Multiplier(xP, yP, 1, A, k, p, out x, out y, out z, 0, out iterationTime);
+                Multiplier(xP, yP, 1, A, k, p, out x, out y, out z, 0, out iterationTime, ops: ops);
                 r = Utils.mod(x, n);
                 if (r == 0)
                 {
@@ -48,11 +53,11 @@ namespace EllipticCurveCryptography
             BigInteger x, y, z;
             BigInteger xX, yX, zX;
             double time1 = 0;
-            Multiplier(xP, yP, 1, A, u1, p, out x, out y, out z, 0, out time1);
+            Multiplier(xP, yP, 1, A, u1, p, out x, out y, out z, 0, out time1, ops: ops);
             Point u1P = new Point(x, y);
 
             double time2 = 0;
-            Multiplier(publicKey.X, publicKey.Y, 1, A, u2, p, out x, out y, out z, 0, out time2);
+            Multiplier(publicKey.X, publicKey.Y, 1, A, u2, p, out x, out y, out z, 0, out time2, ops: ops);
             Point u2Q = new Point(x, y);
             Adder(u1P.X, u1P.Y, 1,
                 u2Q.X, u2Q.Y, 1, A, p, out xX, out yX, out zX);

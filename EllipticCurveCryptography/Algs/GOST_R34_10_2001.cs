@@ -4,19 +4,20 @@ using System.Numerics;
 using System.Security.Cryptography;
 using ECC.EllipticCurveCryptography;
 
+
 namespace EllipticCurveCryptography
 {
     public delegate void MultiplyPoint(
         BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p,
-        out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, ref OperationsCounter ops, int w = 0);
+        out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, int w = 0, OperationsCounter ops = null);
 
     public class GOST_R34_10_2001 : EllipticCurveAlgorithms
     {
         private BigInteger Sigma;
         OperationsCounter ops;
 
-        public GOST_R34_10_2001(BigInteger a, BigInteger b, BigInteger p, BigInteger xP, BigInteger yP, BigInteger Sigma, int n, ref OperationsCounter ops,
-            MultiplyPoint multiplier = null, PointMultiplication.AddDelegate adder = null, HashAlgorithm ha = null)
+        public GOST_R34_10_2001(BigInteger a, BigInteger b, BigInteger p, BigInteger xP, BigInteger yP, BigInteger Sigma, int n,
+            MultiplyPoint multiplier = null, PointMultiplication.AddDelegate adder = null, HashAlgorithm ha = null, OperationsCounter ops = null)
             : base(a, b, p, xP, yP, n, 1, multiplier, adder, ha)
         {
             this.ops = ops;
@@ -39,7 +40,7 @@ namespace EllipticCurveCryptography
                 {
                     BigInteger x, y, z;
                     double iterationTime = 0;
-                    Multiplier(xP, yP, 1, A, k[i], p, out x, out y, out z, 0, out iterationTime, ops: ref ops);
+                    Multiplier(xP, yP, 1, A, k[i], p, out x, out y, out z, 0, out iterationTime, ops: ops);
                     RList.Add(new Point(x, y));
                 }
                 BigInteger xR, yR, zR;
@@ -83,10 +84,10 @@ namespace EllipticCurveCryptography
             BigInteger x, y, z;
             BigInteger xR, yR, zR;
             double time1 = 0;
-            Multiplier(xP, yP, 1, A, s, p, out x, out y, out z, 0, out time1, ops: ref ops);
+            Multiplier(xP, yP, 1, A, s, p, out x, out y, out z, 0, out time1, ops: ops);
             Point sP = new Point(x,y);
             double time2 = 0;
-            Multiplier(xQ, yQ, 1, A, r, p, out x, out y, out z, 0, out time2, ops: ref ops);
+            Multiplier(xQ, yQ, 1, A, r, p, out x, out y, out z, 0, out time2, ops: ops);
             Point rQ = new Point(x, y);
             Adder(sP.X, sP.Y, 1,
                 rQ.X, rQ.Y, 1, A, p, out xR, out yR, out zR);
