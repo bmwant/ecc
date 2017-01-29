@@ -2084,8 +2084,8 @@ namespace EllipticCurveCryptography
             TimeSpan ts = stopWatch.Elapsed;
             time = ts.TotalMilliseconds;
         }
-        public static void Point_Multiplication_Affine_Coord_13(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, int w, BigInteger p, 
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
+        public static void Point_Multiplication_Affine_Coord_13(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p, 
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
             int count = (int)((BigInteger.Pow(2, w) - BigInteger.Pow(-1, w)) / 3);
             BigInteger[,] PreComputation = new BigInteger[count, 3];
@@ -2133,8 +2133,8 @@ namespace EllipticCurveCryptography
             TimeSpan ts = stopWatch.Elapsed;
             time = ts.TotalMilliseconds;
         }
-        public static void Point_Multiplication_Affine_Coord_14(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, int w, BigInteger p, 
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
+        public static void Point_Multiplication_Affine_Coord_14(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p, 
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
             int count = (int)((BigInteger.Pow(2, w) - BigInteger.Pow(-1, w)) / 3);
             BigInteger[,] PreComputation = new BigInteger[count, 3];
@@ -2189,7 +2189,7 @@ namespace EllipticCurveCryptography
             time = ts.TotalMilliseconds;
         }
         public static void Point_Multiplication_Affine_Coord_15(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
             x2 = 0;
             y2 = 1;
@@ -2227,7 +2227,7 @@ namespace EllipticCurveCryptography
             time = ts.TotalMilliseconds;
         }
         public static void Point_Multiplication_Affine_Coord_16(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
             x2 = x1;
             y2 = y1;
@@ -2262,7 +2262,7 @@ namespace EllipticCurveCryptography
             time = ts.TotalMilliseconds;
         }
         public static void Point_Multiplication_Affine_Coord_17(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
             x2 = 0;
             y2 = 1;
@@ -2813,8 +2813,9 @@ namespace EllipticCurveCryptography
             TimeSpan ts = stopWatch.Elapsed;
             time = ts.TotalMilliseconds;
         }
+
         public static void Point_Multiplication_Affine_Coord_22(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p,
-            out BigInteger x3, out BigInteger y3, out BigInteger z3, out double time, int type, OperationsCounter ops)
+            out BigInteger x3, out BigInteger y3, out BigInteger z3, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
             BigInteger[,] mas_k;
             BigInteger t1 = a * BigInteger.Pow(z1, 4); BigInteger t2 = 0;
@@ -2909,8 +2910,9 @@ namespace EllipticCurveCryptography
             TimeSpan ts = stopWatch.Elapsed;
             time = ts.TotalMilliseconds;
         }
+
         public static void Point_Multiplication_Affine_Coord_21(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p,
-            out BigInteger x3, out BigInteger y3, out BigInteger z3, out double time, int type, OperationsCounter ops)
+            out BigInteger x3, out BigInteger y3, out BigInteger z3, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
             BigInteger[,] mas_k;
             BigInteger t1 = a * BigInteger.Pow(z1, 4); BigInteger t2 = 0;
@@ -2980,7 +2982,7 @@ namespace EllipticCurveCryptography
             time = ts.TotalMilliseconds;
         }
         public static void Point_Multiplication_Affine_Coord_21m(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p,
-           out BigInteger x3, out BigInteger y3, out BigInteger z3, out double time, int type, OperationsCounter ops)
+           out BigInteger x3, out BigInteger y3, out BigInteger z3, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
             BigInteger[,] mas_k;
             Stopwatch stopWatch = new Stopwatch();
@@ -3027,8 +3029,9 @@ namespace EllipticCurveCryptography
             TimeSpan ts = stopWatch.Elapsed;
             time = ts.TotalMilliseconds;
         }
+
         public static void Point_Multiplication_Affine_Coord_22m(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p,
-           out BigInteger x3, out BigInteger y3, out BigInteger z3, out double time, int type, OperationsCounter ops)
+           out BigInteger x3, out BigInteger y3, out BigInteger z3, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
             BigInteger[,] mas_k;
             Stopwatch stopWatch = new Stopwatch();
@@ -3087,7 +3090,8 @@ namespace EllipticCurveCryptography
             TimeSpan ts = stopWatch.Elapsed;
             time = ts.TotalMilliseconds;
         }
-               #region MBNS methods with trees
+
+        #region MBNS methods with trees
         /*Do not work correct*/
         public static void Point_Multiplication_Affine_Coord_27(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, BigInteger B, BigInteger[] S, BigInteger[] M, int type, out double time, OperationsCounter ops)
@@ -3170,7 +3174,7 @@ namespace EllipticCurveCryptography
         }
 
         public static void Point_Multiplication_Affine_Coord_28(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p,
-           out BigInteger x2, out BigInteger y2, out BigInteger z2, BigInteger B, BigInteger[] S, BigInteger[] M, int type, out double time, OperationsCounter ops)
+           out BigInteger x2, out BigInteger y2, out BigInteger z2, BigInteger B, BigInteger[] S, BigInteger[] M, int type, out double time, OperationsCounter ops = null)
         {        
             var tree = new Tree(k, S, M, B);
             var decomposition = tree.GetDecomposition();
@@ -3225,12 +3229,13 @@ namespace EllipticCurveCryptography
             time = ts.TotalMilliseconds;
         }
         #endregion
+
         public static void Point_Multiplication_Affine_Coord_29(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p,
-           out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
+           out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
             int count_bit = (int)(Math.Floor(BigInteger.Log(k, 2))) + 1;
             int m = count_bit;
-            int w = m;
+            w = m;
             BigInteger t1 = a * BigInteger.Pow(z1, 4); BigInteger t2 = 0;
             BigInteger r1 = z1 * z1;
             BigInteger r2 = z1 * z1 * z1;
@@ -3308,12 +3313,13 @@ namespace EllipticCurveCryptography
             TimeSpan ts = stopWatch.Elapsed;
             time = ts.TotalMilliseconds; 
         }
+
         public static void Point_Multiplication_Affine_Coord_30(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p,
-           out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
+           out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
             int count_bit = (int)(Math.Floor(BigInteger.Log(k, 2))) + 1;
             int m = count_bit;
-            int w = m;
+            w = m;
             BigInteger t1 = a * BigInteger.Pow(z1, 4); BigInteger t2 = 0;
             BigInteger r1 = z1 * z1;
             BigInteger r2 = z1 * z1 * z1;
@@ -3397,11 +3403,11 @@ namespace EllipticCurveCryptography
         }
 
         public static void Point_Multiplication_Affine_Coord_31(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p,
-         out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
+         out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
             int count_bit = (int)(Math.Floor(BigInteger.Log(k, 2))) + 1;
             int m = count_bit;
-            int w = m;
+            w = m;
             BigInteger t1 = a * BigInteger.Pow(z1, 4); BigInteger t2 = 0;
             BigInteger r1 = z1 * z1;
             BigInteger r2 = z1 * z1 * z1;
@@ -3507,7 +3513,7 @@ namespace EllipticCurveCryptography
         }
 
         public static void Point_Multiplication_Affine_Coord_32(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p,
-         out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
+         out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
             string str = new string(ToBin(k).ToArray());
             int count_bit = (int)(Math.Floor(BigInteger.Log(k, 2))) + 1;
@@ -3722,8 +3728,8 @@ namespace EllipticCurveCryptography
         }
         #endregion
         #region Multi Scalar Multiplication
-        public static void Point_Multiplication33(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger x2, BigInteger y2, BigInteger z2, BigInteger a, BigInteger k, 
-            BigInteger l, int w, BigInteger p, out BigInteger x3, out BigInteger y3, out BigInteger z3, out double time, int type, OperationsCounter ops)
+        public static void Point_Multiplication_33(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger x2, BigInteger y2, BigInteger z2, BigInteger a, BigInteger k, 
+            BigInteger l, BigInteger p, out BigInteger x3, out BigInteger y3, out BigInteger z3, int type, out double time, int w, OperationsCounter ops = null)
         {
             int count = (int)Math.Pow(2, w);
             BigInteger[,,] PreComputation = new BigInteger[3,count,count];

@@ -33,6 +33,16 @@ namespace ECC.EllipticCurveCryptography
             get { return elementsAdd + elementsMultiply + elementsInverse + pointsAdd + pointsDoubling; }
         }
 
+        public int AddPointsOperations
+        {
+            get { return pointsAdd; }
+        }
+
+        public int DoublingPointsOperations
+        {
+            get { return pointsDoubling;  }
+        }
+
         public int Progress
         {
             get

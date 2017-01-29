@@ -751,6 +751,7 @@
             // 
             // button11
             // 
+            this.button11.Enabled = false;
             this.button11.Location = new System.Drawing.Point(27, 238);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(138, 23);
@@ -2747,8 +2748,8 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(119, 17);
-            this.toolStripStatusLabel1.Text = "Поточний алгоритм";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(39, 17);
+            this.toolStripStatusLabel1.Text = "Черга";
             // 
             // toolStripProgressBar1
             // 
