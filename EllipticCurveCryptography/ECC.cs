@@ -120,13 +120,7 @@ namespace EllipticCurveCryptography
 
         private void Run_ECDSA(MultiplyPoint multiplier, int coorType)
         {
-            ECDSA crypt = new ECDSA(new BigInteger(5), new BigInteger(7), new BigInteger(10), new BigInteger(15), new BigInteger(20), new BigInteger(40));
-            var data = Encoding.UTF8.GetBytes("TestTestTEst");
-            var Ks = new List<BigInteger>() { 3, 4 };
-            BigInteger r, s;
-            var d = new BigInteger(8);
-            crypt.Sign(data, d, out r, out s);
-            Console.Write("This is r and s " + r + " " + s);
+            return;
         }
 
         private void Run_GOST_R34_10_2001(MultiplyPoint multiplier, int coorType)
@@ -5156,10 +5150,11 @@ out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCount
         // Система координат -> Алгоритм шифрування -> Алгоритм скалярного множення -> Об'єкт кількості операцій
         Dictionary<string, Dictionary<string, Dictionary<string, OperationsCounter>>> tables1 = new Dictionary<string, Dictionary<string, Dictionary<string, OperationsCounter>>>();
 
-        private void exportTables1<T>(Dictionary<string, T> table)
+        private void exportTables1(Dictionary<string, Dictionary<string, Dictionary<string, OperationsCounter>>> table)
         {
             var excelApp = new Excel.Application();
             excelApp.Visible = true;
+            excelApp.DisplayAlerts = false;
             Excel.Workbook workbook = excelApp.Workbooks.Add();
             for (int i = 0; i < table.Keys.Count; i++) {
                 string currentKey = table.Keys.ElementAt(i);
@@ -5173,11 +5168,40 @@ out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCount
                 newWorkSheet.Cells[2, "C"] = "Додавання точок еліптичної кривої";
                 newWorkSheet.Cells[2, "D"] = "Подвоєння точок еліптичної кривої";
                 newWorkSheet.Cells[2, "E"] = "Загалом";
-                newWorkSheet.Columns[0].AutoFit();
-                newWorkSheet.Columns[1].AutoFit();
-                
+                newWorkSheet.Columns["A:B"].AutoFit();
+
+
+                Dictionary<string, Dictionary<string, OperationsCounter>> cryptsIterator = table[currentKey];
+                for (int j = 0; j < cryptsIterator.Keys.Count; j++)
+                {
+                    string currentCryptAlg = cryptsIterator.Keys.ElementAt(j);
+                    Dictionary<string, OperationsCounter> multIterator = cryptsIterator[currentCryptAlg];
+                    int multCount = multIterator.Keys.Count;
+                    newWorkSheet.Cells[3 + j*multCount, "A"] = currentCryptAlg;
+                    
+                    for (int k = 0; k < multCount; k++)
+                    {
+                        string currentMultAlg = multIterator.Keys.ElementAt(k);
+                        int rowPosOffset = 3 + j * multCount + k;
+                        newWorkSheet.Cells[rowPosOffset, "B"] = currentMultAlg;
+                        newWorkSheet.Cells[rowPosOffset, "C"] = 0;
+                        newWorkSheet.Cells[rowPosOffset, "D"] = 17;
+                    }
+                }
             }
-            workbook.SaveAs("Еліптичні криві. Кількість операцій.xlsx");
+
+            try
+            {
+                workbook.SaveAs("Еліптичні криві. Кількість операцій.xlsx", 
+                    Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing,
+                    false, false, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange,
+                    Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+            }
+            catch (System.Runtime.InteropServices.COMException)
+            {
+                MessageBox.Show("Помилка збереження в файл", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
 
         List<Task> TaskList = new List<Task>();
@@ -5259,9 +5283,13 @@ out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCount
         private void taskFinished()
         {
             MessageBox.Show("Task is finished", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            exportTables1(tables1);
+
         }
 
+        private void button11_Click(object sender, EventArgs e)
+        {
+            exportTables1(tables1);
+        }
     }
 }
 

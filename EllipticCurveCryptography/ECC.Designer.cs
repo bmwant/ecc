@@ -69,6 +69,7 @@
             this.writePointsInFile = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
             this.button9 = new System.Windows.Forms.Button();
@@ -128,6 +129,7 @@
             this.label37 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.checkedListBox3 = new System.Windows.Forms.CheckedListBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.textBox42 = new System.Windows.Forms.TextBox();
             this.label56 = new System.Windows.Forms.Label();
@@ -273,8 +275,6 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.button11 = new System.Windows.Forms.Button();
-            this.checkedListBox3 = new System.Windows.Forms.CheckedListBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox14.SuspendLayout();
@@ -748,6 +748,16 @@
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Алгоритми шифрування";
             this.groupBox17.Enter += new System.EventHandler(this.groupBox17_Enter);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(27, 238);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(138, 23);
+            this.button11.TabIndex = 74;
+            this.button11.Text = "Експорт в Excel";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button10
             // 
@@ -1327,6 +1337,20 @@
             this.groupBox10.TabIndex = 54;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Системи координат";
+            // 
+            // checkedListBox3
+            // 
+            this.checkedListBox3.FormattingEnabled = true;
+            this.checkedListBox3.Items.AddRange(new object[] {
+            "Афінні",
+            "Проективні",
+            "Якобі",
+            "Модифіковані Якобі",
+            "Якобі-Чудновський"});
+            this.checkedListBox3.Location = new System.Drawing.Point(10, 19);
+            this.checkedListBox3.Name = "checkedListBox3";
+            this.checkedListBox3.Size = new System.Drawing.Size(149, 94);
+            this.checkedListBox3.TabIndex = 73;
             // 
             // groupBox7
             // 
@@ -2736,29 +2760,6 @@
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(43, 17);
             this.toolStripStatusLabel2.Text = "Статус";
-            // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(27, 238);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(138, 23);
-            this.button11.TabIndex = 74;
-            this.button11.Text = "Експорт в Excel";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
-            // checkedListBox3
-            // 
-            this.checkedListBox3.FormattingEnabled = true;
-            this.checkedListBox3.Items.AddRange(new object[] {
-            "Афінні",
-            "Проективні",
-            "Якобі",
-            "Модифіковані Якобі",
-            "Якобі-Чудновський"});
-            this.checkedListBox3.Location = new System.Drawing.Point(10, 19);
-            this.checkedListBox3.Name = "checkedListBox3";
-            this.checkedListBox3.Size = new System.Drawing.Size(149, 94);
-            this.checkedListBox3.TabIndex = 73;
             // 
             // ECC
             // 
