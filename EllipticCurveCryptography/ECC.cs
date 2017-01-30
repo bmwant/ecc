@@ -116,11 +116,34 @@ namespace EllipticCurveCryptography
             });
         }
 
+        byte[] Get_Data_Bytes()
+        {
+            //BigInteger a, b, p, x3, y3, z3, x2 = 0, y2 = 0, z2 = 0, k, l, a_max, b_max;
+            //int w;
+            //BigInteger[] S;
+            //BigInteger[] M;
+            //BigInteger B;
+            //B = BigInteger.Parse(textBox26.Text);
+            //S = writeToArray(textBox29);
+            //M = writeToArray(textBox30);
+            //a = BigInteger.Parse(richTextBox4.Text);
+            //b = -3;
+            //p = BigInteger.Parse(richTextBox5.Text);
+            //k = BigInteger.Parse(textBox4.Text);
+            //l = BigInteger.Parse(textBox47.Text);
+            //w = int.Parse(textBox5.Text);
+            //a_max = BigInteger.Parse(textBox27.Text);
+            //b_max = BigInteger.Parse(textBox28.Text);
+            //double time = 0;
+            // todo: you can implement here other types of getting data
+            return Encoding.UTF8.GetBytes(textBoxCryptData.Text);
+        }
+
         private void Run_ECDSA(MultiplyPoint multiplier, int coorType, OperationsCounter ops)
         {
             int w = int.Parse(textBox5.Text);
             var ecdsa = new ECDSA(2, 6, 17, 2, 1, 11, ops: ops);
-            var data = Encoding.UTF8.GetBytes("TestTestTEst");
+            byte[] data = Get_Data_Bytes();
             var Ks = new List<BigInteger>() { 3, 4 };
             var Ds = new List<BigInteger>() { 8, 9 };
             BigInteger r, s;
@@ -132,7 +155,7 @@ namespace EllipticCurveCryptography
         {
             int w = int.Parse(textBox5.Text);
             var gost = new GOST_R34_10_2001(2, 6, 17, 2, 1, 11, 22, ops: ops);
-            var data = Encoding.UTF8.GetBytes("TestTestTEst");
+            var data = Get_Data_Bytes();
             var Ks = new List<BigInteger>() { 3, 4 };
             var Ds = new List<BigInteger>() { 8, 9 };
             BigInteger r, s;
@@ -144,7 +167,7 @@ namespace EllipticCurveCryptography
         {
             int w = int.Parse(textBox5.Text);
             var kcdsa = new KCDSA(2, 6, 17, 2, 1, 11, ops: ops);
-            var data = Encoding.UTF8.GetBytes("TestTestTEst");
+            var data = Get_Data_Bytes();
             var cert = Encoding.UTF8.GetBytes("certificate");
             var Ks = new List<BigInteger>() { 3, 4 };
             BigInteger r, s;
@@ -158,7 +181,7 @@ namespace EllipticCurveCryptography
             int w = int.Parse(textBox5.Text);
             var shor = new Shor(2, 6, 17, 2, 1, 11, w: w, multiplier: multiplier, ops: ops);
             var Ds = new List<BigInteger>() { 8, 5 };
-            var data = Encoding.UTF8.GetBytes("TestTestTEst");
+            var data = Get_Data_Bytes();
             var Ks = new List<BigInteger>() { 3, 4 };
             BigInteger r, s;
             shor.GroupSign(data, Ks, Ds, out r, out s);
@@ -5264,23 +5287,11 @@ namespace EllipticCurveCryptography
                 MessageBox.Show("Оберіть хоча б один алгоритм шифрування", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            //BigInteger a, b, p, x3, y3, z3, x2 = 0, y2 = 0, z2 = 0, k, l, a_max, b_max;
-            //int w;
-            //BigInteger[] S;
-            //BigInteger[] M;
-            //BigInteger B;
-            //B = BigInteger.Parse(textBox26.Text);
-            //S = writeToArray(textBox29);
-            //M = writeToArray(textBox30);
-            //a = BigInteger.Parse(richTextBox4.Text);
-            //b = -3;
-            //p = BigInteger.Parse(richTextBox5.Text);
-            //k = BigInteger.Parse(textBox4.Text);
-            //l = BigInteger.Parse(textBox47.Text);
-            //w = int.Parse(textBox5.Text);
-            //a_max = BigInteger.Parse(textBox27.Text);
-            //b_max = BigInteger.Parse(textBox28.Text);
-            //double time = 0;
+            if (textBoxCryptData.Text.Length == 0)
+            {
+                MessageBox.Show("Заповніть поле для вхідних даних", "Невірні дані", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             tables1.Clear(); // Renew information from previous launch
             TaskList.Clear();

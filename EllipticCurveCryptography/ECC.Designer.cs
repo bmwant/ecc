@@ -275,6 +275,8 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.textBoxCryptData = new System.Windows.Forms.TextBox();
+            this.label71 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox14.SuspendLayout();
@@ -738,6 +740,8 @@
             // 
             // groupBox17
             // 
+            this.groupBox17.Controls.Add(this.label71);
+            this.groupBox17.Controls.Add(this.textBoxCryptData);
             this.groupBox17.Controls.Add(this.button11);
             this.groupBox17.Controls.Add(this.button10);
             this.groupBox17.Controls.Add(this.checkedListBox2);
@@ -752,7 +756,7 @@
             // button11
             // 
             this.button11.Enabled = false;
-            this.button11.Location = new System.Drawing.Point(27, 238);
+            this.button11.Location = new System.Drawing.Point(27, 457);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(138, 23);
             this.button11.TabIndex = 74;
@@ -762,7 +766,7 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(27, 194);
+            this.button10.Location = new System.Drawing.Point(27, 411);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(138, 23);
             this.button10.TabIndex = 73;
@@ -2762,6 +2766,23 @@
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(43, 17);
             this.toolStripStatusLabel2.Text = "Статус";
             // 
+            // textBoxCryptData
+            // 
+            this.textBoxCryptData.Location = new System.Drawing.Point(6, 214);
+            this.textBoxCryptData.Multiline = true;
+            this.textBoxCryptData.Name = "textBoxCryptData";
+            this.textBoxCryptData.Size = new System.Drawing.Size(187, 137);
+            this.textBoxCryptData.TabIndex = 75;
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(6, 194);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(120, 13);
+            this.label71.TabIndex = 73;
+            this.label71.Text = "Дані для шифрування:";
+            // 
             // ECC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2786,6 +2807,7 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.groupBox17.ResumeLayout(false);
+            this.groupBox17.PerformLayout();
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
             this.groupBox12.ResumeLayout(false);
@@ -3076,5 +3098,7 @@
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.CheckedListBox checkedListBox3;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.TextBox textBoxCryptData;
     }
 }
