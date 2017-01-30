@@ -484,12 +484,6 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Curve P-192",
-            "Curve P-224",
-            "Curve P-256",
-            "Curve P-384",
-            "Curve P-521"});
             this.comboBox2.Location = new System.Drawing.Point(9, 32);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(195, 21);

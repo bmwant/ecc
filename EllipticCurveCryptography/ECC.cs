@@ -58,7 +58,71 @@ namespace EllipticCurveCryptography
                     {"b", BigInteger.Parse("6051953eb9618e1c9a1f929a21a0b68540eea2da725b99b315f3b8b489918ef109e156193951ec7e937b1652c0bd3bb1bf073573df883d2c34f1ef451fd46b503f00", NumberStyles.AllowHexSpecifier)},
                     {"N", BigInteger.Parse("6864797660130609714981900799081393217269435300143305409394463459185543183397655394245057746333217197532963996371363321113864768612440380340372808892707005449")},
                 }
-            }
+            },
+            {
+                "secp192k1", new Dictionary<String, BigInteger> {
+                    {"p", BigInteger.Parse("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFEE37", NumberStyles.AllowHexSpecifier)},
+                    {"a", BigInteger.Parse("0", NumberStyles.AllowHexSpecifier)},
+                    {"b", BigInteger.Parse("3", NumberStyles.AllowHexSpecifier)},
+                    {"N", BigInteger.Parse("FFFFFFFFFFFFFFFFFFFFFFFE26F2FC170F69466A74DEFD8D", NumberStyles.AllowHexSpecifier)},
+                }
+            },
+            {
+                "secp192r1", new Dictionary<String, BigInteger> {
+                    {"p", BigInteger.Parse("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFFFFFFFFFF", NumberStyles.AllowHexSpecifier)},
+                    {"a", BigInteger.Parse("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFFFFFFFFFC", NumberStyles.AllowHexSpecifier)},
+                    {"b", BigInteger.Parse("64210519E59C80E70FA7E9AB72243049FEB8DEECC146B9B1", NumberStyles.AllowHexSpecifier)},
+                    {"N", BigInteger.Parse("FFFFFFFFFFFFFFFFFFFFFFFF99DEF836146BC9B1B4D22831", NumberStyles.AllowHexSpecifier)},
+                }
+            },
+            {
+                "secp224k1", new Dictionary<String, BigInteger> {
+                    {"p", BigInteger.Parse("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFE56D", NumberStyles.AllowHexSpecifier)},
+                    {"a", BigInteger.Parse("0", NumberStyles.AllowHexSpecifier)},
+                    {"b", BigInteger.Parse("5", NumberStyles.AllowHexSpecifier)},
+                    {"N", BigInteger.Parse("010000000000000000000000000001DCE8D2EC6184CAF0A971769FB1F7", NumberStyles.AllowHexSpecifier)},
+                }
+            },
+            {
+                "secp224r1", new Dictionary<String, BigInteger> {
+                    {"p", BigInteger.Parse("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000000000000000000001", NumberStyles.AllowHexSpecifier)},
+                    {"a", BigInteger.Parse("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFFFFFFFFFFFFFFFFFE", NumberStyles.AllowHexSpecifier)},
+                    {"b", BigInteger.Parse("B4050A850C04B3ABF54132565044B0B7D7BFD8BA270B39432355FFB4", NumberStyles.AllowHexSpecifier)},
+                    {"N", BigInteger.Parse("FFFFFFFFFFFFFFFFFFFFFFFFFFFF16A2E0B8F03E13DD29455C5C2A3D", NumberStyles.AllowHexSpecifier)},
+                }
+            },
+            {
+                "secp256k1", new Dictionary<String, BigInteger> {
+                    {"p", BigInteger.Parse("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F", NumberStyles.AllowHexSpecifier)},
+                    {"a", BigInteger.Parse("0", NumberStyles.AllowHexSpecifier)},
+                    {"b", BigInteger.Parse("7", NumberStyles.AllowHexSpecifier)},
+                    {"N", BigInteger.Parse("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141", NumberStyles.AllowHexSpecifier)},
+                }
+            },
+            {
+                "secp256r1", new Dictionary<String, BigInteger> {
+                    {"p", BigInteger.Parse("FFFFFFFF00000001000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFF", NumberStyles.AllowHexSpecifier)},
+                    {"a", BigInteger.Parse("FFFFFFFF00000001000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFC", NumberStyles.AllowHexSpecifier)},
+                    {"b", BigInteger.Parse("5AC635D8AA3A93E7B3EBBD55769886BC651D06B0CC53B0F63BCE3C3E27D2604B", NumberStyles.AllowHexSpecifier)},
+                    {"N", BigInteger.Parse("FFFFFFFF00000000FFFFFFFFFFFFFFFFBCE6FAADA7179E84F3B9CAC2FC632551", NumberStyles.AllowHexSpecifier)},
+                }
+            },
+            {
+                "secp384r1", new Dictionary<String, BigInteger> {
+                    {"p", BigInteger.Parse("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFF0000000000000000FFFFFFFF", NumberStyles.AllowHexSpecifier)},
+                    {"a", BigInteger.Parse("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFF0000000000000000FFFFFFFC", NumberStyles.AllowHexSpecifier)},
+                    {"b", BigInteger.Parse("B3312FA7E23EE7E4988E056BE3F82D19181D9C6EFE8141120314088F5013875AC656398D8A2ED19D2A85C8EDD3EC2AEF", NumberStyles.AllowHexSpecifier)},
+                    {"N", BigInteger.Parse("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC7634D81F4372DDF581A0DB248B0A77AECEC196ACCC52973", NumberStyles.AllowHexSpecifier)},
+                }
+            },
+            {
+                "secp521r1", new Dictionary<String, BigInteger> {
+                    {"p", BigInteger.Parse("01FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF", NumberStyles.AllowHexSpecifier)},
+                    {"a", BigInteger.Parse("01FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFC", NumberStyles.AllowHexSpecifier)},
+                    {"b", BigInteger.Parse("0051953EB9618E1C9A1F929A21A0B68540EEA2DA725B99B315F3B8B489918EF109E156193951EC7E937B1652C0BD3BB1BF073573DF883D2C34F1EF451FD46B503F00", NumberStyles.AllowHexSpecifier)},
+                    {"N", BigInteger.Parse("01FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA51868783BF2F966B7FCC0148F709A5D03BB5C9B8899C47AEBB6FB71E91386409", NumberStyles.AllowHexSpecifier)},
+                }
+            },
         };
 
         Dictionary<string, string> curveURI = new Dictionary<string, string>()
@@ -68,6 +132,15 @@ namespace EllipticCurveCryptography
             { "Curve P-256", "http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf" },
             { "Curve P-384", "http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf" },
             { "Curve P-521", "http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf" },
+
+            { "secp192k1", "http://www.secg.org/sec2-v2.pdf" },
+            { "secp192r1", "http://www.secg.org/sec2-v2.pdf" },
+            { "secp224k1", "http://www.secg.org/sec2-v2.pdf" },
+            { "secp224r1", "http://www.secg.org/sec2-v2.pdf" },
+            { "secp256k1", "http://www.secg.org/sec2-v2.pdf" },
+            { "secp256r1", "http://www.secg.org/sec2-v2.pdf" },
+            { "secp384r1", "http://www.secg.org/sec2-v2.pdf" },
+            { "secp521r1", "http://www.secg.org/sec2-v2.pdf" },
         };
 
         public bool Flag = true;
@@ -2644,11 +2717,19 @@ namespace EllipticCurveCryptography
             {
                 checkedListBox1.Items.Add(multAlgorithms.ElementAt(i));
             }
+
             // Fill cryptography algorithms list box
             for(int i = 0; i < cryptAlgorithms.Count; i++)
             {
                 checkedListBox2.Items.Add(cryptAlgorithms.ElementAt(i));
             }
+            
+            // Fill all available curves
+            for(int i = 0; i < curveURI.Keys.Count; i++)
+            {
+                comboBox2.Items.Add(curveURI.Keys.ElementAt(i));
+            }
+
             // Set up the delays for the ToolTip.
             toolTip1.AutoPopDelay = 10000;
             toolTip1.InitialDelay = 1000;
