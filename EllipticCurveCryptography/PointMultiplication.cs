@@ -496,7 +496,6 @@ namespace EllipticCurveCryptography
         public static void Double_Projective_Coord(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2)
         {
-            /*Tetiana Drozda*/
             if (y1 % p == 0 || (x1 == 0 && y1 == 1 && z1 == 0))
             {
                 x2 = 0;
@@ -646,7 +645,6 @@ namespace EllipticCurveCryptography
             out BigInteger x2, out BigInteger y2, out BigInteger z2, out BigInteger t2)
         {
             t2 = 0;
-            /*Tetiana Drozda*/
             if (y1 % p == 0 || (x1 == 0 && y1 == 1 && z1 == 0))
             {
                 x2 = 0;
@@ -742,10 +740,9 @@ namespace EllipticCurveCryptography
         public static void Point_Multiplication_Affine_Coord_1(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
+            if (ops == null) ops = new OperationsCounter();  // Create default unused if not provided
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
-
-            if (ops == null) ops = new OperationsCounter();  // Create default unused if not provided
 
             BigInteger x3 = 0;
             BigInteger y3 = 1;
@@ -758,15 +755,14 @@ namespace EllipticCurveCryptography
             BigInteger r1 = z1 * z1;
             BigInteger r2 = z1 * z1 * z1;
             BigInteger r3 = 0, r4 = 0;
-            ops.opElementsAdd(20);
             string str = Functions.ToBin(k);
-            Thread.Sleep(1000);
-            ops.opElementsMultiply(40);
+
             int t = str.Length;
             for (int i = t - 1; i >= 0; i--)
             {
                 if (str[i] == '1')
                 {
+                    ops.opPointsAdd();
                     switch (type)
                     {
                         case 0: case 1: case 2: AddList[type](x1, y1, z1, x2, y2, z2, a, p, out x2, out y2, out z2); break;
@@ -774,7 +770,8 @@ namespace EllipticCurveCryptography
                         case 4: Add_ModifiedJacoby_Coord(x1, y1, z1, t1, x2, y2, z2, t2, a, p, out x2, out y2, out z2, out t2); break;
                     }
                 }
-                switch(type)
+                ops.opPointsDoubling();
+                switch (type)
                 {
                     case 0: case 1: case 2: DoubleList[type](x1, y1, z1, a, p, out x1, out y1, out z1); break;
                     case 3: Double_JacobyChudnovskii_Coord(x1, y1, z1, r1, r2, a, p, out x1, out y1, out z1, out r1, out r2); break;
@@ -794,19 +791,24 @@ namespace EllipticCurveCryptography
         public static void Point_Multiplication_Affine_Coord_2(BigInteger x1, BigInteger y1, BigInteger z1,BigInteger a, BigInteger k, BigInteger p,
             out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
+            if (ops == null) ops = new OperationsCounter();  // Create default unused if not provided
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             x2 = 0;
             y2 = 1;
             z2 = 0;
-            BigInteger t1 = a * BigInteger.Pow(z1, 4); BigInteger t2 = 0;
+            BigInteger t1 = a * BigInteger.Pow(z1, 4);
+            BigInteger t2 = 0;
             BigInteger r1 = z1 * z1;
             BigInteger r2 = z1 * z1 * z1;
             BigInteger r3 = 0, r4 = 0;
+            ops.opElementsMultiply(3);
+
             string str = ToBin(k);
             int t = str.Length;
             for (int i = 0; i < t; i++)
             {
+                ops.opPointsDoubling();
                 switch (type)
                 {
                     case 0: case 1: case 2: DoubleList[type](x2, y2, z2, a, p, out x2, out y2, out z2); break;
@@ -815,6 +817,7 @@ namespace EllipticCurveCryptography
                 }              
                 if (str[i] == '1')
                 {
+                    ops.opPointsAdd();
                     switch (type)
                     {
                         case 0: case 1: case 2: AddList[type](x1, y1, z1, x2, y2, z2, a, p, out x2, out y2, out z2); break;
@@ -839,6 +842,7 @@ namespace EllipticCurveCryptography
         public static void Point_Multiplication_Affine_Coord_3(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p, 
             out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
+            if (ops == null) ops = new OperationsCounter();  // Create default unused if not provided
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             int ind = (int)Math.Pow(2, w) - 1;
@@ -848,6 +852,7 @@ namespace EllipticCurveCryptography
             BigInteger r1 = z1 * z1;
             BigInteger r2 = z1 * z1 * z1;
             BigInteger r3 = 0, r4 = 0;
+            ops.opElementsMultiply(3);
             for (int i = 1; i <= ind; i++)
             {
                 double iterationTime = 0;
@@ -896,9 +901,12 @@ namespace EllipticCurveCryptography
                 {
                     pow = pow * 2;
                     arr[0] = arr[0] + pow * arr[d];
+                    ops.opElementsAdd();
+                    ops.opElementsMultiply();
                 }
                 if (arr[0] > 0)
                 {
+                    ops.opPointsAdd();
                     switch (type)
                     {
                         case 4:
@@ -921,6 +929,7 @@ namespace EllipticCurveCryptography
                 {
                     for (int j = 0; j < h; j++)
                     {
+                        ops.opPointsDoubling();
                         switch (type)
                         {
                             case 4:
@@ -944,9 +953,11 @@ namespace EllipticCurveCryptography
             TimeSpan ts = stopWatch.Elapsed;
             time = ts.TotalMilliseconds;
         }
+
         public static void Point_Multiplication_Affine_Coord_4(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p, 
             out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
+            if (ops == null) ops = new OperationsCounter();  // Create default unused if not provided
             int ind = (int)Math.Pow(2, w) - 1;
             BigInteger[,] PreComputation = new BigInteger[ind, 3];
             BigInteger x3 = 0, y3 = 0, z3 = 0, t3 = 0, r5 = 0, r6 = 0;
@@ -1052,6 +1063,7 @@ namespace EllipticCurveCryptography
         public static void Point_Multiplication_Affine_Coord_5(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p, 
             out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
+            if (ops == null) ops = new OperationsCounter();  // Create default unused if not provided
             int temp_step = (int)(BigInteger.Pow(2, w - 1));
             int count = (int)(BigInteger.Pow(2, w) - temp_step);
             BigInteger[,] PreComputation = new BigInteger[count, 3];
@@ -2325,7 +2337,7 @@ namespace EllipticCurveCryptography
             time = ts.TotalMilliseconds;
         }
         public static void Point_Multiplication_Affine_Coord_18(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p,
-            out BigInteger x2, out BigInteger y2, out BigInteger z2, out double time, int type, OperationsCounter ops)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, OperationsCounter ops)
         {
             x2 = 0;
             y2 = 1;

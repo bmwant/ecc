@@ -15,11 +15,14 @@ namespace EllipticCurveCryptography
         public BigInteger yP;
         public BigInteger n;
         public BigInteger h;
+        public int w;
         public HashAlgorithm HA;
         public Random rand;
+        public double time;
 
         public EllipticCurveAlgorithms(BigInteger a, BigInteger b, BigInteger p,
-            BigInteger xP, BigInteger yP, BigInteger n, BigInteger h, MultiplyPoint multiplier = null, PointMultiplication.AddDelegate adder = null, HashAlgorithm ha = null)
+            BigInteger xP, BigInteger yP, BigInteger n, BigInteger h, int w = 0, 
+            MultiplyPoint multiplier = null, PointMultiplication.AddDelegate adder = null, HashAlgorithm ha = null)
         {
             if (b == 0)
             {
@@ -32,6 +35,9 @@ namespace EllipticCurveCryptography
             this.yP = yP;
             this.n = n;
             this.h = h;
+            this.w = w;
+            this.time = 0;
+
             if (multiplier != null)
                 Multiplier = multiplier;
             else
@@ -55,7 +61,7 @@ namespace EllipticCurveCryptography
         {
             BigInteger x, y, z;
             double time = 0;
-            Multiplier(xP, yP, 1, A, d, p, out x, out y, out z, 0, out time);
+            Multiplier(xP, yP, 1, A, d, p, out x, out y, out z, 0, out time, w: w);
             return new Point(x, y);
         }
 

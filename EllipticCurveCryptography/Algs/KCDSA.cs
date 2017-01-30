@@ -1,14 +1,19 @@
 ﻿using System.Numerics;
 using System.Security.Cryptography;
+using ECC.EllipticCurveCryptography;
+
 
 namespace EllipticCurveCryptography
 {
     public class KCDSA : EllipticCurveAlgorithms
     {
-        public KCDSA(BigInteger a, BigInteger b, BigInteger p, BigInteger xP, 
-            BigInteger yP, BigInteger n, MultiplyPoint multiplier = null, PointMultiplication.AddDelegate adder = null, HashAlgorithm ha = null)
-            : base(a, b, p, xP, yP, n, 1, multiplier, adder, ha)
+        OperationsCounter ops;
+
+        public KCDSA(BigInteger a, BigInteger b, BigInteger p, BigInteger xP, BigInteger yP, BigInteger n,
+            MultiplyPoint multiplier = null, PointMultiplication.AddDelegate adder = null, HashAlgorithm ha = null, OperationsCounter ops = null)
+            : base(a, b, p, xP, yP, n, 1, multiplier: multiplier, adder: adder, ha: ha)
         {
+            this.ops = ops;
         }
 
         public void Sign(byte[] data, byte[] hcert, BigInteger d, out BigInteger r, out BigInteger s)
@@ -19,7 +24,8 @@ namespace EllipticCurveCryptography
                 BigInteger x, y, z;
                 int k = rand.Next(1, (int)n);
                 double iterationTime = 0;
-                Multiplier(xP, yP, 1, A, k, p, out x, out y, out z, 0, out iterationTime);
+                Multiplier(xP, yP, 1, A, k, p, out x, out y, out z, 0, out iterationTime, ops: ops);
+                this.time += iterationTime;
                 r = new BigInteger(HA.ComputeHash((x|y).ToByteArray()));
                 var da = new BigInteger(data);
                 var hc = new BigInteger(hcert);
@@ -27,7 +33,7 @@ namespace EllipticCurveCryptography
                 BigInteger w = r ^ e;
                 w = Utils.mod(w, n);
                 s = Utils.mod(d * (k - w), n);
-                if (s ==0 )
+                if (s == 0)
                 {
                     continue;
                 }
@@ -48,11 +54,17 @@ namespace EllipticCurveCryptography
             BigInteger w = r ^ e;
             w = Utils.mod(w, n);
             BigInteger x, y, z;
+
             double time1 = 0;
-            Multiplier(xP, yP, 1, A, w, p, out x, out y, out z, 0, out time1);
+            Multiplier(xP, yP, 1, A, w, p, out x, out y, out z, 0, out time1, ops: ops);
+            this.time += time1;
+
             Point wP = new Point(x, y);
+
             double time2 = 0;
-            Multiplier(publicKey.X, publicKey.Y, 1, A, s, p, out x, out y, out z, 0, out time2);
+            Multiplier(publicKey.X, publicKey.Y, 1, A, s, p, out x, out y, out z, 0, out time2, ops: ops);
+            this.time += time2;
+
             Point sQ = new Point(x, y);
             Adder(sQ.X, sQ.Y, 1,
                 wP.X, wP.Y, 1, A, p, out x, out y, out z);

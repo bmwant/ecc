@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using System.Numerics;
 using System.Security.Cryptography;
+using ECC.EllipticCurveCryptography;
+
 
 namespace EllipticCurveCryptography
 {
-    public class Shor :EllipticCurveAlgorithms
+    public class Shor : EllipticCurveAlgorithms
     {
-        public Shor(BigInteger a, BigInteger b, BigInteger p, BigInteger xP, BigInteger yP, BigInteger n,
-            MultiplyPoint multiplier = null, PointMultiplication.AddDelegate adder = null, HashAlgorithm ha = null)
-            : base(a, b, p, xP, yP, n, 1, multiplier, adder,ha)
+        OperationsCounter ops;
+        public Shor(BigInteger a, BigInteger b, BigInteger p, BigInteger xP, BigInteger yP, BigInteger n, int w = 0,
+            MultiplyPoint multiplier = null, PointMultiplication.AddDelegate adder = null, HashAlgorithm ha = null, OperationsCounter ops = null)
+            : base(a, b, p, xP, yP, n, 1, w, multiplier, adder, ha)
         {
-            
+            this.ops = ops;
         }
 
         public new BigInteger GeneratePrivateKey(int BitSize)
@@ -28,9 +31,11 @@ namespace EllipticCurveCryptography
         {
             BigInteger x, y, z;
             double time = 0;
-            Multiplier(xP, yP, 1, A, d, p, out x, out y, out z, 0, out time);
+            Multiplier(xP, yP, 1, A, d, p, out x, out y, out z, 0, out time, w: w, ops: ops);
+            this.time += time;
             return new Point(x, y);
         }
+
         public void GroupSign(byte[] data, List<BigInteger> k, List<BigInteger> d, out BigInteger r, out BigInteger sign)
         {
             while (true)
@@ -45,7 +50,8 @@ namespace EllipticCurveCryptography
                 {
                     BigInteger x, y, z;
                     double iterationTime = 0;
-                    Multiplier(xP, yP, 1, A, k[i], p, out x, out y, out z, 0, out iterationTime);
+                    Multiplier(xP, yP, 1, A, k[i], p, out x, out y, out z, 0, out iterationTime, w: w, ops: ops);
+                    this.time += iterationTime;
                     RList.Add(new Point(x, y));
                 }
                 BigInteger xR, yR, zR;
@@ -93,10 +99,12 @@ namespace EllipticCurveCryptography
             BigInteger x, y, z;
             BigInteger xR, yR, zR;
             double time1 = 0;
-            Multiplier(xP, yP, 1, A, s, p, out x, out y, out z, 0, out time1);
+            Multiplier(xP, yP, 1, A, s, p, out x, out y, out z, 0, out time1, w: w, ops: ops);
+            this.time += time1;
             Point sP = new Point(x, y);
             double time2 = 0;
-            Multiplier(xQ, yQ, 1, A, r, p, out x, out y, out z, 0, out time2);
+            Multiplier(xQ, yQ, 1, A, r, p, out x, out y, out z, 0, out time2, w: w, ops: ops);
+            this.time += time2;
             Point rQ = new Point(x, y);
             Adder(sP.X, sP.Y, 1,
                 rQ.X, rQ.Y, 1, A, p, out xR, out yR, out zR);

@@ -30,7 +30,6 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button7 = new System.Windows.Forms.Button();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.radioButton41 = new System.Windows.Forms.RadioButton();
             this.radioButton42 = new System.Windows.Forms.RadioButton();
@@ -275,6 +274,9 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.textBoxCryptData = new System.Windows.Forms.TextBox();
+            this.label71 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox14.SuspendLayout();
@@ -322,7 +324,6 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button7);
             this.tabPage1.Controls.Add(this.groupBox14);
             this.tabPage1.Controls.Add(this.dataGridView3);
             this.tabPage1.Controls.Add(this.dataGridView2);
@@ -335,16 +336,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "ЕК";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(12, 479);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 56;
-            this.button7.Text = "button7";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // groupBox14
             // 
@@ -738,6 +729,9 @@
             // 
             // groupBox17
             // 
+            this.groupBox17.Controls.Add(this.button7);
+            this.groupBox17.Controls.Add(this.label71);
+            this.groupBox17.Controls.Add(this.textBoxCryptData);
             this.groupBox17.Controls.Add(this.button11);
             this.groupBox17.Controls.Add(this.button10);
             this.groupBox17.Controls.Add(this.checkedListBox2);
@@ -752,17 +746,17 @@
             // button11
             // 
             this.button11.Enabled = false;
-            this.button11.Location = new System.Drawing.Point(27, 238);
+            this.button11.Location = new System.Drawing.Point(27, 445);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(138, 23);
+            this.button11.Size = new System.Drawing.Size(138, 41);
             this.button11.TabIndex = 74;
-            this.button11.Text = "Експорт в Excel";
+            this.button11.Text = "Експорт в Excel (кількість операцій)";
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(27, 194);
+            this.button10.Location = new System.Drawing.Point(27, 411);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(138, 23);
             this.button10.TabIndex = 73;
@@ -2762,6 +2756,34 @@
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(43, 17);
             this.toolStripStatusLabel2.Text = "Статус";
             // 
+            // textBoxCryptData
+            // 
+            this.textBoxCryptData.Location = new System.Drawing.Point(6, 214);
+            this.textBoxCryptData.Multiline = true;
+            this.textBoxCryptData.Name = "textBoxCryptData";
+            this.textBoxCryptData.Size = new System.Drawing.Size(187, 137);
+            this.textBoxCryptData.TabIndex = 75;
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(6, 194);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(120, 13);
+            this.label71.TabIndex = 73;
+            this.label71.Text = "Дані для шифрування:";
+            // 
+            // button7
+            // 
+            this.button7.Enabled = false;
+            this.button7.Location = new System.Drawing.Point(27, 497);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(138, 46);
+            this.button7.TabIndex = 76;
+            this.button7.Text = "Експорт в Excel (часові показники)";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click_1);
+            // 
             // ECC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2786,6 +2808,7 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.groupBox17.ResumeLayout(false);
+            this.groupBox17.PerformLayout();
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
             this.groupBox12.ResumeLayout(false);
@@ -3063,7 +3086,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label73;
         private System.Windows.Forms.Label label72;
         private System.Windows.Forms.ComboBox comboBox2;
@@ -3076,5 +3098,8 @@
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.CheckedListBox checkedListBox3;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.TextBox textBoxCryptData;
+        private System.Windows.Forms.Button button7;
     }
 }
