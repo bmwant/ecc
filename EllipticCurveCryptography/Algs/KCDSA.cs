@@ -11,7 +11,7 @@ namespace EllipticCurveCryptography
 
         public KCDSA(BigInteger a, BigInteger b, BigInteger p, BigInteger xP, BigInteger yP, BigInteger n, ref OperationsCounter ops,
             MultiplyPoint multiplier = null, PointMultiplication.AddDelegate adder = null, HashAlgorithm ha = null)
-            : base(a, b, p, xP, yP, n, 1, multiplier, adder, ha)
+            : base(a, b, p, xP, yP, n, 1, multiplier: multiplier, adder: adder, ha: ha)
         {
             this.ops = ops;
         }

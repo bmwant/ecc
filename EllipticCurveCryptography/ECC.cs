@@ -132,7 +132,8 @@ namespace EllipticCurveCryptography
 
         private void Run_Shor(MultiplyPoint multiplier, int coorType, OperationsCounter ops)
         {
-            var shor = new Shor(2, 6, 17, 2, 1, 11, multiplier: multiplier, ops: ops);
+            int w = int.Parse(textBox5.Text);
+            var shor = new Shor(2, 6, 17, 2, 1, 11, w: w, multiplier: multiplier, ops: ops);
             var Ds = new List<BigInteger>() { 8, 5 };
             var data = Encoding.UTF8.GetBytes("TestTestTEst");
             var Ks = new List<BigInteger>() { 3, 4 };
@@ -375,7 +376,7 @@ namespace EllipticCurveCryptography
         {
             statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Алгоритм #3"));
             PointMultiplication.Point_Multiplication_Affine_Coord_3(bigInteger, bigInteger_2, bigInteger_3, a, k, p,
-                out x2, out y2, out z2, type, out time, ops: ops);
+                out x2, out y2, out z2, type, out time, w, ops: ops);
         }
 
         private void Point_Multiplication_Affine_Coord_2(BigInteger bigInteger, BigInteger bigInteger_2, BigInteger bigInteger_3, BigInteger a, BigInteger k, BigInteger p,
@@ -849,7 +850,7 @@ namespace EllipticCurveCryptography
             }
 
             BigInteger a, b, p, x3, y3, z3, x2 = 0, y2 = 0, z2 = 0, k, l, a_max, b_max;
-            int w;
+            int w = int.Parse(textBox5.Text);
             BigInteger[] S;
             BigInteger[] M;
             BigInteger B;
@@ -861,7 +862,6 @@ namespace EllipticCurveCryptography
             p = BigInteger.Parse(richTextBox5.Text);
             k = BigInteger.Parse(textBox4.Text);
             l = BigInteger.Parse(textBox47.Text);
-            w = int.Parse(textBox5.Text);
             a_max = BigInteger.Parse(textBox27.Text);
             b_max = BigInteger.Parse(textBox28.Text);
             double time = 0;
@@ -5216,6 +5216,11 @@ namespace EllipticCurveCryptography
             }
         }
 
+        private void exportTables2()
+        {
+
+        }
+
         List<Task> TaskList = new List<Task>();
         int tasksFinished = 0;
 
@@ -5293,9 +5298,9 @@ namespace EllipticCurveCryptography
                                 break;
 
                             case "Shor":
-                                Task newLaunch = Task.Factory.StartNew(() => Run_Shor(multiplier: multiplier, coorType: coorType, ops: ops))
+                                Task Launch_Shor = Task.Factory.StartNew(() => Run_Shor(multiplier: multiplier, coorType: coorType, ops: ops))
                                     .ContinueWith(r => taskFinished(coorSysItem, cryptAlgItem, multAlgItem, ops));
-                                TaskList.Add(newLaunch);
+                                TaskList.Add(Launch_Shor);
                                 break;
                         }
                     }
