@@ -142,7 +142,7 @@ namespace EllipticCurveCryptography
         private void Run_ECDSA(MultiplyPoint multiplier, int coorType, out double time, OperationsCounter ops)
         {
             int w = int.Parse(textBox5.Text);
-            var ecdsa = new ECDSA(2, 6, 17, 2, 1, 11, ops: ops);
+            var ecdsa = new ECDSA(2, 6, 17, 2, 1, 11, multiplier: multiplier, ops: ops);
             byte[] data = Get_Data_Bytes();
             var Ks = new List<BigInteger>() { 3, 4 };
             var Ds = new List<BigInteger>() { 8, 9 };
@@ -155,7 +155,7 @@ namespace EllipticCurveCryptography
         private void Run_GOST_R34_10_2001(MultiplyPoint multiplier, int coorType, out double time, OperationsCounter ops)
         {
             int w = int.Parse(textBox5.Text);
-            var gost = new GOST_R34_10_2001(2, 6, 17, 2, 1, 11, 22, ops: ops);
+            var gost = new GOST_R34_10_2001(2, 6, 17, 2, 1, 11, 22, multiplier: multiplier, ops: ops);
             var data = Get_Data_Bytes();
             var Ks = new List<BigInteger>() { 3, 4 };
             var Ds = new List<BigInteger>() { 8, 9 };
@@ -168,7 +168,7 @@ namespace EllipticCurveCryptography
         private void Run_KCDSA(MultiplyPoint multiplier, int coorType, out double time, OperationsCounter ops)
         {
             int w = int.Parse(textBox5.Text);
-            var kcdsa = new KCDSA(2, 6, 17, 2, 1, 11, ops: ops);
+            var kcdsa = new KCDSA(2, 6, 17, 2, 1, 11, multiplier: multiplier, ops: ops);
             var data = Get_Data_Bytes();
             var cert = Encoding.UTF8.GetBytes("certificate");
             var Ks = new List<BigInteger>() { 3, 4 };

@@ -24,6 +24,7 @@ namespace EllipticCurveCryptography
                 int k = rand.Next(1, (int)n);
                 double iterationTime = 0;
                 Multiplier(xP, yP, 1, A, k, p, out x, out y, out z, 0, out iterationTime, ops: ops);
+                this.time += iterationTime;
                 r = Utils.mod(x, n);
                 if (r == 0)
                 {
@@ -54,10 +55,12 @@ namespace EllipticCurveCryptography
             BigInteger xX, yX, zX;
             double time1 = 0;
             Multiplier(xP, yP, 1, A, u1, p, out x, out y, out z, 0, out time1, ops: ops);
+            this.time += time1;
             Point u1P = new Point(x, y);
 
             double time2 = 0;
             Multiplier(publicKey.X, publicKey.Y, 1, A, u2, p, out x, out y, out z, 0, out time2, ops: ops);
+            this.time += time2;
             Point u2Q = new Point(x, y);
             Adder(u1P.X, u1P.Y, 1,
                 u2Q.X, u2Q.Y, 1, A, p, out xX, out yX, out zX);
