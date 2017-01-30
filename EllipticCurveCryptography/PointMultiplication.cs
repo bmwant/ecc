@@ -966,6 +966,7 @@ namespace EllipticCurveCryptography
             BigInteger r2 = z1 * z1 * z1;
             BigInteger r3 = 0, r4 = 0;
             Stopwatch stopWatch = new Stopwatch();
+            ops.opElementsMultiply(3);
 
             // Start timer here if you want to include preparation time
             for (int i = 1; i <= ind; i++)
@@ -998,6 +999,7 @@ namespace EllipticCurveCryptography
                 string temp = str.Substring(left_range - 1, right_range - left_range + 1);
                 for (int d = 0; d < right_range - left_range + 1; d++)
                 {
+                    ops.opPointsDoubling();
                     switch (type)
                     {
                         case 4:
@@ -1034,6 +1036,7 @@ namespace EllipticCurveCryptography
 
                 if (temp_1 > 0)
                 {
+                    ops.opPointsAdd();
                     switch(type)
                     {
                         case 4:
@@ -1073,7 +1076,8 @@ namespace EllipticCurveCryptography
             BigInteger r2 = z1 * z1 * z1;
             BigInteger r3 = 0, r4 = 0;
             Stopwatch stopWatch = new Stopwatch();
-            
+            ops.opElementsMultiply(3);
+
             for (int i = 0; i < count; i++)
             {
                 double iterationTime = 0;
@@ -1083,7 +1087,6 @@ namespace EllipticCurveCryptography
                 PreComputation[i, 2] = z2;
             }
             
-
             x2 = 0;
             y2 = 1;
             z2 = 0;
@@ -1105,6 +1108,7 @@ namespace EllipticCurveCryptography
                     {
                         if (str[m] == '1')
                         {
+                            ops.opPointsAdd();
                             switch (type)
                             {
                                 case 4:
@@ -1120,6 +1124,8 @@ namespace EllipticCurveCryptography
                             y2 = y3;
                             z2 = z3;
                         }
+
+                        ops.opPointsDoubling();
                         switch (type)
                         {
                             case 4:
@@ -1131,8 +1137,10 @@ namespace EllipticCurveCryptography
                             case 2:
                                 DoubleList[type](x_temp, y_temp, z_temp, a, p, out x_temp, out y_temp, out z_temp); break;
                         }
+
                         for (int j = 0; j < h; j++)
                         {
+                            ops.opPointsDoubling();
                             switch (type)
                             {
                                 case 4:
@@ -1163,9 +1171,12 @@ namespace EllipticCurveCryptography
                         {
                             pow = pow * 2;
                             temp_1 = temp_1 + pow * arr[d];
+                            ops.opElementsMultiply(2);
+                            ops.opElementsAdd();
                         }
                         if (temp_1 > 0)
                         {
+                            ops.opPointsAdd();
                             switch (type)
                             {
                                 case 4:
@@ -1178,8 +1189,10 @@ namespace EllipticCurveCryptography
                                     AddList[type](PreComputation[temp_1 - temp_step, 0], PreComputation[temp_1 - temp_step, 1], PreComputation[temp_1 - temp_step, 2], x2, y2, z2, a, p, out x2, out y2, out z2); break;
                             }
                         }
+
                         for (int d = 0; d < w; d++)
                         {
+                            ops.opPointsDoubling();
                             switch (type)
                             {
                                 case 4:
@@ -1191,8 +1204,10 @@ namespace EllipticCurveCryptography
                                 case 2:
                                     DoubleList[type](x_temp, y_temp, z_temp, a, p, out x_temp, out y_temp, out z_temp); break;
                             }
+
                             for (int j = 0; j < h; j++)
                             {
+                                ops.opPointsDoubling();
                                 switch (type)
                                 {
                                     case 4:
@@ -1213,6 +1228,7 @@ namespace EllipticCurveCryptography
                 {
                     if (str[m] == '1')
                     {
+                        ops.opPointsAdd();
                         switch (type)
                         {
                             case 4:
@@ -1231,6 +1247,7 @@ namespace EllipticCurveCryptography
                         r3 = r5;
                         r4 = r6;
                     }
+                    ops.opPointsDoubling();
                     switch (type)
                     {
                         case 4:
@@ -1244,6 +1261,7 @@ namespace EllipticCurveCryptography
                     }
                     for (int j = 0; j < h; j++)
                     {
+                        ops.opPointsDoubling();
                         switch (type)
                         {
                             case 4:
@@ -1265,9 +1283,11 @@ namespace EllipticCurveCryptography
             TimeSpan ts = stopWatch.Elapsed;
             time = ts.TotalMilliseconds;
         }
+
         public static void Point_Multiplication_Affine_Coord_6(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p, 
             out BigInteger x2, out BigInteger y2, out BigInteger z2, int type, out double time, int w = 0, OperationsCounter ops = null)
         {
+            if (ops == null) ops = new OperationsCounter();  // Create default unused if not provided
             int temp_step = (int)(BigInteger.Pow(2, w - 1));
             int count = (int)(BigInteger.Pow(2, w) - temp_step);
             BigInteger[,] PreComputation = new BigInteger[count, 3];
@@ -1277,7 +1297,7 @@ namespace EllipticCurveCryptography
             BigInteger r2 = z1 * z1 * z1;
             BigInteger r3 = 0, r4 = 0;
             Stopwatch stopWatch = new Stopwatch();
-
+            ops.opElementsMultiply(3);
             // Start timer here if you want to include pre computation time
             // todo: you can add this property to OperationsCounter
 
@@ -1303,6 +1323,7 @@ namespace EllipticCurveCryptography
                 string str = new string(ToBin(k).Reverse().ToArray());
                 if (str[m - 1] == '0')
                 {
+                    ops.opPointsDoubling();
                     switch (type)
                     {
                         case 4:
@@ -1346,6 +1367,7 @@ namespace EllipticCurveCryptography
                     {
                         for (int j = legth_temp; j > 0; j--)
                         {
+                            ops.opPointsDoubling();
                             switch (type)
                             {
                                 case 4:
@@ -1366,6 +1388,7 @@ namespace EllipticCurveCryptography
                             string temp_str = new string(ToBin(temp_1).Reverse().ToArray());
                             if (temp_str[j - 1] == '1')
                             {
+                                ops.opPointsAdd();
                                 switch (type)
                                 {
                                     case 4:
@@ -1384,6 +1407,7 @@ namespace EllipticCurveCryptography
                     {
                         for (int d = 1; d <= w; d++)
                         {
+                            ops.opPointsDoubling();
                             switch (type)
                             {
                                 case 4:
@@ -1402,6 +1426,8 @@ namespace EllipticCurveCryptography
                             r3 = r5;
                             r4 = r6;
                         }
+
+                        ops.opPointsAdd();
                         switch (type)
                         {
                             case 4:
