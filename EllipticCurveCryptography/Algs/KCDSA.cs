@@ -9,8 +9,8 @@ namespace EllipticCurveCryptography
     {
         OperationsCounter ops;
 
-        public KCDSA(BigInteger a, BigInteger b, BigInteger p, BigInteger xP, BigInteger yP, BigInteger n, ref OperationsCounter ops,
-            MultiplyPoint multiplier = null, PointMultiplication.AddDelegate adder = null, HashAlgorithm ha = null)
+        public KCDSA(BigInteger a, BigInteger b, BigInteger p, BigInteger xP, BigInteger yP, BigInteger n,
+            MultiplyPoint multiplier = null, PointMultiplication.AddDelegate adder = null, HashAlgorithm ha = null, OperationsCounter ops = null)
             : base(a, b, p, xP, yP, n, 1, multiplier: multiplier, adder: adder, ha: ha)
         {
             this.ops = ops;
@@ -32,7 +32,7 @@ namespace EllipticCurveCryptography
                 BigInteger w = r ^ e;
                 w = Utils.mod(w, n);
                 s = Utils.mod(d * (k - w), n);
-                if (s ==0 )
+                if (s == 0)
                 {
                     continue;
                 }

@@ -116,18 +116,41 @@ namespace EllipticCurveCryptography
             });
         }
 
-        private void Run_ECDSA(MultiplyPoint multiplier, int coorType)
+        private void Run_ECDSA(MultiplyPoint multiplier, int coorType, OperationsCounter ops)
         {
-            return;
+            int w = int.Parse(textBox5.Text);
+            var ecdsa = new ECDSA(2, 6, 17, 2, 1, 11, ops: ops);
+            var data = Encoding.UTF8.GetBytes("TestTestTEst");
+            var Ks = new List<BigInteger>() { 3, 4 };
+            var Ds = new List<BigInteger>() { 8, 9 };
+            BigInteger r, s;
+            ecdsa.Sign(data, 22, out r, out s);
+            Console.WriteLine("Result of ECDSA: r = " + r + ", s = " + s);
         }
 
-        private void Run_GOST_R34_10_2001(MultiplyPoint multiplier, int coorType)
+        private void Run_GOST_R34_10_2001(MultiplyPoint multiplier, int coorType, OperationsCounter ops)
         {
+            int w = int.Parse(textBox5.Text);
+            var gost = new GOST_R34_10_2001(2, 6, 17, 2, 1, 11, 22, ops: ops);
+            var data = Encoding.UTF8.GetBytes("TestTestTEst");
+            var Ks = new List<BigInteger>() { 3, 4 };
+            var Ds = new List<BigInteger>() { 8, 9 };
+            BigInteger r, s;
+            gost.GroupSign(data, Ks, Ds, out r, out s);
+            Console.WriteLine("Result of GOST_R34_10_2001: r = " + r + ", s = " + s);
         }
 
-        private void Run_KCDSA(MultiplyPoint multiplier, int coorType)
+        private void Run_KCDSA(MultiplyPoint multiplier, int coorType, OperationsCounter ops)
         {
-
+            int w = int.Parse(textBox5.Text);
+            var kcdsa = new KCDSA(2, 6, 17, 2, 1, 11, ops: ops);
+            var data = Encoding.UTF8.GetBytes("TestTestTEst");
+            var cert = Encoding.UTF8.GetBytes("certificate");
+            var Ks = new List<BigInteger>() { 3, 4 };
+            BigInteger r, s;
+            BigInteger d = new BigInteger(5);
+            kcdsa.Sign(data, cert, d, out r, out s);
+            Console.WriteLine("Result of KCDSA: r = " + r + ", s = " + s);
         }
 
         private void Run_Shor(MultiplyPoint multiplier, int coorType, OperationsCounter ops)
@@ -5280,19 +5303,19 @@ namespace EllipticCurveCryptography
                         switch (cryptAlgItem)
                         {
                             case "ECDSA":
-                                Task Launch_ECDSA = Task.Factory.StartNew(() => Run_ECDSA(multiplier: multiplier, coorType: coorType))
+                                Task Launch_ECDSA = Task.Factory.StartNew(() => Run_ECDSA(multiplier: multiplier, coorType: coorType, ops: ops))
                                     .ContinueWith(r => taskFinished(coorSysItem, cryptAlgItem, multAlgItem, ops));
                                 TaskList.Add(Launch_ECDSA);
                                 break;
 
                             case "GOST_R34_10_2001":
-                                Task Launch_GOST = Task.Factory.StartNew(() => Run_GOST_R34_10_2001(multiplier: multiplier, coorType: coorType))
+                                Task Launch_GOST = Task.Factory.StartNew(() => Run_GOST_R34_10_2001(multiplier: multiplier, coorType: coorType, ops: ops))
                                     .ContinueWith(r => taskFinished(coorSysItem, cryptAlgItem, multAlgItem, ops));
                                 TaskList.Add(Launch_GOST);
                                 break;
 
                             case "KCDSA":
-                                Task Launch_KCDSA = Task.Factory.StartNew(() => Run_KCDSA(multiplier: multiplier, coorType: coorType))
+                                Task Launch_KCDSA = Task.Factory.StartNew(() => Run_KCDSA(multiplier: multiplier, coorType: coorType, ops: ops))
                                     .ContinueWith(r => taskFinished(coorSysItem, cryptAlgItem, multAlgItem, ops));
                                 TaskList.Add(Launch_KCDSA);
                                 break;
