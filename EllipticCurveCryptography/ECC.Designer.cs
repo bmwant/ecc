@@ -30,7 +30,6 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button7 = new System.Windows.Forms.Button();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.radioButton41 = new System.Windows.Forms.RadioButton();
             this.radioButton42 = new System.Windows.Forms.RadioButton();
@@ -277,6 +276,7 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.textBoxCryptData = new System.Windows.Forms.TextBox();
             this.label71 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox14.SuspendLayout();
@@ -324,7 +324,6 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button7);
             this.tabPage1.Controls.Add(this.groupBox14);
             this.tabPage1.Controls.Add(this.dataGridView3);
             this.tabPage1.Controls.Add(this.dataGridView2);
@@ -337,16 +336,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "ЕК";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(12, 479);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 56;
-            this.button7.Text = "button7";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // groupBox14
             // 
@@ -740,6 +729,7 @@
             // 
             // groupBox17
             // 
+            this.groupBox17.Controls.Add(this.button7);
             this.groupBox17.Controls.Add(this.label71);
             this.groupBox17.Controls.Add(this.textBoxCryptData);
             this.groupBox17.Controls.Add(this.button11);
@@ -756,11 +746,11 @@
             // button11
             // 
             this.button11.Enabled = false;
-            this.button11.Location = new System.Drawing.Point(27, 457);
+            this.button11.Location = new System.Drawing.Point(27, 445);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(138, 23);
+            this.button11.Size = new System.Drawing.Size(138, 41);
             this.button11.TabIndex = 74;
-            this.button11.Text = "Експорт в Excel";
+            this.button11.Text = "Експорт в Excel (кількість операцій)";
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
@@ -2783,6 +2773,17 @@
             this.label71.TabIndex = 73;
             this.label71.Text = "Дані для шифрування:";
             // 
+            // button7
+            // 
+            this.button7.Enabled = false;
+            this.button7.Location = new System.Drawing.Point(27, 497);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(138, 46);
+            this.button7.TabIndex = 76;
+            this.button7.Text = "Експорт в Excel (часові показники)";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click_1);
+            // 
             // ECC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3085,7 +3086,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label73;
         private System.Windows.Forms.Label label72;
         private System.Windows.Forms.ComboBox comboBox2;
@@ -3100,5 +3100,6 @@
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Label label71;
         private System.Windows.Forms.TextBox textBoxCryptData;
+        private System.Windows.Forms.Button button7;
     }
 }

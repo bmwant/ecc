@@ -32,6 +32,7 @@ namespace EllipticCurveCryptography
             BigInteger x, y, z;
             double time = 0;
             Multiplier(xP, yP, 1, A, d, p, out x, out y, out z, 0, out time, w: w, ops: ops);
+            this.time += time;
             return new Point(x, y);
         }
 
@@ -50,6 +51,7 @@ namespace EllipticCurveCryptography
                     BigInteger x, y, z;
                     double iterationTime = 0;
                     Multiplier(xP, yP, 1, A, k[i], p, out x, out y, out z, 0, out iterationTime, w: w, ops: ops);
+                    this.time += iterationTime;
                     RList.Add(new Point(x, y));
                 }
                 BigInteger xR, yR, zR;
@@ -98,9 +100,11 @@ namespace EllipticCurveCryptography
             BigInteger xR, yR, zR;
             double time1 = 0;
             Multiplier(xP, yP, 1, A, s, p, out x, out y, out z, 0, out time1, w: w, ops: ops);
+            this.time += time1;
             Point sP = new Point(x, y);
             double time2 = 0;
             Multiplier(xQ, yQ, 1, A, r, p, out x, out y, out z, 0, out time2, w: w, ops: ops);
+            this.time += time2;
             Point rQ = new Point(x, y);
             Adder(sP.X, sP.Y, 1,
                 rQ.X, rQ.Y, 1, A, p, out xR, out yR, out zR);

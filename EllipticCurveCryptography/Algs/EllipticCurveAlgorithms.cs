@@ -18,6 +18,7 @@ namespace EllipticCurveCryptography
         public int w;
         public HashAlgorithm HA;
         public Random rand;
+        public double time;
 
         public EllipticCurveAlgorithms(BigInteger a, BigInteger b, BigInteger p,
             BigInteger xP, BigInteger yP, BigInteger n, BigInteger h, int w = 0, 
@@ -35,6 +36,7 @@ namespace EllipticCurveCryptography
             this.n = n;
             this.h = h;
             this.w = w;
+            this.time = 0;
 
             if (multiplier != null)
                 Multiplier = multiplier;
