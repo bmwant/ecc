@@ -162,7 +162,7 @@ namespace EllipticCurveCryptography
             var Ks = new List<BigInteger>() { 3, 4 };
             BigInteger r, s;
             shor.GroupSign(data, Ks, Ds, out r, out s);
-            Console.Write("This is r and s " + r + " " + s);
+            Console.WriteLine("Result of Shor: r = " + r + ", s = " + s);
         }
 
         private void Quadrupling_Affine_Coord_3(BigInteger bigInteger, BigInteger bigInteger_2, int p, BigInteger a, BigInteger p_2, out BigInteger x3, out BigInteger y3, out BigInteger z3)
