@@ -60,6 +60,16 @@ namespace EllipticCurveCryptography
                 }
             }
         };
+
+        Dictionary<string, string> curveURI = new Dictionary<string, string>()
+        {
+            { "Curve P-192", "http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf" },
+            { "Curve P-224", "http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf" },
+            { "Curve P-256", "http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf" },
+            { "Curve P-384", "http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf" },
+            { "Curve P-521", "http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf" },
+        };
+
         public bool Flag = true;
         IProgress<int> progress;
 
@@ -5422,6 +5432,24 @@ namespace EllipticCurveCryptography
         private void button7_Click_1(object sender, EventArgs e)
         {
             exportTables2(tables2);
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            string selectedCurve = comboBox2.Text;
+            if (selectedCurve == "")
+            {
+                MessageBox.Show("Не обрано жодної кривої", "Інфо", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            string docURI = curveURI[selectedCurve];
+            if (docURI == "")
+            {
+                MessageBox.Show("Для даної кривої немає ресурсів", "Інфо", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            Process.Start(docURI);
         }
     }
 }
