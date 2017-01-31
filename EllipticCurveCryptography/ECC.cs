@@ -5569,7 +5569,8 @@ namespace EllipticCurveCryptography
             byte[] array = new byte[bytesCount];
             Random random = new Random();
             random.NextBytes(array);
-            string filename = "test.ecc";
+            string filename = Utils.GetCurrentDateString() + ".ecc";
+            Console.WriteLine("filename " + filename);
             try
             {
                 FileStream fileStream = new FileStream(filename, FileMode.Create, FileAccess.Write);

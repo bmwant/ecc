@@ -61,6 +61,10 @@ namespace EllipticCurveCryptography
             return y;
         }
 
-
+        public static string GetCurrentDateString()
+        {
+            DateTime dateTime = DateTime.Now;
+            return dateTime.ToString("yyyy.MM.dd_HH-mm-ss");
+        }
     }
 }
