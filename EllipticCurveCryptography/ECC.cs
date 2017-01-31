@@ -5306,7 +5306,7 @@ namespace EllipticCurveCryptography
         // Система координат -> Алгоритм шифрування -> Алгоритм скалярного множення -> Об'єкт кількості операцій
         Dictionary<string, Dictionary<string, Dictionary<string, OperationsCounter>>> tables1 = new Dictionary<string, Dictionary<string, Dictionary<string, OperationsCounter>>>();
 
-        private void exportTables1(Dictionary<string, Dictionary<string, Dictionary<string, OperationsCounter>>> table)
+        private void exportTables1(Dictionary<string, Dictionary<string, Dictionary<string, OperationsCounter>>> table, string folderName)
         {
             var excelApp = new Excel.Application();
             excelApp.Visible = false;
@@ -5349,9 +5349,11 @@ namespace EllipticCurveCryptography
                 }
             }
 
+            string filename = "Еліптичні криві. Кількість операцій.xlsx";
+            string filepath = Path.Combine(folderName, filename);
             try
             {
-                workbook.SaveAs("Еліптичні криві. Кількість операцій.xlsx",
+                workbook.SaveAs(filepath,
                     Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing,
                     false, false, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange,
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
@@ -5360,7 +5362,7 @@ namespace EllipticCurveCryptography
             }
             catch (System.Runtime.InteropServices.COMException)
             {
-                MessageBox.Show("Помилка збереження в файл", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Помилка збереження в файл " + filepath, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }
@@ -5368,7 +5370,7 @@ namespace EllipticCurveCryptography
         // Система координат -> Алгоритм шифрування -> Алгоритм скалярного множення -> Час виконання
         Dictionary<string, Dictionary<string, Dictionary<string, double>>> tables2 = new Dictionary<string, Dictionary<string, Dictionary<string, double>>>();
 
-        private void exportTables2(Dictionary<string, Dictionary<string, Dictionary<string, double>>> table)
+        private void exportTables2(Dictionary<string, Dictionary<string, Dictionary<string, double>>> table, string folderName)
         {
             var excelApp = new Excel.Application();
             excelApp.Visible = false;
@@ -5405,9 +5407,10 @@ namespace EllipticCurveCryptography
             }
 
             string filename = "Еліптичні криві. Часові показники.xlsx";
+            string filepath = Path.Combine(folderName, filename);
             try
             {
-                workbook.SaveAs(filename,
+                workbook.SaveAs(filepath,
                     Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing,
                     false, false, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange,
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
@@ -5416,7 +5419,7 @@ namespace EllipticCurveCryptography
             }
             catch (System.Runtime.InteropServices.COMException)
             {
-                MessageBox.Show("Помилка збереження в файл " + filename, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Помилка збереження в файл " + filepath, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }
@@ -5541,8 +5544,16 @@ namespace EllipticCurveCryptography
 
         private void exportExcelTables()
         {
-            exportTables1(tables1);
-            exportTables2(tables2);
+            string folderName = Utils.GetCurrentDateString();
+            string folderPath = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), folderName);
+
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+            exportTables1(tables1, folderPath);
+            exportTables2(tables2, folderPath);
+            MessageBox.Show("Експортування завершено. Файли збрежено в папці " + folderPath, "Інфо", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
