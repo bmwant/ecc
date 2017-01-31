@@ -219,7 +219,19 @@ namespace EllipticCurveCryptography
             //b_max = BigInteger.Parse(textBox28.Text);
             //double time = 0;
             // todo: you can implement here other types of getting data
-            return Encoding.UTF8.GetBytes(textBoxCryptData.Text);
+            if (radioButton1.Checked)
+            {
+                return Encoding.UTF8.GetBytes(textBoxCryptData.Text);
+            }
+            else if (radioButton2.Checked)
+            {
+                if(preloadedData == null)
+                {
+                    MessageBox.Show("Оберіть спочатку файл", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+
+            return preloadedData;
         }
 
         private void Run_ECDSA(MultiplyPoint multiplier, int coorType, out double time, OperationsCounter ops)
@@ -5297,7 +5309,7 @@ namespace EllipticCurveCryptography
         private void exportTables1(Dictionary<string, Dictionary<string, Dictionary<string, OperationsCounter>>> table)
         {
             var excelApp = new Excel.Application();
-            excelApp.Visible = true;
+            excelApp.Visible = false;
             excelApp.DisplayAlerts = false;
             Excel.Workbook workbook = excelApp.Workbooks.Add();
             for (int i = 0; i < table.Keys.Count; i++)
@@ -5343,6 +5355,8 @@ namespace EllipticCurveCryptography
                     Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing,
                     false, false, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange,
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+                workbook.Close(0);
+                excelApp.Quit();
             }
             catch (System.Runtime.InteropServices.COMException)
             {
@@ -5357,7 +5371,7 @@ namespace EllipticCurveCryptography
         private void exportTables2(Dictionary<string, Dictionary<string, Dictionary<string, double>>> table)
         {
             var excelApp = new Excel.Application();
-            excelApp.Visible = true;
+            excelApp.Visible = false;
             excelApp.DisplayAlerts = false;
             Excel.Workbook workbook = excelApp.Workbooks.Add();
             for (int i = 0; i < table.Keys.Count; i++)
@@ -5397,6 +5411,8 @@ namespace EllipticCurveCryptography
                     Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing,
                     false, false, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange,
                     Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
+                workbook.Close(0);
+                excelApp.Quit();
             }
             catch (System.Runtime.InteropServices.COMException)
             {
@@ -5425,9 +5441,13 @@ namespace EllipticCurveCryptography
                 MessageBox.Show("Оберіть хоча б один алгоритм шифрування", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (textBoxCryptData.Text.Length == 0)
+            if (radioButton1.Checked && textBoxCryptData.Text.Length == 0)
             {
                 MessageBox.Show("Заповніть поле для вхідних даних", "Невірні дані", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (radioButton2.Checked && Get_Data_Bytes() == null)
+            {
                 return;
             }
 
@@ -5497,21 +5517,31 @@ namespace EllipticCurveCryptography
             if (tasksFinished == TaskList.Count)
             {
                 statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel1.Text = "Виконано " + tasksFinished + " з " + TaskList.Count));
-                button11.Invoke((MethodInvoker)(() => button7.Enabled = true));
-                button11.Invoke((MethodInvoker)(() => button11.Enabled = true));
                 statusStrip1.Invoke((MethodInvoker)(() => toolStripStatusLabel2.Text = "Завершено"));
-                MessageBox.Show("Всі обчислення завершено. Тепер ви можете експортувати дані для перегляду результатів",
+                MessageBox.Show("Всі обчислення завершено. Відбувається експортування даних в Excel таблиці.",
                     "Інфо", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                exportExcelTables();
             }
         }
 
+        byte[] preloadedData;
         private void button11_Click(object sender, EventArgs e)
         {
-            exportTables1(tables1);
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "ECC bytest files|*.ecc";
+            openFileDialog1.Title = "Виберіть згенерований файл";
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                StreamReader sr = new StreamReader(openFileDialog1.FileName);
+                preloadedData = Encoding.UTF8.GetBytes(sr.ReadToEnd());
+                toolStripStatusLabel2.Text = "Дані завантажено";
+            }
         }
 
-        private void button7_Click_1(object sender, EventArgs e)
+        private void exportExcelTables()
         {
+            exportTables1(tables1);
             exportTables2(tables2);
         }
 
@@ -5531,6 +5561,27 @@ namespace EllipticCurveCryptography
                 return;
             }
             Process.Start(docURI);
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            int bytesCount = (int)numericUpDown1.Value;
+            byte[] array = new byte[bytesCount];
+            Random random = new Random();
+            random.NextBytes(array);
+            string filename = "test.ecc";
+            try
+            {
+                FileStream fileStream = new FileStream(filename, FileMode.Create, FileAccess.Write);
+                fileStream.Write(array, 0, bytesCount);
+                fileStream.Close();
+                MessageBox.Show("Записано в файл " + filename, "Інфо", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString(), "Помилка запису!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
     }
 }

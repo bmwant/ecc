@@ -276,8 +276,13 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.textBoxCryptData = new System.Windows.Forms.TextBox();
             this.label71 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.label74 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.button12 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox14.SuspendLayout();
@@ -309,6 +314,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).BeginInit();
             this.groupBox16.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.groupBox18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -325,7 +332,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.linkLabel1);
+            this.tabPage1.Controls.Add(this.groupBox18);
             this.tabPage1.Controls.Add(this.groupBox14);
             this.tabPage1.Controls.Add(this.dataGridView3);
             this.tabPage1.Controls.Add(this.dataGridView2);
@@ -344,9 +351,9 @@
             this.groupBox14.Controls.Add(this.radioButton41);
             this.groupBox14.Controls.Add(this.radioButton42);
             this.groupBox14.Controls.Add(this.radioButton43);
-            this.groupBox14.Location = new System.Drawing.Point(821, 30);
+            this.groupBox14.Location = new System.Drawing.Point(787, 25);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(165, 111);
+            this.groupBox14.Size = new System.Drawing.Size(200, 111);
             this.groupBox14.TabIndex = 55;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Системи координат";
@@ -443,6 +450,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.linkLabel1);
             this.groupBox5.Controls.Add(this.label73);
             this.groupBox5.Controls.Add(this.label72);
             this.groupBox5.Controls.Add(this.comboBox2);
@@ -725,7 +733,8 @@
             // 
             // groupBox17
             // 
-            this.groupBox17.Controls.Add(this.button7);
+            this.groupBox17.Controls.Add(this.radioButton2);
+            this.groupBox17.Controls.Add(this.radioButton1);
             this.groupBox17.Controls.Add(this.label71);
             this.groupBox17.Controls.Add(this.textBoxCryptData);
             this.groupBox17.Controls.Add(this.button11);
@@ -741,18 +750,17 @@
             // 
             // button11
             // 
-            this.button11.Enabled = false;
-            this.button11.Location = new System.Drawing.Point(27, 445);
+            this.button11.Location = new System.Drawing.Point(84, 387);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(138, 41);
+            this.button11.Size = new System.Drawing.Size(109, 24);
             this.button11.TabIndex = 74;
-            this.button11.Text = "Експорт в Excel (кількість операцій)";
+            this.button11.Text = "Обрати файл...";
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(27, 411);
+            this.button10.Location = new System.Drawing.Point(25, 443);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(138, 23);
             this.button10.TabIndex = 73;
@@ -2754,7 +2762,7 @@
             // 
             // textBoxCryptData
             // 
-            this.textBoxCryptData.Location = new System.Drawing.Point(6, 214);
+            this.textBoxCryptData.Location = new System.Drawing.Point(6, 240);
             this.textBoxCryptData.Multiline = true;
             this.textBoxCryptData.Name = "textBoxCryptData";
             this.textBoxCryptData.Size = new System.Drawing.Size(187, 137);
@@ -2769,27 +2777,91 @@
             this.label71.TabIndex = 73;
             this.label71.Text = "Дані для шифрування:";
             // 
-            // button7
-            // 
-            this.button7.Enabled = false;
-            this.button7.Location = new System.Drawing.Point(27, 497);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(138, 46);
-            this.button7.TabIndex = 76;
-            this.button7.Text = "Експорт в Excel (часові показники)";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click_1);
-            // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(260, 415);
+            this.linkLabel1.Location = new System.Drawing.Point(6, 242);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(204, 13);
             this.linkLabel1.TabIndex = 56;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Документ з описом параметрів кривої";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(9, 215);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(94, 17);
+            this.radioButton1.TabIndex = 77;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "З поля вводу:";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(9, 390);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(69, 17);
+            this.radioButton2.TabIndex = 78;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "З файлу:";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox18
+            // 
+            this.groupBox18.Controls.Add(this.button12);
+            this.groupBox18.Controls.Add(this.numericUpDown1);
+            this.groupBox18.Controls.Add(this.label74);
+            this.groupBox18.Location = new System.Drawing.Point(787, 142);
+            this.groupBox18.Name = "groupBox18";
+            this.groupBox18.Size = new System.Drawing.Size(200, 100);
+            this.groupBox18.TabIndex = 56;
+            this.groupBox18.TabStop = false;
+            this.groupBox18.Text = "Згенерувати дані для шифрування";
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.Location = new System.Drawing.Point(7, 19);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(118, 13);
+            this.label74.TabIndex = 32;
+            this.label74.Text = "Кількість байт у файлі";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(10, 38);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.TabIndex = 34;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            64,
+            0,
+            0,
+            0});
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(10, 64);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(120, 23);
+            this.button12.TabIndex = 35;
+            this.button12.Text = "Згенерувати";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // ECC
             // 
@@ -2804,7 +2876,6 @@
             this.Load += new System.EventHandler(this.ECC_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
             this.groupBox14.ResumeLayout(false);
             this.groupBox14.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
@@ -2853,6 +2924,9 @@
             this.groupBox16.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.groupBox18.ResumeLayout(false);
+            this.groupBox18.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3108,7 +3182,12 @@
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Label label71;
         private System.Windows.Forms.TextBox textBoxCryptData;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.GroupBox groupBox18;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Label label74;
     }
 }
