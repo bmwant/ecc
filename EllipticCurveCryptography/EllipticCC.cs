@@ -76,6 +76,7 @@ namespace EllipticCurveCryptography
                 }
             }
         }
+
         public static void Generate_Point_EC_(BigInteger a, BigInteger b, BigInteger p, int quantity, out List<BigInteger[]> K)
         {
             K = new List<BigInteger[]>();      
@@ -98,7 +99,7 @@ namespace EllipticCurveCryptography
                     while (y == 0);
                     left_side = (y * y) % p;
                 }
-                while (left_side != right_side);//поиск корня не всегда правильно работает, поэтому проверяем дополнительно
+                while (left_side != right_side); // поиск корня не всегда правильно работает, поэтому проверяем дополнительно
                 
                 BigInteger[] coord = new BigInteger[3];
                 coord[0] = x;

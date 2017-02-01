@@ -712,91 +712,73 @@ namespace EllipticCurveCryptography
 
             if (radioButton43.Checked)
             {
-                try
+                p = BigInteger.Parse(textBox1.Text);
+
+                int p_bits = Functions.ToBin(p).Length;
+
+                string fileToSave = quantity + "_Points_" + p_bits + ".txt";
+                if (comboBox2.SelectedItem != null)
                 {
-                    p = BigInteger.Parse(dataGridView3.CurrentCell.Value.ToString());
-
-                    int p_bits = Functions.ToBin(p).Length;
-
-                    if (dataGridView3.SelectedRows == null) MessageBox.Show("Оберіть модуль!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    else
-                    {
-                        openFileDialog1.Filter = "txt файли(*.txt)|*.txt";
-                        openFileDialog1.FileName = quantity + "_Points_" + p_bits + ".txt";
-                        string filename = openFileDialog1.FileName;
-                        FileStream fs = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.Write);
-                        StreamWriter sw = new StreamWriter(fs);
-
-                        if (openFileDialog1.ShowDialog() == DialogResult.Cancel) { sw.Close(); }
-                        else {
-                            EllipticCC.Generate_Point_EC_(a, b, p, quantity, out points);
-                            dataGridView2.Visible = true;
-                            dataGridView3.Visible = false;
-                            int i = 0;
-                            sw.WriteLine("a = " + a + ", p = " + p);
-                            foreach (BigInteger[] point in points)
-                            {
-                                dataGridView2.Rows.Add();
-                                dataGridView2.Rows[i].Cells[0].Value = point[0];
-                                dataGridView2.Rows[i].Cells[1].Value = point[1];
-                                i++;
-                                sw.WriteLine(point[0] + "," + point[1] + "," + 1);
-                            }
-                            MessageBox.Show("Записано успішно!", "УСПІШНО!", MessageBoxButtons.OK, MessageBoxIcon.None);
-                            sw.Close();
-                        }
-                    }
+                    fileToSave = comboBox2.SelectedItem.ToString() + "_" + fileToSave;
                 }
-                catch (NullReferenceException ex)
+                FileStream fs = new FileStream(fileToSave, FileMode.OpenOrCreate, FileAccess.Write);
+                StreamWriter sw = new StreamWriter(fs);
+                EllipticCC.Generate_Point_EC_(a, b, p, quantity, out points);
+                dataGridView2.Visible = true;
+                dataGridView3.Visible = false;
+                int i = 0;
+                sw.WriteLine("a = " + a + ", p = " + p);
+                foreach (BigInteger[] point in points)
                 {
-                    MessageBox.Show("Оберіть модуль", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dataGridView2.Rows.Add();
+                    dataGridView2.Rows[i].Cells[0].Value = point[0];
+                    dataGridView2.Rows[i].Cells[1].Value = point[1];
+                    i++;
+                    sw.WriteLine(point[0] + "," + point[1] + "," + 1);
                 }
+                sw.Close();
+                MessageBox.Show("Записано успішно у файл " + fileToSave, "Інфо", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             if (radioButton42.Checked)
             {
                 try
                 {
-                    p = BigInteger.Parse(dataGridView3.CurrentCell.Value.ToString());
+                    p = BigInteger.Parse(textBox1.Text);
 
                     int p_bits = Functions.ToBin(p).Length;
-
-                    if (dataGridView3.SelectedRows == null) MessageBox.Show("Оберіть модуль!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    else
+                    openFileDialog1.Filter = "txt файли(*.txt)|*.txt";
+                    openFileDialog1.FileName = quantity + "_PointsInProjectiveCoordinate_" + p_bits + ".txt";
+                    string filename = openFileDialog1.FileName;
+                    if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                     {
-                        openFileDialog1.Filter = "txt файли(*.txt)|*.txt";
-                        openFileDialog1.FileName = quantity + "_PointsInProjectiveCoordinate_" + p_bits + ".txt";
-                        string filename = openFileDialog1.FileName;
-                        FileStream fs = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.Write);
-                        StreamWriter sw = new StreamWriter(fs);
-
-                        if (openFileDialog1.ShowDialog() == DialogResult.Cancel) { sw.Close(); }
-                        else {
-                            EllipticCC.generatePointEcInProjecriveCoord(a, b, p, quantity, out points);
-                            dataGridView2.Visible = true;
-                            dataGridView3.Visible = false;
-                            int i = 0;
-                            sw.WriteLine("a = " + a + ", p = " + p);
-                            foreach (BigInteger[] point in points)
-                            {
-                                dataGridView2.Rows.Add();
-                                dataGridView2.Rows[i].Cells[0].Value = point[0];
-                                dataGridView2.Rows[i].Cells[1].Value = point[1];
-                                i++;
-                                sw.WriteLine(point[0] + "," + point[1] + "," + point[2]);
-                            }
-                            MessageBox.Show("Записано успішно!", "УСПІШНО!", MessageBoxButtons.OK, MessageBoxIcon.None);
-                            sw.Close();
-                        }
+                        return;
                     }
+                    FileStream fs = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.Write);
+                    StreamWriter sw = new StreamWriter(fs);
+                    EllipticCC.generatePointEcInProjecriveCoord(a, b, p, quantity, out points);
+                    dataGridView2.Visible = true;
+                    dataGridView3.Visible = false;
+                    int i = 0;
+                    sw.WriteLine("a = " + a + ", p = " + p);
+                    foreach (BigInteger[] point in points)
+                    {
+                        dataGridView2.Rows.Add();
+                        dataGridView2.Rows[i].Cells[0].Value = point[0];
+                        dataGridView2.Rows[i].Cells[1].Value = point[1];
+                        i++;
+                        sw.WriteLine(point[0] + "," + point[1] + "," + point[2]);
+                    }
+                    MessageBox.Show("Записано успішно!", "УСПІШНО!", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    sw.Close();
                 }
                 catch (NullReferenceException ex)
                 {
                     MessageBox.Show("Оберіть модуль", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
         }
+
         private void generatePoints_Click(object sender, EventArgs e)
         {
             dataGridView2.Visible = true;

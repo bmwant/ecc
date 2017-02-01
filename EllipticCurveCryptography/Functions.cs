@@ -18,7 +18,7 @@ namespace EllipticCurveCryptography
         public static int rand(int l, int h)
         {
             Random r = new Random();
-            int x = r.Next(l, h);
+            int x = r.Next(l, h);  // todo: this should handle BigInteger values as well
             return x;
         }
 
@@ -110,7 +110,6 @@ namespace EllipticCurveCryptography
 
             return b;
         }
-
 
         public static string ToBin(BigInteger dec)
         {
