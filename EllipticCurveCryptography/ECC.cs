@@ -230,6 +230,10 @@ namespace EllipticCurveCryptography
                     MessageBox.Show("Оберіть спочатку файл", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+            else
+            {
+                MessageBox.Show("Виберіть тип задання даних (Файл/Текстове поле)", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
             return preloadedData;
         }
@@ -237,7 +241,7 @@ namespace EllipticCurveCryptography
         private void Run_ECDSA(MultiplyPoint multiplier, int coorType, out double time, OperationsCounter ops)
         {
             int w = int.Parse(textBox5.Text);
-            var ecdsa = new ECDSA(2, 6, 17, 2, 1, 11, multiplier: multiplier, ops: ops);
+            var ecdsa = new ECDSA(2, 6, 17, 2, 1, 11, w: w, multiplier: multiplier, ops: ops);
             byte[] data = Get_Data_Bytes();
             var Ks = new List<BigInteger>() { 3, 4 };
             var Ds = new List<BigInteger>() { 8, 9 };
@@ -250,7 +254,7 @@ namespace EllipticCurveCryptography
         private void Run_GOST_R34_10_2001(MultiplyPoint multiplier, int coorType, out double time, OperationsCounter ops)
         {
             int w = int.Parse(textBox5.Text);
-            var gost = new GOST_R34_10_2001(2, 6, 17, 2, 1, 11, 22, multiplier: multiplier, ops: ops);
+            var gost = new GOST_R34_10_2001(2, 6, 17, 2, 1, 11, 22, w: w, multiplier: multiplier, ops: ops);
             var data = Get_Data_Bytes();
             var Ks = new List<BigInteger>() { 3, 4 };
             var Ds = new List<BigInteger>() { 8, 9 };
@@ -263,7 +267,7 @@ namespace EllipticCurveCryptography
         private void Run_KCDSA(MultiplyPoint multiplier, int coorType, out double time, OperationsCounter ops)
         {
             int w = int.Parse(textBox5.Text);
-            var kcdsa = new KCDSA(2, 6, 17, 2, 1, 11, multiplier: multiplier, ops: ops);
+            var kcdsa = new KCDSA(2, 6, 17, 2, 1, 11, w: w, multiplier: multiplier, ops: ops);
             var data = Get_Data_Bytes();
             var cert = Encoding.UTF8.GetBytes("certificate");
             var Ks = new List<BigInteger>() { 3, 4 };
@@ -5405,8 +5409,8 @@ namespace EllipticCurveCryptography
                 return;
             }
         }
-
-        List<Task> TaskList = new List<Task>();
+        
+        List<Tuple<string, Task>> TaskList = new List<Tuple<string, Task>>();
         int tasksFinished = 0;
 
         private void button10_Click(object sender, EventArgs e)
@@ -5431,7 +5435,7 @@ namespace EllipticCurveCryptography
                 MessageBox.Show("Заповніть поле для вхідних даних", "Невірні дані", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (radioButton2.Checked && Get_Data_Bytes() == null)
+            if (Get_Data_Bytes() == null)
             {
                 return;
             }
@@ -5458,36 +5462,41 @@ namespace EllipticCurveCryptography
                         Console.WriteLine("Running " + cryptAlgItem);
                         Console.WriteLine("\tPoint multiplication algorithm: " + multAlgItem);
                         Console.WriteLine("\tCoordinate system " + coorSysItem + "\n");
+                        string taskName = cryptAlgItem + ", " + multAlgItem + ", " + coorSysItem;
                         switch (cryptAlgItem)
                         {
                             case "ECDSA":
-                                Task Launch_ECDSA = Task.Factory.StartNew(() => Run_ECDSA(multiplier: multiplier, coorType: coorType, time: out executionTime, ops: ops))
-                                    .ContinueWith(r => taskFinished(coorSysItem, cryptAlgItem, multAlgItem, executionTime, ops));
-                                TaskList.Add(Launch_ECDSA);
+                                Task Launch_ECDSA = new Task(() => Run_ECDSA(multiplier: multiplier, coorType: coorType, time: out executionTime, ops: ops));
+                                Task Continue_ECDSA = Launch_ECDSA.ContinueWith(r => taskFinished(coorSysItem, cryptAlgItem, multAlgItem, executionTime, ops));
+                                TaskList.Add(Tuple.Create(taskName, Launch_ECDSA));
                                 break;
 
                             case "GOST_R34_10_2001":
-                                Task Launch_GOST = Task.Factory.StartNew(() => Run_GOST_R34_10_2001(multiplier: multiplier, coorType: coorType, time: out executionTime, ops: ops))
-                                    .ContinueWith(r => taskFinished(coorSysItem, cryptAlgItem, multAlgItem, executionTime, ops));
-                                TaskList.Add(Launch_GOST);
+                                Task Launch_GOST = new Task(() => Run_GOST_R34_10_2001(multiplier: multiplier, coorType: coorType, time: out executionTime, ops: ops));
+                                Task Continue_GOST = Launch_GOST.ContinueWith(r => taskFinished(coorSysItem, cryptAlgItem, multAlgItem, executionTime, ops));
+                                TaskList.Add(Tuple.Create(taskName, Launch_GOST));
                                 break;
 
                             case "KCDSA":
-                                Task Launch_KCDSA = Task.Factory.StartNew(() => Run_KCDSA(multiplier: multiplier, coorType: coorType, time: out executionTime, ops: ops))
-                                    .ContinueWith(r => taskFinished(coorSysItem, cryptAlgItem, multAlgItem, executionTime, ops));
-                                TaskList.Add(Launch_KCDSA);
+                                Task Launch_KCDSA = new Task(() => Run_KCDSA(multiplier: multiplier, coorType: coorType, time: out executionTime, ops: ops));
+                                Task Continue_KCDSA = Launch_KCDSA.ContinueWith(r => taskFinished(coorSysItem, cryptAlgItem, multAlgItem, executionTime, ops));
+                                TaskList.Add(Tuple.Create(taskName, Launch_KCDSA));
                                 break;
 
                             case "Shor":
-                                Task Launch_Shor = Task.Factory.StartNew(() => Run_Shor(multiplier: multiplier, coorType: coorType, time: out executionTime, ops: ops))
-                                    .ContinueWith(r => taskFinished(coorSysItem, cryptAlgItem, multAlgItem, executionTime, ops));
-                                TaskList.Add(Launch_Shor);
+                                Task Launch_Shor = new Task(() => Run_Shor(multiplier: multiplier, coorType: coorType, time: out executionTime, ops: ops));
+                                Task Continue_Shor = Launch_Shor.ContinueWith(r => taskFinished(coorSysItem, cryptAlgItem, multAlgItem, executionTime, ops));
+                                TaskList.Add(Tuple.Create(taskName, Launch_Shor));
                                 break;
                         }
                     }
                 }
             }
-            toolStripStatusLabel2.Text = "Виконуються...";
+
+            // Invoke chain of functions from the first one
+            var tuple = TaskList.ElementAt(0);
+            toolStripStatusLabel2.Text = "Поточний алгоритм: " + tuple.Item1 + "...";
+            tuple.Item2.Start();
         }
 
         private void taskFinished(string coorSysItem, string cryptAlgItem, string multAlgItem, double time, OperationsCounter ops)
@@ -5506,7 +5515,13 @@ namespace EllipticCurveCryptography
                 MessageBox.Show("Всі обчислення завершено. Відбувається експортування даних в Excel таблиці.",
                     "Інфо", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 exportExcelTables();
+                return;
             }
+            // Get next task from the list
+            var tuple = TaskList.ElementAt(tasksFinished);
+            toolStripStatusLabel2.Text = "Поточний алгоритм: " + tuple.Item1 + "...";
+            // Start next task
+            tuple.Item2.Start();
         }
 
         byte[] preloadedData;

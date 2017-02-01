@@ -16,9 +16,9 @@ namespace EllipticCurveCryptography
         private BigInteger Sigma;
         OperationsCounter ops;
 
-        public GOST_R34_10_2001(BigInteger a, BigInteger b, BigInteger p, BigInteger xP, BigInteger yP, BigInteger Sigma, int n,
+        public GOST_R34_10_2001(BigInteger a, BigInteger b, BigInteger p, BigInteger xP, BigInteger yP, BigInteger Sigma, int n, int w = 0,
             MultiplyPoint multiplier = null, PointMultiplication.AddDelegate adder = null, HashAlgorithm ha = null, OperationsCounter ops = null)
-            : base(a, b, p, xP, yP, n, 1, multiplier: multiplier, adder: adder, ha: ha)
+            : base(a, b, p, xP, yP, n, 1, w: w, multiplier: multiplier, adder: adder, ha: ha)
         {
             this.ops = ops;
             this.Sigma = Sigma;
@@ -40,7 +40,7 @@ namespace EllipticCurveCryptography
                 {
                     BigInteger x, y, z;
                     double iterationTime = 0;
-                    Multiplier(xP, yP, 1, A, k[i], p, out x, out y, out z, 0, out iterationTime, ops: ops);
+                    Multiplier(xP, yP, 1, A, k[i], p, out x, out y, out z, 0, out iterationTime, w: w, ops: ops);
                     this.time += iterationTime;
                     RList.Add(new Point(x, y));
                 }
@@ -86,13 +86,13 @@ namespace EllipticCurveCryptography
             BigInteger xR, yR, zR;
 
             double time1 = 0;
-            Multiplier(xP, yP, 1, A, s, p, out x, out y, out z, 0, out time1, ops: ops);
+            Multiplier(xP, yP, 1, A, s, p, out x, out y, out z, 0, out time1, w: w, ops: ops);
             this.time += time1;
 
             Point sP = new Point(x,y);
 
             double time2 = 0;
-            Multiplier(xQ, yQ, 1, A, r, p, out x, out y, out z, 0, out time2, ops: ops);
+            Multiplier(xQ, yQ, 1, A, r, p, out x, out y, out z, 0, out time2, w: w, ops: ops);
             this.time += time2;
 
             Point rQ = new Point(x, y);
