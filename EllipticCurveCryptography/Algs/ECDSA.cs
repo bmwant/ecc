@@ -33,7 +33,7 @@ namespace EllipticCurveCryptography
                 BigInteger e = new BigInteger(HA.ComputeHash(data));
                 BigInteger invK = Utils.modInverse(k, n);
                 s = Utils.mod((e + d*r)*invK, n);
-                if (s ==0 )
+                if (s == 0)
                 {
                     continue;
                 }

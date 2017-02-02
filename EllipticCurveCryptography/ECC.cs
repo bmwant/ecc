@@ -199,6 +199,42 @@ namespace EllipticCurveCryptography
             });
         }
 
+        private bool checkValues()
+        {
+            /* Implement here any checks or constraints on input fields */
+            if(textBox25.Text == "")
+            {
+                MessageBox.Show("Заповніть поле для параметру n", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (checkedListBox3.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("Оберіть хоча б одну систему координат", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (checkedListBox1.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("Оберіть хоча б один алгоритм множення", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (checkedListBox2.CheckedItems.Count == 0)
+            {
+                MessageBox.Show("Оберіть хоча б один алгоритм шифрування", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (radioButton1.Checked && textBoxCryptData.Text.Length == 0)
+            {
+                MessageBox.Show("Заповніть поле для вхідних даних", "Невірні дані", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            return true;
+        }
+
         byte[] Get_Data_Bytes()
         {
             //BigInteger a, b, p, x3, y3, z3, x2 = 0, y2 = 0, z2 = 0, k, l, a_max, b_max;
@@ -241,12 +277,18 @@ namespace EllipticCurveCryptography
         private void Run_ECDSA(MultiplyPoint multiplier, int coorType, out double time, OperationsCounter ops)
         {
             int w = int.Parse(textBox5.Text);
-            var ecdsa = new ECDSA(2, 6, 17, 2, 1, 11, w: w, multiplier: multiplier, ops: ops);
+            BigInteger a = BigInteger.Parse(textBox2.Text);
+            BigInteger p = BigInteger.Parse(textBox1.Text);
+            BigInteger b = BigInteger.Parse(textBox3.Text);
+            BigInteger n = BigInteger.Parse(textBox25.Text);
+
+            BigInteger k = BigInteger.Parse(textBox4.Text);
+            BigInteger l = BigInteger.Parse(textBox47.Text);
+            var ecdsa = new ECDSA(a, b, p, 1, 1, n, w: w, multiplier: multiplier, ops: ops);
+
             byte[] data = Get_Data_Bytes();
-            var Ks = new List<BigInteger>() { 3, 4 };
-            var Ds = new List<BigInteger>() { 8, 9 };
             BigInteger r, s;
-            ecdsa.Sign(data, 22, out r, out s);
+            ecdsa.Sign(data, data.Length, out r, out s);
             time = ecdsa.time;
             Console.WriteLine("Result of ECDSA: r = " + r + ", s = " + s);
         }
@@ -254,7 +296,15 @@ namespace EllipticCurveCryptography
         private void Run_GOST_R34_10_2001(MultiplyPoint multiplier, int coorType, out double time, OperationsCounter ops)
         {
             int w = int.Parse(textBox5.Text);
-            var gost = new GOST_R34_10_2001(2, 6, 17, 2, 1, 11, 22, w: w, multiplier: multiplier, ops: ops);
+            BigInteger a = BigInteger.Parse(textBox2.Text);
+            BigInteger p = BigInteger.Parse(textBox1.Text);
+            BigInteger b = BigInteger.Parse(textBox3.Text);
+            BigInteger n = BigInteger.Parse(textBox25.Text);
+
+            BigInteger k = BigInteger.Parse(textBox4.Text);
+            BigInteger l = BigInteger.Parse(textBox47.Text);
+
+            var gost = new GOST_R34_10_2001(a, b, p, 1, 1, 11, n, w: w, multiplier: multiplier, ops: ops);
             var data = Get_Data_Bytes();
             var Ks = new List<BigInteger>() { 3, 4 };
             var Ds = new List<BigInteger>() { 8, 9 };
@@ -267,13 +317,20 @@ namespace EllipticCurveCryptography
         private void Run_KCDSA(MultiplyPoint multiplier, int coorType, out double time, OperationsCounter ops)
         {
             int w = int.Parse(textBox5.Text);
-            var kcdsa = new KCDSA(2, 6, 17, 2, 1, 11, w: w, multiplier: multiplier, ops: ops);
+            BigInteger a = BigInteger.Parse(textBox2.Text);
+            BigInteger p = BigInteger.Parse(textBox1.Text);
+            BigInteger b = BigInteger.Parse(textBox3.Text);
+            BigInteger n = BigInteger.Parse(textBox25.Text);
+
+            BigInteger k = BigInteger.Parse(textBox4.Text);
+            BigInteger l = BigInteger.Parse(textBox47.Text);
+
+            var kcdsa = new KCDSA(a, b, p, 1, 1, n, w: w, multiplier: multiplier, ops: ops);
             var data = Get_Data_Bytes();
             var cert = Encoding.UTF8.GetBytes("certificate");
             var Ks = new List<BigInteger>() { 3, 4 };
             BigInteger r, s;
-            BigInteger d = new BigInteger(5);
-            kcdsa.Sign(data, cert, d, out r, out s);
+            kcdsa.Sign(data, cert, data.Length, out r, out s);
             time = kcdsa.time;
             Console.WriteLine("Result of KCDSA: r = " + r + ", s = " + s);
         }
@@ -281,7 +338,14 @@ namespace EllipticCurveCryptography
         private void Run_Shor(MultiplyPoint multiplier, int coorType, out double time, OperationsCounter ops)
         {
             int w = int.Parse(textBox5.Text);
-            var shor = new Shor(2, 6, 17, 2, 1, 11, w: w, multiplier: multiplier, ops: ops);
+            BigInteger a = BigInteger.Parse(textBox2.Text);
+            BigInteger p = BigInteger.Parse(textBox1.Text);
+            BigInteger b = BigInteger.Parse(textBox3.Text);
+            BigInteger n = BigInteger.Parse(textBox25.Text);
+
+            BigInteger k = BigInteger.Parse(textBox4.Text);
+            BigInteger l = BigInteger.Parse(textBox47.Text);
+            var shor = new Shor(a, b, p, 1, 1, n, w: w, multiplier: multiplier, ops: ops);
             var Ds = new List<BigInteger>() { 8, 5 };
             var data = Get_Data_Bytes();
             var Ks = new List<BigInteger>() { 3, 4 };
@@ -5415,30 +5479,8 @@ namespace EllipticCurveCryptography
 
         private void button10_Click(object sender, EventArgs e)
         {
-            if(checkedListBox3.CheckedItems.Count == 0)
-            {
-                MessageBox.Show("Оберіть хоча б одну систему координат", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (checkedListBox1.CheckedItems.Count == 0)
-            {
-                MessageBox.Show("Оберіть хоча б один алгоритм множення", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (checkedListBox2.CheckedItems.Count == 0)
-            {
-                MessageBox.Show("Оберіть хоча б один алгоритм шифрування", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (radioButton1.Checked && textBoxCryptData.Text.Length == 0)
-            {
-                MessageBox.Show("Заповніть поле для вхідних даних", "Невірні дані", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (Get_Data_Bytes() == null)
-            {
-                return;
-            }
+            if (!checkValues()) return;
+            if (Get_Data_Bytes() == null) return;
 
             tables1.Clear(); // Renew information from previous launch
             tables2.Clear();

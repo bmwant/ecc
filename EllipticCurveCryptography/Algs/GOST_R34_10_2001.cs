@@ -16,7 +16,7 @@ namespace EllipticCurveCryptography
         private BigInteger Sigma;
         OperationsCounter ops;
 
-        public GOST_R34_10_2001(BigInteger a, BigInteger b, BigInteger p, BigInteger xP, BigInteger yP, BigInteger Sigma, int n, int w = 0,
+        public GOST_R34_10_2001(BigInteger a, BigInteger b, BigInteger p, BigInteger xP, BigInteger yP, BigInteger Sigma, BigInteger n, int w = 0,
             MultiplyPoint multiplier = null, PointMultiplication.AddDelegate adder = null, HashAlgorithm ha = null, OperationsCounter ops = null)
             : base(a, b, p, xP, yP, n, 1, w: w, multiplier: multiplier, adder: adder, ha: ha)
         {
