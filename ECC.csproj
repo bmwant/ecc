@@ -115,7 +115,9 @@
     <EmbeddedResource Include="EllipticCurveCryptography\ECC.resx">
       <DependentUpon>ECC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EllipticCurveCryptography\obj\x86\Debug\EllipticCurveCryptography.ECC.resources" />
+    <EmbeddedResource Include="EllipticCurveCryptography\obj\x86\Debug\EllipticCurveCryptography.ECC.resources">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="EllipticCurveCryptography\Properties\Resources.resx" />
   </ItemGroup>
   <ItemGroup>
