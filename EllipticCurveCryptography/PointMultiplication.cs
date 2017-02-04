@@ -1471,11 +1471,13 @@ namespace EllipticCurveCryptography
             BigInteger r3 = 0, r4 = 0;
             List<BigInteger> mas_k = Functions.NAF(k);
             int t = mas_k.Count;
+            ops.opElementsMultiply(3);
 
             for (int i = 0; i < t; i++)
             {
                 if (mas_k[i] == 1)
                 {
+                    ops.opPointsAdd();
                     switch (type)
                     {
                         case 4:
@@ -1492,6 +1494,7 @@ namespace EllipticCurveCryptography
                 {
                     if (mas_k[i] == -1)
                     {
+                        ops.opPointsAdd();
                         switch (type)
                         {
                             case 4:
@@ -1505,6 +1508,7 @@ namespace EllipticCurveCryptography
                         }
                     }
                 }
+                ops.opPointsDoubling();
                 switch (type)
                 {
                     case 4:
@@ -1539,6 +1543,8 @@ namespace EllipticCurveCryptography
             BigInteger r2 = z1 * z1 * z1;
             BigInteger r3 = 0, r4 = 0;
             BigInteger temp = 0;
+            ops.opElementsMultiply(3);
+
             while (k >= 1)
             {
                 if (k % 2 != 0)
@@ -1550,6 +1556,7 @@ namespace EllipticCurveCryptography
                     temp = 0;
                 if (temp == 1)
                 {
+                    ops.opPointsAdd();
                     switch (type)
                     {
                         case 4:
@@ -1566,6 +1573,7 @@ namespace EllipticCurveCryptography
                 {
                     if (temp == -1)
                     {
+                        ops.opPointsAdd();
                         switch (type)
                         {
                             case 4:
@@ -1580,6 +1588,7 @@ namespace EllipticCurveCryptography
                     }
                 }
                 k = k / 2;
+                ops.opPointsDoubling();
                 switch (type)
                 {
                     case 4:
@@ -1617,9 +1626,11 @@ namespace EllipticCurveCryptography
             BigInteger r3 = 0, r4 = 0;
             List<BigInteger> mas_k = Functions.NAF(k);
             int t = mas_k.Count;
+            ops.opElementsMultiply(3);
 
             for (int i = t; i > 0; i--)
             {
+                ops.opPointsDoubling();
                 switch (type)
                 {
                     case 4:
@@ -1633,6 +1644,7 @@ namespace EllipticCurveCryptography
                 }
                 if (mas_k[i - 1] == 1)
                 {
+                    ops.opPointsAdd();
                     switch (type)
                     {
                         case 4:
@@ -1649,6 +1661,7 @@ namespace EllipticCurveCryptography
                 {
                     if (mas_k[i - 1] == -1)
                     {
+                        ops.opPointsAdd();
                         switch (type)
                         {
                             case 4:
@@ -1687,18 +1700,20 @@ namespace EllipticCurveCryptography
                 PreComputation[i / 2, 2] = z2;
             }
             BigInteger t3 = 0, r5 = 0, r6 = 0;
-            BigInteger t1 = a * BigInteger.Pow(z1, 4); BigInteger t2 = 0;
+            BigInteger t1 = a * BigInteger.Pow(z1, 4);
+            BigInteger t2 = 0;
             BigInteger r1 = z1 * z1;
             BigInteger r2 = z1 * z1 * z1;
             BigInteger r3 = 0, r4 = 0;
             x2 = 0;
             y2 = 1;
             z2 = 0;
+            ops.opElementsMultiply(4);
 
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
 
-            List<BigInteger> mas_k =Functions.NAF(k);
+            List<BigInteger> mas_k = Functions.NAF(k);
             int t = mas_k.Count;
             int h = PreComputation.GetLength(0);
             int j = 1, max_j;
@@ -1710,6 +1725,7 @@ namespace EllipticCurveCryptography
                 {
                     int max_div = max / 2;
                     if (max_div * 2 < max) max_div++;
+                    ops.opElementsAdd();
                     switch (type)
                     {
                         case 4:
@@ -1722,14 +1738,14 @@ namespace EllipticCurveCryptography
                             AddList[type](PreComputation[max_div - 1, 0], PreComputation[max_div - 1, 1], PreComputation[max_div - 1, 2], x2, y2, z2, a, p, out x2, out y2, out z2); break;
                     }
                 }
-                else
-                    if (max < 0)
-                    {
-                        int max_abs = Math.Abs(max);
-                        int max_abs_div = max_abs / 2;
-                        if (max_abs_div * 2 < max_abs) max_abs_div++;
+                else if (max < 0)
+                {
+                    int max_abs = Math.Abs(max);
+                    int max_abs_div = max_abs / 2;
+                    if (max_abs_div * 2 < max_abs) max_abs_div++;
+                    ops.opPointsAdd();
                     switch (type)
-                    {/*ne vpevnena pro inshi coordynaty*/
+                    {
                         case 4:
                             Add_ModifiedJacoby_Coord(PreComputation[max_abs_div - 1, 0], -PreComputation[max_abs_div - 1, 1], PreComputation[max_abs_div - 1, 2], t1, x2, y2, z2, t2, a, p, out x2, out y2, out z2, out t2); break;
                         case 3:
@@ -1739,11 +1755,12 @@ namespace EllipticCurveCryptography
                         case 2:
                             AddList[type](PreComputation[max_abs_div - 1, 0], -PreComputation[max_abs_div - 1, 1], PreComputation[max_abs_div - 1, 2], x2, y2, z2, a, p, out x2, out y2, out z2); break;
                     }
-                    }
+                }
                 for (int d = 0; d < max_j; d++)
                 {
                     for (int l = 0; l < h; l++)
                     {
+                        ops.opPointsDoubling();
                         switch (type)
                         {
                             case 4:
@@ -1785,14 +1802,15 @@ namespace EllipticCurveCryptography
             }
 
             BigInteger t3 = 0, r5 = 0, r6 = 0;
-            BigInteger t1 = a * BigInteger.Pow(z1, 4); BigInteger t2 = 0;
+            BigInteger t1 = a * BigInteger.Pow(z1, 4);
+            BigInteger t2 = 0;
             BigInteger r1 = z1 * z1;
             BigInteger r2 = z1 * z1 * z1;
             BigInteger r3 = 0, r4 = 0;
             x2 = 0;
             y2 = 1;
             z2 = 0;
-
+            ops.opElementsMultiply(4);
             stopWatch.Start();
 
             List<BigInteger> mas_k = Functions.NAF(k);
@@ -1811,6 +1829,7 @@ namespace EllipticCurveCryptography
                    Functions.Find_the_largest_t_10(mas_k, j - 1, w, out max, out max_j);
                 for (int l = 0; l < max_j; l++)
                 {
+                    ops.opPointsDoubling();
                     switch (type)
                     {
                         case 4:
@@ -1826,6 +1845,7 @@ namespace EllipticCurveCryptography
 
                 if (max > 0)
                 {
+                    ops.opPointsAdd();
                     switch (type)
                     {
                         case 4:
@@ -1838,10 +1858,10 @@ namespace EllipticCurveCryptography
                             AddList[type](PreComputation[max / 2, 0], PreComputation[max / 2, 1], PreComputation[max / 2, 2], x2, y2, z2, a, p, out x2, out y2, out z2); break;
                     }
                 }
-                else
-                    if (max < 0)
-                    {
-                        int max_abs = Math.Abs(max);
+                else if (max < 0)
+                {
+                    int max_abs = Math.Abs(max);
+                    ops.opPointsAdd();
                     switch (type)
                     {
                         case 4:
@@ -1853,7 +1873,7 @@ namespace EllipticCurveCryptography
                         case 2:
                             AddList[type](PreComputation[max_abs / 2, 0], -PreComputation[max_abs / 2, 1], PreComputation[max_abs / 2, 2], x2, y2, z2, a, p, out x2, out y2, out z2); break;
                     }
-                    }
+                }
 
                 j = j - max_j;
             }
