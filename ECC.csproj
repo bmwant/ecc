@@ -72,9 +72,6 @@
     <None Include="EllipticCurveCryptography\bin\Debug\W256_2_12_2_31-05-2016-17-31-28.csv" />
     <None Include="EllipticCurveCryptography\ClassDiagram1.cd" />
     <None Include="EllipticCurveCryptography\ClassDiagram2.cd" />
-    <None Include="EllipticCurveCryptography\obj\x86\Debug\DesignTimeResolveAssemblyReferences.cache" />
-    <None Include="EllipticCurveCryptography\obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="EllipticCurveCryptography\obj\x86\Debug\EllipticCurveCryptography.csproj.GenerateResource.Cache" />
     <None Include="EllipticCurveCryptography\Properties\Settings.settings" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -114,9 +111,6 @@
   <ItemGroup>
     <EmbeddedResource Include="EllipticCurveCryptography\ECC.resx">
       <DependentUpon>ECC.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EllipticCurveCryptography\obj\x86\Debug\EllipticCurveCryptography.ECC.resources">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="EllipticCurveCryptography\Properties\Resources.resx" />
   </ItemGroup>
@@ -166,14 +160,10 @@
     <Content Include="EllipticCurveCryptography\bin\Debug\EllipticCurveCryptography.vshost.exe" />
     <Content Include="EllipticCurveCryptography\EllipticCurveCryptography.csproj" />
     <Content Include="EllipticCurveCryptography\EllipticCurveCryptography.csproj.user" />
-    <Content Include="EllipticCurveCryptography\obj\x86\Debug\EllipticCurveCryptography.csproj.FileListAbsolute.txt" />
-    <Content Include="EllipticCurveCryptography\obj\x86\Debug\EllipticCurveCryptography.exe" />
-    <Content Include="EllipticCurveCryptography\obj\x86\Debug\EllipticCurveCryptography.pdb" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include=".git\" />
     <Folder Include=".vs\" />
-    <Folder Include="EllipticCurveCryptography\obj\x86\Debug\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
   <ProjectExtensions>
