@@ -4041,6 +4041,7 @@ namespace EllipticCurveCryptography
                 }
                 if (tmp1[i] > 0 || tmp2[i] > 0)
                 {
+                    ops.opPointsAdd();
                     AddList[type](x4, y4, z4, PreComputation[0, tmp1[i], tmp2[i]], PreComputation[1, tmp1[i], tmp2[i]], PreComputation[2, tmp1[i], tmp2[i]],
                              a, p, out x3, out y3, out z3);
                     x4 = x3;
