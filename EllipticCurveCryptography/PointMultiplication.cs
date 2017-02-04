@@ -1900,13 +1900,15 @@ namespace EllipticCurveCryptography
                 PreComputation[i / 2, 2] = z2;
             }
             BigInteger t3 = 0, r5 = 0, r6 = 0;
-            BigInteger t1 = a * BigInteger.Pow(z1, 4); BigInteger t2 = 0;
+            BigInteger t1 = a * BigInteger.Pow(z1, 4);
+            BigInteger t2 = 0;
             BigInteger r1 = z1 * z1;
             BigInteger r2 = z1 * z1 * z1;
             BigInteger r3 = 0, r4 = 0;
             x2 = 0;
             y2 = 1;
             z2 = 0;
+            ops.opElementsMultiply(4);
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             List<BigInteger> mas_k = Functions.NAFw(k, w);
@@ -1916,6 +1918,7 @@ namespace EllipticCurveCryptography
             {
                 if (mas_k[i] > 0)
                 {
+                    ops.opPointsAdd();
                     switch (type)
                     {
                         case 4:
@@ -1928,10 +1931,10 @@ namespace EllipticCurveCryptography
                             AddList[type](PreComputation[(int)(mas_k[i] / 2), 0], PreComputation[(int)(mas_k[i] / 2), 1], PreComputation[(int)(mas_k[i] / 2), 2], x2, y2, z2, a, p, out x2, out y2, out z2); break;
                     }
                 }
-                else
-                    if (mas_k[i] < 0)
+                else if (mas_k[i] < 0)
                 {
                     int mas_k_abs = (int)BigInteger.Abs(mas_k[i]);
+                    ops.opPointsAdd();
                     switch (type)
                     {
                         case 4:
@@ -1946,6 +1949,7 @@ namespace EllipticCurveCryptography
                 }
                 for (int j = 0; j < h; j++)
                 {
+                    ops.opPointsDoubling();
                     switch (type)
                     {
                         case 4:
@@ -2008,6 +2012,7 @@ namespace EllipticCurveCryptography
                 if (temp > 0)
                 {
                     int n = (int)Math.Ceiling(Math.Abs((double)temp) / 2);
+                    ops.opPointsAdd();
                     switch (type)
                     {
                         case 4:
@@ -2022,6 +2027,7 @@ namespace EllipticCurveCryptography
                 }
                 if (temp < 0)
                 {
+                    ops.opPointsAdd();
                     switch (type)
                     {
                         case 4:
@@ -2037,6 +2043,7 @@ namespace EllipticCurveCryptography
 
                 for (int j = 0; j < PreComputation.GetLength(0); j++)
                 {
+                    ops.opPointsDoubling();
                     switch (type)
                     {
                         case 4:
@@ -2050,6 +2057,7 @@ namespace EllipticCurveCryptography
                     }
                 }
                 k = k / 2;
+                ops.opPointsDoubling();
                 switch (type)
                 {
                     case 4:
@@ -2104,6 +2112,7 @@ namespace EllipticCurveCryptography
 
             for (int i = t - 1; i >= 0; i--)
             {
+                ops.opPointsDoubling();
                 switch (type)
                 {
                     case 4:
@@ -2117,6 +2126,7 @@ namespace EllipticCurveCryptography
                 }
                 if (mas_k[i] > 0)
                 {
+                    ops.opPointsAdd();
                     switch (type)
                     {
                         case 4:
@@ -2129,10 +2139,10 @@ namespace EllipticCurveCryptography
                             AddList[type](PreComputation[(int)(mas_k[i] / 2), 0], PreComputation[(int)(mas_k[i] / 2), 1], PreComputation[(int)(mas_k[i] / 2), 2], x2, y2, z2, a, p, out x2, out y2, out z2); break;
                     }
                 }
-                else
-                    if (mas_k[i] < 0)
+                else if (mas_k[i] < 0)
                 {
                     int mas_k_abs = (int)BigInteger.Abs(mas_k[i]);
+                    ops.opPointsAdd();
                     switch (type)
                     {
                         case 4:
@@ -2180,6 +2190,7 @@ namespace EllipticCurveCryptography
             while (i <= t)
             {
                 Functions.Find_the_largest_t(mas_k, i - 1, w, out max, out max_j);
+                ops.opPointsAdd();
                 if (max > 0)
                 {
                     AddList[type](PreComputation[(int)Math.Ceiling(Math.Abs((double)mas_k[i - 1] / 2)) - 1, 0], PreComputation[(int)Math.Ceiling(Math.Abs((double)mas_k[i - 1] / 2)) - 1, 1], PreComputation[(int)Math.Ceiling(Math.Abs((double)mas_k[i - 1] / 2)) - 1, 2], x2, y2, z2, a, p, out x2, out y2, out z2);
@@ -2192,6 +2203,7 @@ namespace EllipticCurveCryptography
                 {
                     for (int l = 0; l < h; l++)
                     {
+                        ops.opPointsDoubling();
                         DoubleList[type](PreComputation[l, 0], PreComputation[l, 1], PreComputation[l, 2], a, p, out PreComputation[l, 0], out PreComputation[l, 1], out PreComputation[l, 2]);
                     }
                 }
@@ -2240,8 +2252,10 @@ namespace EllipticCurveCryptography
                 }
                 for (int j = 0; j < max_j; j++)
                 {
+                    ops.opPointsDoubling();
                     DoubleList[type](x2, y2, z2, a, p, out x2, out y2, out z2);
                 }
+                ops.opPointsAdd();
                 if (max > 0)
                 {
                     AddList[type](PreComputation[(int)Math.Ceiling(Math.Abs((double)max / 2)) - 1, 0], PreComputation[(int)Math.Ceiling(Math.Abs((double)max / 2)) - 1, 1], PreComputation[(int)Math.Ceiling(Math.Abs((double)max / 2)) - 1, 2], x2, y2, z2, a, p, out x2, out y2, out z2);
@@ -2283,16 +2297,18 @@ namespace EllipticCurveCryptography
             {
                 if (str1[i] == '1' && str[i] == '0')
                 {
+                    ops.opPointsAdd();
                     AddList[type](x2, y2, z2, x1, y1, z1, a, p, out x2, out y2, out z2);
                 }
                 else if (str1[i] == '0' && str[i] == '1')
                 {
+                    ops.opPointsAdd();
                     AddList[type](x2, y2, z2, x1, -y1, z1, a, p, out x2, out y2, out z2);
                 }
-
+                ops.opPointsDoubling();
                 DoubleList[type](x1, y1, z1, a, p, out x1, out y1, out z1);
             }
-
+            ops.opPointsAdd();
             AddList[type](x2, y2, z2, x1, y1, z1, a, p, out x2, out y2, out z2);
             if (x2 == 0 && y2 != 0)
                 z2 = 0;
@@ -2321,13 +2337,16 @@ namespace EllipticCurveCryptography
             }
             for (int i = 1; i <= t - 2; i++)
             {
+                ops.opPointsDoubling();
                 DoubleList[type](x2, y2, z2, a, p, out x2, out y2, out z2);
                 if (str1[i] == '1' && str[i] == '0')
                 {
+                    ops.opPointsAdd();
                     AddList[type](x2, y2, z2, x1, y1, z1, a, p, out x2, out y2, out z2);
                 }
                 else if (str1[i] == '0' && str[i] == '1')
                 {
+                    ops.opPointsAdd();
                     AddList[type](x2, y2, z2, x1, -y1, z1, a, p, out x2, out y2, out z2);
                 }
             }
