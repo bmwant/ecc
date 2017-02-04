@@ -3282,7 +3282,6 @@ namespace EllipticCurveCryptography
                 tree = new Tree(k, S, M, B);
                 decomposition = tree.GetDecomposition();
 
-
                 for (int i = 0; i < S.Length; i++)
                 {
                     double iterationTime = 0;
@@ -3317,6 +3316,7 @@ namespace EllipticCurveCryptography
                 if (i.offset != 0)
                 {
                     Int16 b = (Int16)(BigInteger.Abs(i.offset) - 1);
+                    ops.opPointsAdd();
                     switch (type)
                     {
                         case 4:
@@ -3330,6 +3330,7 @@ namespace EllipticCurveCryptography
                     }
                 }
             }
+            ops.opPointsAdd();
             switch (type)
             {
                 case 4:
@@ -3347,16 +3348,18 @@ namespace EllipticCurveCryptography
         }
 
         public static void Point_Multiplication_Affine_Coord_28(BigInteger x1, BigInteger y1, BigInteger z1, BigInteger a, BigInteger k, BigInteger p,
-           out BigInteger x2, out BigInteger y2, out BigInteger z2, BigInteger B, BigInteger[] S, BigInteger[] M, int type, out double time, OperationsCounter ops = null)
+            out BigInteger x2, out BigInteger y2, out BigInteger z2, BigInteger B, BigInteger[] S, BigInteger[] M, int type, out double time, OperationsCounter ops = null)
         {
             if (ops == null) ops = new OperationsCounter();  // Create default unused if not provided
             var tree = new Tree(k, S, M, B);
             var decomposition = tree.GetDecomposition();
             BigInteger[,] PreComputation = new BigInteger[S.Length, 3];
-            BigInteger t1 = a * BigInteger.Pow(z1, 4); BigInteger t2 = 0;
+            BigInteger t1 = a * BigInteger.Pow(z1, 4);
+            BigInteger t2 = 0;
             BigInteger r1 = z1 * z1;
             BigInteger r2 = z1 * z1 * z1;
             BigInteger r3 = 0, r4 = 0;
+            ops.opElementsMultiply(4);
             for (int i = 0; i < S.Length; i++)
             {
                 double iterationTime = 0;
@@ -3385,6 +3388,7 @@ namespace EllipticCurveCryptography
                 if (i.offset != 0)
                 {
                     Int16 b = (Int16)(BigInteger.Abs(i.offset) - 1);
+                    ops.opPointsAdd();
                     switch (type)
                     {
                         case 4:
