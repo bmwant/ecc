@@ -2380,6 +2380,8 @@ namespace EllipticCurveCryptography
             {
                 if (str[i] == '1')
                 {
+                    ops.opPointsDoubling();
+                    ops.opPointsAdd();
                     switch (type)
                     {
                         case 4:
@@ -2397,6 +2399,8 @@ namespace EllipticCurveCryptography
                 }
                 else
                 {
+                    ops.opPointsDoubling();
+                    ops.opPointsAdd();
                     switch (type)
                     {
                         case 4:
@@ -2432,11 +2436,13 @@ namespace EllipticCurveCryptography
             BigInteger x3 = x1;
             BigInteger y3 = y1;
             BigInteger z3 = z1;
-            BigInteger t1 = a * BigInteger.Pow(z1, 4); BigInteger t2 = 0;
+            BigInteger t1 = a * BigInteger.Pow(z1, 4);
+            BigInteger t2 = 0;
             BigInteger r1 = z1 * z1;
             BigInteger r2 = z1 * z1 * z1;
             BigInteger r3 = 0, r4 = 0;
             BigInteger t3 = t1, r5 = r1, r6 = r2;
+            ops.opElementsMultiply(4);
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             string str = Functions.ToBin(k);
@@ -2445,6 +2451,8 @@ namespace EllipticCurveCryptography
             {
                 if (str[i] == '0')
                 {
+                    ops.opPointsAdd();
+                    ops.opPointsDoubling();
                     switch (type)
                     {
                         case 4:
@@ -2462,6 +2470,8 @@ namespace EllipticCurveCryptography
                 }
                 else
                 {
+                    ops.opPointsAdd();
+                    ops.opPointsDoubling();
                     switch (type)
                     {
                         case 4:
@@ -2492,7 +2502,8 @@ namespace EllipticCurveCryptography
         {
             if (ops == null) ops = new OperationsCounter();  // Create default unused if not provided
             BigInteger[,] mas_k;
-            BigInteger t1 = a * BigInteger.Pow(z1, 4); BigInteger t2;
+            BigInteger t1 = a * BigInteger.Pow(z1, 4);
+            BigInteger t2;
             BigInteger r1 = z1 * z1;
             BigInteger r2 = z1 * z1 * z1;
             BigInteger r3, r4;
@@ -2531,6 +2542,7 @@ namespace EllipticCurveCryptography
 
             for (BigInteger i = 0; i < mas_k[mas_k.GetLength(0) - 1, 1]; i++)
             {
+                ops.opPointsDoubling();
                 switch (type)
                 {
                     case 4: Double_ModifiedJacoby_Coord(x2, y2, z2, t2, a, p, out x2, out y2, out z2, out t2); break;
@@ -2552,8 +2564,10 @@ namespace EllipticCurveCryptography
             {
                 BigInteger u = mas_k[i, 1] - mas_k[i + 1, 1];
                 BigInteger v = mas_k[i, 2] - mas_k[i + 1, 2];
+                ops.opElementsAdd(2);
                 for (int j = 0; j < u; j++)
                 {
+                    ops.opPointsDoubling();
                     switch (type)
                     {
                         case 4: Double_ModifiedJacoby_Coord(x2, y2, z2, t2, a, p, out x2, out y2, out z2, out t2); break;
@@ -2576,6 +2590,7 @@ namespace EllipticCurveCryptography
                             TernaryList[type](x2, y2, z2, a, p, out x2, out y2, out z2); break;
                     }
                 }
+                ops.opPointsAdd();
                 switch (type)
                 {
                     case 4:
@@ -2603,7 +2618,8 @@ namespace EllipticCurveCryptography
         {
             if (ops == null) ops = new OperationsCounter();  // Create default unused if not provided
             BigInteger[,] mas_k;
-            BigInteger t1 = a * BigInteger.Pow(z1, 4); BigInteger t2;
+            BigInteger t1 = a * BigInteger.Pow(z1, 4);
+            BigInteger t2;
             BigInteger r1 = z1 * z1;
             BigInteger r2 = z1 * z1 * z1;
             BigInteger r3, r4;
@@ -2644,6 +2660,7 @@ namespace EllipticCurveCryptography
 
             for (BigInteger i = 0; i < mas_k[mas_k.GetLength(0) - 1, 1]; i++)
             {
+                ops.opPointsDoubling();
                 switch (type)
                 {
                     case 4: Double_ModifiedJacoby_Coord(x2, y2, z2, t2, a, p, out x2, out y2, out z2, out t2); break;
@@ -2665,8 +2682,10 @@ namespace EllipticCurveCryptography
             {
                 BigInteger u = mas_k[i, 1] - mas_k[i + 1, 1];
                 BigInteger v = mas_k[i, 2] - mas_k[i + 1, 2];
+                ops.opElementsAdd(2);
                 for (int j = 0; j < u; j++)
                 {
+                    ops.opPointsDoubling();
                     switch (type)
                     {
                         case 4: Double_ModifiedJacoby_Coord(x2, y2, z2, t2, a, p, out x2, out y2, out z2, out t2); break;
@@ -2690,6 +2709,7 @@ namespace EllipticCurveCryptography
                             TernaryList[type](x2, y2, z2, a, p, out x2, out y2, out z2); break;
                     }
                 }
+                ops.opPointsAdd();
                 switch (type)
                 {
                     case 4:
@@ -2718,10 +2738,13 @@ namespace EllipticCurveCryptography
         {
             if (ops == null) ops = new OperationsCounter();  // Create default unused if not provided
             BigInteger[,] mas_k;
-            BigInteger t1 = a * BigInteger.Pow(z1, 4); BigInteger t2 = 0;
+            BigInteger t1 = a * BigInteger.Pow(z1, 4);
+            BigInteger t2 = 0;
             BigInteger r1 = z1 * z1;
             BigInteger r2 = z1 * z1 * z1;
             BigInteger r3 = 0, r4 = 0;
+            ops.opElementsMultiply(4);
+
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
 
@@ -2746,8 +2769,10 @@ namespace EllipticCurveCryptography
             {
                 BigInteger u = mas_k[i, 1] - mas_k[i + 1, 1];
                 BigInteger v = mas_k[i, 2] - mas_k[i + 1, 2];
+                ops.opElementsAdd(2);
                 for (int j = 0; j < u; j++)
                 {
+                    ops.opPointsDoubling();
                     switch (type)
                     {
                         case 4: Double_ModifiedJacoby_Coord(x2, y2, z2, t2, a, p, out x2, out y2, out z2, out t2); break;
@@ -2771,6 +2796,7 @@ namespace EllipticCurveCryptography
                             TernaryList[type](x2, y2, z2, a, p, out x2, out y2, out z2); break;
                     }
                 }
+                ops.opElementsAdd();
                 switch (type)
                 {
                     case 4:
@@ -2787,6 +2813,7 @@ namespace EllipticCurveCryptography
 
             for (BigInteger i = 0; i < mas_k[mas_k.GetLength(0) - 1, 1]; i++)
             {
+                ops.opPointsDoubling();
                 switch (type)
                 {
                     case 4: Double_ModifiedJacoby_Coord(x2, y2, z2, t2, a, p, out x2, out y2, out z2, out t2); break;
@@ -2830,6 +2857,8 @@ namespace EllipticCurveCryptography
             BigInteger r1 = z1 * z1;
             BigInteger r2 = z1 * z1 * z1;
             BigInteger r3 = 0, r4 = 0;
+            ops.opElementsMultiply(4);
+
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             mas_k = Functions.Convert_to_DBNS_2(k, a_max, b_max);
@@ -2852,8 +2881,10 @@ namespace EllipticCurveCryptography
             {
                 BigInteger u = mas_k[i, 1] - mas_k[i + 1, 1];
                 BigInteger v = mas_k[i, 2] - mas_k[i + 1, 2];
+                ops.opElementsAdd(2);
                 for (int j = 0; j < u; j++)
                 {
+                    ops.opPointsDoubling();
                     switch (type)
                     {
                         case 4: Double_ModifiedJacoby_Coord(x2, y2, z2, t2, a, p, out x2, out y2, out z2, out t2); break;
@@ -2876,6 +2907,7 @@ namespace EllipticCurveCryptography
                             TernaryList[type](x2, y2, z2, a, p, out x2, out y2, out z2); break;
                     }
                 }
+                ops.opElementsAdd();
                 switch (type)
                 {
                     case 4:
@@ -2890,6 +2922,7 @@ namespace EllipticCurveCryptography
             }
             for (BigInteger i = 0; i < mas_k[mas_k.GetLength(0) - 1, 1]; i++)
             {
+                ops.opPointsDoubling();
                 switch (type)
                 {
                     case 4: Double_ModifiedJacoby_Coord(x2, y2, z2, t2, a, p, out x2, out y2, out z2, out t2); break;
