@@ -30,6 +30,10 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.button12 = new System.Windows.Forms.Button();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label74 = new System.Windows.Forms.Label();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.radioButton41 = new System.Windows.Forms.RadioButton();
             this.radioButton42 = new System.Windows.Forms.RadioButton();
@@ -41,6 +45,7 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label73 = new System.Windows.Forms.Label();
             this.label72 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -68,6 +73,10 @@
             this.writePointsInFile = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.label71 = new System.Windows.Forms.Label();
+            this.textBoxCryptData = new System.Windows.Forms.TextBox();
             this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
@@ -274,17 +283,11 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.textBoxCryptData = new System.Windows.Forms.TextBox();
-            this.label71 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.groupBox18 = new System.Windows.Forms.GroupBox();
-            this.label74 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.button12 = new System.Windows.Forms.Button();
+            this.label75 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -314,8 +317,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).BeginInit();
             this.groupBox16.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.groupBox18.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -345,6 +346,59 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "ЕК";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox18
+            // 
+            this.groupBox18.Controls.Add(this.button12);
+            this.groupBox18.Controls.Add(this.numericUpDown1);
+            this.groupBox18.Controls.Add(this.label74);
+            this.groupBox18.Location = new System.Drawing.Point(787, 142);
+            this.groupBox18.Name = "groupBox18";
+            this.groupBox18.Size = new System.Drawing.Size(200, 100);
+            this.groupBox18.TabIndex = 56;
+            this.groupBox18.TabStop = false;
+            this.groupBox18.Text = "Згенерувати дані для шифрування";
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(10, 64);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(120, 23);
+            this.button12.TabIndex = 35;
+            this.button12.Text = "Згенерувати";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(10, 38);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.TabIndex = 34;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            64,
+            0,
+            0,
+            0});
+            // 
+            // label74
+            // 
+            this.label74.AutoSize = true;
+            this.label74.Location = new System.Drawing.Point(7, 19);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(118, 13);
+            this.label74.TabIndex = 32;
+            this.label74.Text = "Кількість байт у файлі";
             // 
             // groupBox14
             // 
@@ -470,6 +524,17 @@
             this.groupBox5.TabIndex = 30;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Параметри ЕК";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(6, 242);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(204, 13);
+            this.linkLabel1.TabIndex = 56;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Документ з описом параметрів кривої";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // label73
             // 
@@ -733,6 +798,7 @@
             // 
             // groupBox17
             // 
+            this.groupBox17.Controls.Add(this.label75);
             this.groupBox17.Controls.Add(this.radioButton2);
             this.groupBox17.Controls.Add(this.radioButton1);
             this.groupBox17.Controls.Add(this.label71);
@@ -747,6 +813,45 @@
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Алгоритми шифрування";
             this.groupBox17.Enter += new System.EventHandler(this.groupBox17_Enter);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(9, 390);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(69, 17);
+            this.radioButton2.TabIndex = 78;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "З файлу:";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(9, 215);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(94, 17);
+            this.radioButton1.TabIndex = 77;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "З поля вводу:";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(6, 194);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(120, 13);
+            this.label71.TabIndex = 73;
+            this.label71.Text = "Дані для шифрування:";
+            // 
+            // textBoxCryptData
+            // 
+            this.textBoxCryptData.Location = new System.Drawing.Point(6, 240);
+            this.textBoxCryptData.Multiline = true;
+            this.textBoxCryptData.Name = "textBoxCryptData";
+            this.textBoxCryptData.Size = new System.Drawing.Size(187, 137);
+            this.textBoxCryptData.TabIndex = 75;
             // 
             // button11
             // 
@@ -2760,108 +2865,16 @@
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(43, 17);
             this.toolStripStatusLabel2.Text = "Статус";
             // 
-            // textBoxCryptData
+            // label75
             // 
-            this.textBoxCryptData.Location = new System.Drawing.Point(6, 240);
-            this.textBoxCryptData.Multiline = true;
-            this.textBoxCryptData.Name = "textBoxCryptData";
-            this.textBoxCryptData.Size = new System.Drawing.Size(187, 137);
-            this.textBoxCryptData.TabIndex = 75;
-            // 
-            // label71
-            // 
-            this.label71.AutoSize = true;
-            this.label71.Location = new System.Drawing.Point(6, 194);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(120, 13);
-            this.label71.TabIndex = 73;
-            this.label71.Text = "Дані для шифрування:";
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(6, 242);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(204, 13);
-            this.linkLabel1.TabIndex = 56;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Документ з описом параметрів кривої";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(9, 215);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(94, 17);
-            this.radioButton1.TabIndex = 77;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "З поля вводу:";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(9, 390);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(69, 17);
-            this.radioButton2.TabIndex = 78;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "З файлу:";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // groupBox18
-            // 
-            this.groupBox18.Controls.Add(this.button12);
-            this.groupBox18.Controls.Add(this.numericUpDown1);
-            this.groupBox18.Controls.Add(this.label74);
-            this.groupBox18.Location = new System.Drawing.Point(787, 142);
-            this.groupBox18.Name = "groupBox18";
-            this.groupBox18.Size = new System.Drawing.Size(200, 100);
-            this.groupBox18.TabIndex = 56;
-            this.groupBox18.TabStop = false;
-            this.groupBox18.Text = "Згенерувати дані для шифрування";
-            // 
-            // label74
-            // 
-            this.label74.AutoSize = true;
-            this.label74.Location = new System.Drawing.Point(7, 19);
-            this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(118, 13);
-            this.label74.TabIndex = 32;
-            this.label74.Text = "Кількість байт у файлі";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(10, 38);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 34;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            64,
-            0,
-            0,
-            0});
-            // 
-            // button12
-            // 
-            this.button12.Location = new System.Drawing.Point(10, 64);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(120, 23);
-            this.button12.TabIndex = 35;
-            this.button12.Text = "Згенерувати";
-            this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
+            this.label75.AutoSize = true;
+            this.label75.Location = new System.Drawing.Point(6, 419);
+            this.label75.Name = "label75";
+            this.label75.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label75.Size = new System.Drawing.Size(141, 13);
+            this.label75.TabIndex = 79;
+            this.label75.Text = "Жодного файлу не обрано";
+            this.label75.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // ECC
             // 
@@ -2876,6 +2889,9 @@
             this.Load += new System.EventHandler(this.ECC_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.groupBox18.ResumeLayout(false);
+            this.groupBox18.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.groupBox14.ResumeLayout(false);
             this.groupBox14.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
@@ -2924,9 +2940,6 @@
             this.groupBox16.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.groupBox18.ResumeLayout(false);
-            this.groupBox18.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3189,5 +3202,6 @@
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label74;
+        private System.Windows.Forms.Label label75;
     }
 }

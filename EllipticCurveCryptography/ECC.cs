@@ -5578,6 +5578,7 @@ namespace EllipticCurveCryptography
                 StreamReader sr = new StreamReader(openFileDialog1.FileName);
                 preloadedData = Encoding.UTF8.GetBytes(sr.ReadToEnd());
                 toolStripStatusLabel2.Text = "Дані завантажено";
+                label75.Text = Path.GetFileName(openFileDialog1.FileName);
             }
         }
 
